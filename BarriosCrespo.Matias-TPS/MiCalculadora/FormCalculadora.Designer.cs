@@ -28,107 +28,106 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.txtNumero1 = new System.Windows.Forms.TextBox();
+            this.txtNumero2 = new System.Windows.Forms.TextBox();
+            this.btnOperar = new System.Windows.Forms.Button();
+            this.btnLimpiar = new System.Windows.Forms.Button();
+            this.btnCerrar = new System.Windows.Forms.Button();
+            this.btnConvertirABinario = new System.Windows.Forms.Button();
+            this.btnConvertirADecimal = new System.Windows.Forms.Button();
+            this.cmbOperador = new System.Windows.Forms.ComboBox();
+            this.lblResultado = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtNumero1
             // 
-            this.textBox1.Location = new System.Drawing.Point(72, 76);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(98, 20);
-            this.textBox1.TabIndex = 0;
+            this.txtNumero1.Location = new System.Drawing.Point(72, 76);
+            this.txtNumero1.Name = "txtNumero1";
+            this.txtNumero1.Size = new System.Drawing.Size(98, 20);
+            this.txtNumero1.TabIndex = 0;
             // 
-            // textBox3
+            // txtNumero2
             // 
-            this.textBox3.Location = new System.Drawing.Point(340, 76);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 2;
+            this.txtNumero2.Location = new System.Drawing.Point(340, 76);
+            this.txtNumero2.Name = "txtNumero2";
+            this.txtNumero2.Size = new System.Drawing.Size(100, 20);
+            this.txtNumero2.TabIndex = 2;
             // 
-            // button1
+            // btnOperar
             // 
-            this.button1.Location = new System.Drawing.Point(56, 145);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnOperar.Location = new System.Drawing.Point(56, 145);
+            this.btnOperar.Name = "btnOperar";
+            this.btnOperar.Size = new System.Drawing.Size(125, 23);
+            this.btnOperar.TabIndex = 3;
+            this.btnOperar.Text = "Operar";
+            this.btnOperar.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnLimpiar
             // 
-            this.button2.Location = new System.Drawing.Point(187, 145);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(122, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Location = new System.Drawing.Point(187, 145);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(122, 23);
+            this.btnLimpiar.TabIndex = 4;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnCerrar
             // 
-            this.button3.Location = new System.Drawing.Point(315, 145);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(142, 23);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnCerrar.Location = new System.Drawing.Point(315, 145);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(142, 23);
+            this.btnCerrar.TabIndex = 5;
+            this.btnCerrar.Text = "Cerrar";
+            this.btnCerrar.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnConvertirABinario
             // 
-            this.button4.Location = new System.Drawing.Point(56, 192);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(198, 23);
-            this.button4.TabIndex = 6;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnConvertirABinario.Location = new System.Drawing.Point(56, 192);
+            this.btnConvertirABinario.Name = "btnConvertirABinario";
+            this.btnConvertirABinario.Size = new System.Drawing.Size(198, 23);
+            this.btnConvertirABinario.TabIndex = 6;
+            this.btnConvertirABinario.Text = "Convertir a binario";
+            this.btnConvertirABinario.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // btnConvertirADecimal
             // 
-            this.button5.Location = new System.Drawing.Point(252, 192);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(205, 23);
-            this.button5.TabIndex = 7;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnConvertirADecimal.Location = new System.Drawing.Point(252, 192);
+            this.btnConvertirADecimal.Name = "btnConvertirADecimal";
+            this.btnConvertirADecimal.Size = new System.Drawing.Size(205, 23);
+            this.btnConvertirADecimal.TabIndex = 7;
+            this.btnConvertirADecimal.Text = "Convertir a decimal";
+            this.btnConvertirADecimal.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // cmbOperador
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(197, 75);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 1;
+            this.cmbOperador.FormattingEnabled = true;
+            this.cmbOperador.Location = new System.Drawing.Point(197, 75);
+            this.cmbOperador.Name = "cmbOperador";
+            this.cmbOperador.Size = new System.Drawing.Size(121, 21);
+            this.cmbOperador.TabIndex = 1;
             // 
-            // label1
+            // lblResultado
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(449, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "label1";
+            this.lblResultado.AutoSize = true;
+            this.lblResultado.Location = new System.Drawing.Point(449, 22);
+            this.lblResultado.Name = "lblResultado";
+            this.lblResultado.Size = new System.Drawing.Size(0, 13);
+            this.lblResultado.TabIndex = 8;
             // 
             // FormCalculadora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(522, 329);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.lblResultado);
+            this.Controls.Add(this.cmbOperador);
+            this.Controls.Add(this.btnConvertirADecimal);
+            this.Controls.Add(this.btnConvertirABinario);
+            this.Controls.Add(this.btnCerrar);
+            this.Controls.Add(this.btnLimpiar);
+            this.Controls.Add(this.btnOperar);
+            this.Controls.Add(this.txtNumero2);
+            this.Controls.Add(this.txtNumero1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -142,15 +141,15 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtNumero1;
+        private System.Windows.Forms.TextBox txtNumero2;
+        private System.Windows.Forms.Button btnOperar;
+        private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.Button btnCerrar;
+        private System.Windows.Forms.Button btnConvertirABinario;
+        private System.Windows.Forms.Button btnConvertirADecimal;
+        private System.Windows.Forms.ComboBox cmbOperador;
+        private System.Windows.Forms.Label lblResultado;
     }
 }
 
