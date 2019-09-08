@@ -1,0 +1,10 @@
+E:\programacion II\BarriosCrespo.Matias-TPS\Test Calculadora\bin\Debug\Test Calculadora.exe.config
+E:\programacion II\BarriosCrespo.Matias-TPS\Test Calculadora\bin\Debug\Test Calculadora.exe
+E:\programacion II\BarriosCrespo.Matias-TPS\Test Calculadora\bin\Debug\Test Calculadora.pdb
+E:\programacion II\BarriosCrespo.Matias-TPS\Test Calculadora\bin\Debug\Entidades.dll
+E:\programacion II\BarriosCrespo.Matias-TPS\Test Calculadora\bin\Debug\Entidades.pdb
+E:\programacion II\BarriosCrespo.Matias-TPS\Test Calculadora\obj\Debug\Test Calculadora.csprojAssemblyReference.cache
+E:\programacion II\BarriosCrespo.Matias-TPS\Test Calculadora\obj\Debug\Test Calculadora.csproj.CoreCompileInputs.cache
+E:\programacion II\BarriosCrespo.Matias-TPS\Test Calculadora\obj\Debug\Test Calculadora.csproj.CopyComplete
+E:\programacion II\BarriosCrespo.Matias-TPS\Test Calculadora\obj\Debug\Test Calculadora.exe
+E:\programacion II\BarriosCrespo.Matias-TPS\Test Calculadora\obj\Debug\Test Calculadora.pdb

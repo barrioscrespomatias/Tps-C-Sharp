@@ -1,0 +1,10 @@
+E:\programacion II\BarriosCrespo.Matias-TPS\MiCalculadora\bin\Debug\MiCalculadora.exe.config
+E:\programacion II\BarriosCrespo.Matias-TPS\MiCalculadora\bin\Debug\MiCalculadora.exe
+E:\programacion II\BarriosCrespo.Matias-TPS\MiCalculadora\bin\Debug\MiCalculadora.pdb
+E:\programacion II\BarriosCrespo.Matias-TPS\MiCalculadora\obj\Debug\MiCalculadora.csprojAssemblyReference.cache
+E:\programacion II\BarriosCrespo.Matias-TPS\MiCalculadora\obj\Debug\MiCalculadora.FormCalculadora.resources
+E:\programacion II\BarriosCrespo.Matias-TPS\MiCalculadora\obj\Debug\MiCalculadora.Properties.Resources.resources
+E:\programacion II\BarriosCrespo.Matias-TPS\MiCalculadora\obj\Debug\MiCalculadora.csproj.GenerateResource.cache
+E:\programacion II\BarriosCrespo.Matias-TPS\MiCalculadora\obj\Debug\MiCalculadora.csproj.CoreCompileInputs.cache
+E:\programacion II\BarriosCrespo.Matias-TPS\MiCalculadora\obj\Debug\MiCalculadora.exe
+E:\programacion II\BarriosCrespo.Matias-TPS\MiCalculadora\obj\Debug\MiCalculadora.pdb

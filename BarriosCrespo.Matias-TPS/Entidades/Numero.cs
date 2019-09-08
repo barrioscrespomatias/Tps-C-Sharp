@@ -1,0 +1,221 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Entidades
+{
+    public class Numero
+    {
+        public double numero;
+
+
+
+
+        /// <summary>
+        /// Constructor por defecto. Asigna "0" al valor del atributo this.numero.
+        /// </summary>
+        public Numero()
+        {
+            this.numero = 0;
+        }
+
+
+
+
+        /// <summary>
+        /// Valida que los elmentos de una cadena sean numericos. Caso correcto, devuelve el numero.
+        /// </summary>
+        /// <param name="strNumero">Cadena a verificar la validacion</param>
+        /// <returns>Si se logra validar, retorna el numero; caso contrario, devuelve 0.</returns>
+        private double ValidarNumero(string strNumero)
+        {
+
+            double auxiliar = 0;
+            double.TryParse(strNumero, out auxiliar);
+            return auxiliar;
+
+        }
+
+
+
+
+        /// <summary>
+        /// Constructor explicito con un double como parametro(numero). 
+        /// </summary>
+        /// <param name="numero">Parametro pasado al constructor.</param>
+
+        public Numero(double numero)
+        {
+            this.numero = numero; 
+        }
+
+
+
+        ///// <summary>
+        ///// Constructor explicito con un string como parametro.
+        ///// </summary>
+        ///// <param name="strNumero">String pasado como parametro.</param>
+        //public Numero(string strNumero)
+        //{
+        //    this.numero = ValidarNumero(strNumero);
+        //}
+
+
+
+
+        /// <summary>
+        /// Sobrecarga Operador "-". Si los numeros son distintos de null, los resta y devuelve el resultado. 
+        /// </summary>
+        /// <param name="n1">Instancia de clase Numero</param>
+        /// <param name="n2">Instancia de clase Numero</param>
+        /// <returns>Retorna -1 en caso de Error. Sino el resultado de la resta.</returns>
+        public static double operator -(Numero n1, Numero n2)
+        {          
+
+            double auxiliar = -1;
+            if(object.Equals(n1,null) && object.Equals(n2,null))
+            {               
+
+                auxiliar = n1.numero - n2.numero;
+            }
+            
+            return auxiliar;
+        }
+
+
+
+        /// <summary>
+        /// Sobrecarga Operador "+". Si los numeros son distintos de null, los suma y devuelve el resultado.
+        /// </summary>
+        /// <param name="n1">Instancia de clase Numero</param>
+        /// <param name="n2">Instancia de clase Numero</param>
+        /// <returns>Retorna -1 en caso de Error. Sino el resultado de la suma.</returns>
+        public static double operator +(Numero n1, Numero n2)
+        {
+            double auxiliar = -1;
+
+            if (object.Equals(n1, null) && object.Equals(n2, null))
+            {
+
+                auxiliar = n1.numero + n2.numero;
+            }
+
+            return auxiliar;
+
+        }
+
+
+        /// <summary>
+        /// Sobrecarga Operador "/". Si los numeros son distintos de null, los divide y devuelve el resultado.
+        /// </summary>
+        /// <param name="n1">Instancia de clase Numero</param>
+        /// <param name="n2">Instancia de clase Numero</param>
+        /// <returns>Retorna -1 en caso de Error. Sino el resultado de la division.</returns>
+        public static double operator /(Numero n1, Numero n2)
+        {
+            double auxiliar = double.MinValue;
+            if (object.Equals(n1,null) && object.Equals(n2, null))
+            {
+                if(n2.numero!=0)
+                {
+                    auxiliar = n1.numero / n2.numero;
+                }
+                
+                
+            }
+
+            return auxiliar;
+
+        }
+
+
+        /// <summary>
+        /// Sobrecarga Operador "*". Si los numeros son distintos de null, los multiplica y devuelve el resultado.
+        /// </summary>
+        /// <param name="n1">Instancia de clase Numero</param>
+        /// <param name="n2">Instancia de clase Numero</param>
+        /// <returns>Retorna -1 en caso de Error. Sino el resultado de la multiplicacion.</returns>
+        public static double operator *(Numero n1, Numero n2)
+        {
+            double auxiliar = -1;
+            if (object.Equals(n1, null) && object.Equals(n2, null))
+            {
+
+                auxiliar = n1.numero*n2.numero;
+            }
+
+            return auxiliar;
+
+        }
+        /// <summary>
+        /// Convierte un numero Decimal a Binario. Devuelve el mismo en string.
+        /// </summary>
+        /// <param name="numeroIngresado">Numero a convertir</param>
+        /// <returns>Retorna el numero binario como string. </returns>
+         public string DecimalBinario(double numeroIngresado)
+        {
+            string bufferRetorno = "";
+
+            ///VARIABLES PARA CALCULO
+            double resultado;
+            int modulo;
+            int bandera = 0;
+            int posicion;
+            string invertida = "";
+
+            resultado = numeroIngresado;
+
+            while (bandera == 0 && resultado >= 1)
+            {
+                modulo = (int)numeroIngresado % 2;
+                resultado = numeroIngresado / 2;
+                numeroIngresado = resultado;
+                bufferRetorno = bufferRetorno + modulo.ToString();
+                bandera = 0;
+            }
+
+
+            ///INVERTIR OPERACION
+            posicion = bufferRetorno.Length;
+
+            while(posicion>0)
+            {
+                invertida= invertida +  bufferRetorno.Substring(posicion-1, 1);
+                posicion-=1;                
+                
+            }
+
+            return invertida;
+        }
+
+        /// <summary>
+        ///  Convierte un numero Binario a Decimal. Devuelve el mismo en tipo double.
+        /// </summary>
+        /// <param name="binario">Numero binario a convertir(string)</param>
+        /// <returns>Retorna el numero convertido a decimal.</returns>
+        public double BinarioDecimal(string binario)
+        {
+            int i;            
+            char[] buffer;
+            buffer = new char[binario.Length];            
+            int posicion = 0;           
+            double acumulador = 0;
+
+            buffer = binario.ToCharArray();
+            posicion = buffer.Length;
+
+            for (i = 0;i<buffer.Length;i++)
+            {
+                posicion--;
+                if (buffer[i].ToString() == "1")
+                {                    
+                    acumulador += Math.Pow(2, posicion);                    
+                }
+            }
+            return acumulador;
+        }
+
+    }
+}
