@@ -17,11 +17,17 @@ namespace MiCalculadora
             InitializeComponent();
         }
 
-        private void btnLimpiar_Click(object sender, EventArgs e)
+        private void Limpiar()
         {
             this.txtNumero1.Text = "";
             this.txtNumero2.Text = "";
             this.lblResultado.Text = "";
+
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            this.Limpiar();
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -29,7 +35,7 @@ namespace MiCalculadora
             this.Close();
         }
 
-
+        
 
 
                          

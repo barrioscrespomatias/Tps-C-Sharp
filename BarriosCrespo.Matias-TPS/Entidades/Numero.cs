@@ -152,12 +152,11 @@ namespace Entidades
         /// <summary>
         /// Convierte un numero Decimal a Binario. Devuelve el mismo en string.
         /// </summary>
-        /// <param name="numeroIngresado">Numero a convertir</param>
+        /// <param name="numeroIngresado">Numero (double) a convertir</param>
         /// <returns>Retorna el numero binario como string. </returns>
          public string DecimalBinario(double numero)
         {
 
-            //MODIFICAR YA QUE EL METODO NO PUEDE RECIBIR UN STRING. SINO ROMPE.
             string bufferRetorno = "";
 
             ///VARIABLES PARA CALCULO
@@ -167,41 +166,57 @@ namespace Entidades
             int posicion;
             string invertida = "";
 
-            resultado = numero;
-
-            while (bandera == 0 && resultado >= 1)
+            if(numero == 0)
             {
-                modulo = (int)numero % 2;
-                resultado = numero / 2;
-                numero = resultado;
-                bufferRetorno = bufferRetorno + modulo.ToString();
-                bandera = 0;
+                invertida = numero.ToString();
             }
 
-
-            ///INVERTIR OPERACION
-            posicion = bufferRetorno.Length;
-
-            while(posicion>0)
+            else
             {
-                invertida= invertida +  bufferRetorno.Substring(posicion-1, 1);
-                posicion-=1;                
-                
+                resultado = numero;
+
+                while (bandera == 0 && resultado >= 1)
+                {
+                    modulo = (int)numero % 2;
+                    resultado = numero / 2;
+                    numero = resultado;
+                    bufferRetorno = bufferRetorno + modulo.ToString();
+                    bandera = 0;
+                }
+
+
+                ///INVERTIR OPERACION
+                posicion = bufferRetorno.Length;
+
+                while (posicion > 0)
+                {
+                    invertida = invertida + bufferRetorno.Substring(posicion - 1, 1);
+                    posicion -= 1;
+
+                }
+
             }
+            
 
             return invertida;
         }
 
+
+
+        /// <summary>
+        /// Convierte un numero Decimal a Binario. Devuelve el mismo en string.
+        /// </summary>
+        /// <param name="numero">Numero (string) a convertir en binario.</param>
+        /// <returns>Retorna el numero binario en string.</returns>
         public string DecimalBinario(string numero)
         {
-            string buffer;
+            //string buffer;
             double salida = 0;
-            double.TryParse(numero,out salida);  
+            double.TryParse(numero,out salida);
 
-           
-            buffer = this.DecimalBinario(numero);
 
-            return buffer;            
+            //buffer = this.DecimalBinario(numero);
+            return this.DecimalBinario(numero);//buffer;            
         }
 
         /// <summary>

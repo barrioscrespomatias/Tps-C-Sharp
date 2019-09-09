@@ -8,3 +8,13 @@ E:\programacion II\BarriosCrespo.Matias-TPS\Test Calculadora\obj\Debug\Test Calc
 E:\programacion II\BarriosCrespo.Matias-TPS\Test Calculadora\obj\Debug\Test Calculadora.csproj.CopyComplete
 E:\programacion II\BarriosCrespo.Matias-TPS\Test Calculadora\obj\Debug\Test Calculadora.exe
 E:\programacion II\BarriosCrespo.Matias-TPS\Test Calculadora\obj\Debug\Test Calculadora.pdb
+C:\Users\matu\Desktop\tp_laboratorio_2\BarriosCrespo.Matias-TPS\Test Calculadora\bin\Debug\Test Calculadora.exe.config
+C:\Users\matu\Desktop\tp_laboratorio_2\BarriosCrespo.Matias-TPS\Test Calculadora\bin\Debug\Test Calculadora.exe
+C:\Users\matu\Desktop\tp_laboratorio_2\BarriosCrespo.Matias-TPS\Test Calculadora\bin\Debug\Test Calculadora.pdb
+C:\Users\matu\Desktop\tp_laboratorio_2\BarriosCrespo.Matias-TPS\Test Calculadora\bin\Debug\Entidades.dll
+C:\Users\matu\Desktop\tp_laboratorio_2\BarriosCrespo.Matias-TPS\Test Calculadora\bin\Debug\Entidades.pdb
+C:\Users\matu\Desktop\tp_laboratorio_2\BarriosCrespo.Matias-TPS\Test Calculadora\obj\Debug\Test Calculadora.csprojAssemblyReference.cache
+C:\Users\matu\Desktop\tp_laboratorio_2\BarriosCrespo.Matias-TPS\Test Calculadora\obj\Debug\Test Calculadora.csproj.CoreCompileInputs.cache
+C:\Users\matu\Desktop\tp_laboratorio_2\BarriosCrespo.Matias-TPS\Test Calculadora\obj\Debug\Test Calculadora.csproj.CopyComplete
+C:\Users\matu\Desktop\tp_laboratorio_2\BarriosCrespo.Matias-TPS\Test Calculadora\obj\Debug\Test Calculadora.exe
+C:\Users\matu\Desktop\tp_laboratorio_2\BarriosCrespo.Matias-TPS\Test Calculadora\obj\Debug\Test Calculadora.pdb
