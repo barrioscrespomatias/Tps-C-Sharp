@@ -154,8 +154,10 @@ namespace Entidades
         /// </summary>
         /// <param name="numeroIngresado">Numero a convertir</param>
         /// <returns>Retorna el numero binario como string. </returns>
-         public string DecimalBinario(double numeroIngresado)
+         public string DecimalBinario(double numero)
         {
+
+            //MODIFICAR YA QUE EL METODO NO PUEDE RECIBIR UN STRING. SINO ROMPE.
             string bufferRetorno = "";
 
             ///VARIABLES PARA CALCULO
@@ -165,13 +167,13 @@ namespace Entidades
             int posicion;
             string invertida = "";
 
-            resultado = numeroIngresado;
+            resultado = numero;
 
             while (bandera == 0 && resultado >= 1)
             {
-                modulo = (int)numeroIngresado % 2;
-                resultado = numeroIngresado / 2;
-                numeroIngresado = resultado;
+                modulo = (int)numero % 2;
+                resultado = numero / 2;
+                numero = resultado;
                 bufferRetorno = bufferRetorno + modulo.ToString();
                 bandera = 0;
             }
@@ -188,6 +190,18 @@ namespace Entidades
             }
 
             return invertida;
+        }
+
+        public string DecimalBinario(string numero)
+        {
+            string buffer;
+            double salida = 0;
+            double.TryParse(numero,out salida);  
+
+           
+            buffer = this.DecimalBinario(numero);
+
+            return buffer;            
         }
 
         /// <summary>
