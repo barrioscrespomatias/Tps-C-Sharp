@@ -8,9 +8,7 @@ namespace Entidades
 {
     public class Numero
     {
-        public double numero;
-
-
+        private double numero;
 
 
         /// <summary>
@@ -19,6 +17,16 @@ namespace Entidades
         public Numero()
         {
             this.numero = 0;
+        }        
+
+        private string SetNumero
+        {            
+            set
+            {
+               this.numero =ValidarNumero(value) ;
+                
+            }
+           
         }
 
 
@@ -173,6 +181,11 @@ namespace Entidades
 
             else
             {
+                if(numero<0)
+                {
+                    numero *= -1;
+                }
+
                 resultado = numero;
 
                 while (bandera == 0 && resultado >= 1)
@@ -208,15 +221,26 @@ namespace Entidades
         /// </summary>
         /// <param name="numero">Numero (string) a convertir en binario.</param>
         /// <returns>Retorna el numero binario en string.</returns>
+
+
+
         public string DecimalBinario(string numero)
         {
             //string buffer;
             double salida = 0;
-            double.TryParse(numero,out salida);
+            double.TryParse(numero, out salida);
 
 
             //buffer = this.DecimalBinario(numero);
-            return this.DecimalBinario(numero);//buffer;            
+
+            if(salida == 0)
+            {
+                return "Valor invalido";
+            }            
+
+            return this.DecimalBinario(salida);//buffer;
+
+
         }
 
         /// <summary>
@@ -241,6 +265,11 @@ namespace Entidades
                 if (buffer[i].ToString() == "1")
                 {                    
                     acumulador += Math.Pow(2, posicion);                    
+                }
+
+                else if(buffer[i].ToString() != "1" && buffer[i].ToString() != "0")
+                {
+                    acumulador = -1;
                 }
             }
             return acumulador;

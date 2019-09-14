@@ -8,11 +8,41 @@ namespace Entidades
 {
     public class Calculadora
     {
-        //public static double Operar(Numero num1, Numero num2, string operador)
-        //{
+        public static double Operar(Numero num1, Numero num2, string operador)
+        {
+            double aux = -1;
+            string operadorAux;
+            
 
+            operadorAux = ValidarOperador(operador);
 
-        //}
+            switch(operadorAux)
+            {
+                case "/":
+                    {
+                        aux = num1 / num2;
+                        break;
+                    }
+                case "*":
+                    {
+                        aux = num1 * num2;
+                        break;
+                    }
+
+                case "+":
+                    {
+                        aux = num1 + num2;
+                        break;
+                    }
+                case "-":
+                    {
+                        aux = num1 - num2;
+                        break;
+                    }
+            }           
+
+            return aux;
+        }
 
 
         /// <summary>

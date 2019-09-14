@@ -11,12 +11,12 @@ namespace Test_Calculadora
     {
         static void Main(string[] args)
         {
-            //string ingresado = "0";
-            int numero = 50;
+            ////string ingresado = "0";
+            //int numero = 50;
 
-            Numero a = new Numero();
-            Console.WriteLine(a.DecimalBinario(numero));
-            Console.ReadKey();
+            //Numero a = new Numero();
+            //Console.WriteLine(a.DecimalBinario(numero));
+            //Console.ReadKey();
 
         }
     }

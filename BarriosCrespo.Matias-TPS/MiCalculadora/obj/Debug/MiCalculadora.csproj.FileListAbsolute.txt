@@ -18,3 +18,6 @@ C:\Users\matu\Desktop\tp_laboratorio_2\BarriosCrespo.Matias-TPS\MiCalculadora\ob
 C:\Users\matu\Desktop\tp_laboratorio_2\BarriosCrespo.Matias-TPS\MiCalculadora\obj\Debug\MiCalculadora.csproj.CoreCompileInputs.cache
 C:\Users\matu\Desktop\tp_laboratorio_2\BarriosCrespo.Matias-TPS\MiCalculadora\obj\Debug\MiCalculadora.exe
 C:\Users\matu\Desktop\tp_laboratorio_2\BarriosCrespo.Matias-TPS\MiCalculadora\obj\Debug\MiCalculadora.pdb
+C:\Users\matu\Desktop\tp_laboratorio_2\BarriosCrespo.Matias-TPS\MiCalculadora\bin\Debug\Entidades.dll
+C:\Users\matu\Desktop\tp_laboratorio_2\BarriosCrespo.Matias-TPS\MiCalculadora\bin\Debug\Entidades.pdb
+C:\Users\matu\Desktop\tp_laboratorio_2\BarriosCrespo.Matias-TPS\MiCalculadora\obj\Debug\MiCalculadora.csproj.CopyComplete
