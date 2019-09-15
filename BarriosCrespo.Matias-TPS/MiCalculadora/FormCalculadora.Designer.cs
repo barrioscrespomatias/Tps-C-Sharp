@@ -67,7 +67,7 @@
             // 
             this.btnLimpiar.Location = new System.Drawing.Point(187, 145);
             this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(122, 23);
+            this.btnLimpiar.Size = new System.Drawing.Size(147, 23);
             this.btnLimpiar.TabIndex = 4;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
@@ -75,9 +75,9 @@
             // 
             // btnCerrar
             // 
-            this.btnCerrar.Location = new System.Drawing.Point(315, 145);
+            this.btnCerrar.Location = new System.Drawing.Point(340, 145);
             this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(142, 23);
+            this.btnCerrar.Size = new System.Drawing.Size(117, 23);
             this.btnCerrar.TabIndex = 5;
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.UseVisualStyleBackColor = true;
@@ -107,9 +107,10 @@
             // 
             this.cmbOperador.FormattingEnabled = true;
             this.cmbOperador.Items.AddRange(new object[] {
+            "+",
             "-",
-            "/",
-            "*"});
+            "*",
+            "/"});
             this.cmbOperador.Location = new System.Drawing.Point(197, 75);
             this.cmbOperador.Name = "cmbOperador";
             this.cmbOperador.Size = new System.Drawing.Size(121, 21);

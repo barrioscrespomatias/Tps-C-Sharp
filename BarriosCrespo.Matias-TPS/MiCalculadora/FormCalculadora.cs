@@ -68,22 +68,21 @@ namespace MiCalculadora
         private void btnOperar_Click(object sender, EventArgs e)
         {
             string operador;
-            operador = this.cmbOperador.SelectedItem.ToString();
-
-            string num1;
-            string num2;
-
-            num1 = this.txtNumero1.Text;
-            num2 = this.txtNumero2.Text;
-
             string resultado;
 
+            operador = this.cmbOperador.SelectedItem.ToString();
 
-
-            // NO PUEDO TOMAR EL TXT.Numero1 y numero2.
-            resultado = Calculadora.Operar((Numero)num1,(Numero)num2,operador).ToString();
+            Numero num1 = new Numero(this.txtNumero1.Text);
+            Numero num2 = new Numero(this.txtNumero2.Text);
             
 
+            
+
+
+
+            resultado = Calculadora.Operar(num1, num2, operador).ToString();
+
+            this.lblResultado.Text = resultado;
             
         }
     }

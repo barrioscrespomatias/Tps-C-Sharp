@@ -17,7 +17,12 @@ namespace Entidades
         public Numero()
         {
             this.numero = 0;
-        }        
+        }
+        
+        public Numero(string strNumero)
+        {
+            this.SetNumero = strNumero;
+        }
 
         private string SetNumero
         {            
@@ -56,7 +61,7 @@ namespace Entidades
 
         public Numero(double numero)
         {
-            this.numero = numero; 
+            this.SetNumero = numero.ToString(); 
         }
 
 
@@ -83,7 +88,7 @@ namespace Entidades
         {          
 
             double auxiliar = -1;
-            if(object.Equals(n1,null) && object.Equals(n2,null))
+            if(!object.Equals(n1,null) && !object.Equals(n2,null))
             {               
 
                 auxiliar = n1.numero - n2.numero;
@@ -104,7 +109,7 @@ namespace Entidades
         {
             double auxiliar = -1;
 
-            if (object.Equals(n1, null) && object.Equals(n2, null))
+            if (!object.Equals(n1, null) && !object.Equals(n2, null))
             {
 
                 auxiliar = n1.numero + n2.numero;
@@ -124,7 +129,7 @@ namespace Entidades
         public static double operator /(Numero n1, Numero n2)
         {
             double auxiliar = double.MinValue;
-            if (object.Equals(n1,null) && object.Equals(n2, null))
+            if (!object.Equals(n1,null) && !object.Equals(n2, null))
             {
                 if(n2.numero!=0)
                 {
@@ -148,7 +153,7 @@ namespace Entidades
         public static double operator *(Numero n1, Numero n2)
         {
             double auxiliar = -1;
-            if (object.Equals(n1, null) && object.Equals(n2, null))
+            if (!object.Equals(n1, null) && !object.Equals(n2, null))
             {
 
                 auxiliar = n1.numero*n2.numero;

@@ -12,6 +12,9 @@ namespace Entidades
         {
             double aux = -1;
             string operadorAux;
+
+           
+
             
 
             operadorAux = ValidarOperador(operador);
