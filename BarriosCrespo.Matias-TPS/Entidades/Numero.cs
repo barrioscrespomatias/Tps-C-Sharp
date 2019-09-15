@@ -10,31 +10,53 @@ namespace Entidades
     {
         private double numero;
 
+        /// <summary>
+        /// Propiedad SetNumero. Asigna un valor al atributo numero, previa validacion(llamando al metodo "ValidarNumero").
+        /// </summary>
+        private string SetNumero
+        {
+            set
+            {
+                this.numero = ValidarNumero(value);
+
+            }
+
+        }
 
         /// <summary>
         /// Constructor por defecto. Asigna "0" al valor del atributo this.numero.
         /// </summary>
-        public Numero()
+        public Numero():this(0)
         {
-            this.numero = 0;
+            {
+                this.SetNumero = "0";
+            }
         }
         
+
+        /// <summary>
+        /// Constructor explicito con un string como parametro(strNumero)
+        /// </summary>
+        /// <param name="strNumero"></param>        
         public Numero(string strNumero)
         {
             this.SetNumero = strNumero;
         }
 
-        private string SetNumero
-        {            
-            set
-            {
-               this.numero =ValidarNumero(value) ;
-                
-            }
-           
+
+        // <summary>
+        /// Constructor explicito con un double como parametro(numero). 
+        /// </summary>
+        /// <param name="numero">Parametro pasado al constructor.</param>
+
+        public Numero(double numero)
+        {
+            this.SetNumero = numero.ToString();
         }
 
 
+
+        
 
 
         /// <summary>
@@ -51,33 +73,6 @@ namespace Entidades
 
         }
 
-
-
-
-        /// <summary>
-        /// Constructor explicito con un double como parametro(numero). 
-        /// </summary>
-        /// <param name="numero">Parametro pasado al constructor.</param>
-
-        public Numero(double numero)
-        {
-            this.SetNumero = numero.ToString(); 
-        }
-
-
-
-        ///// <summary>
-        ///// Constructor explicito con un string como parametro.
-        ///// </summary>
-        ///// <param name="strNumero">String pasado como parametro.</param>
-        //public Numero(string strNumero)
-        //{
-        //    this.numero = ValidarNumero(strNumero);
-        //}
-
-
-
-
         /// <summary>
         /// Sobrecarga Operador "-". Si los numeros son distintos de null, los resta y devuelve el resultado. 
         /// </summary>
@@ -89,8 +84,7 @@ namespace Entidades
 
             double auxiliar = -1;
             if(!object.Equals(n1,null) && !object.Equals(n2,null))
-            {               
-
+            {     
                 auxiliar = n1.numero - n2.numero;
             }
             
@@ -111,7 +105,6 @@ namespace Entidades
 
             if (!object.Equals(n1, null) && !object.Equals(n2, null))
             {
-
                 auxiliar = n1.numero + n2.numero;
             }
 
@@ -121,11 +114,12 @@ namespace Entidades
 
 
         /// <summary>
-        /// Sobrecarga Operador "/". Si los numeros son distintos de null, los divide y devuelve el resultado.
+        /// Sobrecarga Operador "/". Si los numeros son distintos de null y n2 es distinto de cero,
+        /// los divide y devuelve el resultado.
         /// </summary>
         /// <param name="n1">Instancia de clase Numero</param>
         /// <param name="n2">Instancia de clase Numero</param>
-        /// <returns>Retorna -1 en caso de Error. Sino el resultado de la division.</returns>
+        /// <returns>Retorna -1 en caso de Error. Caso correcto el resultado de la division. Min value en caso de que n2 sea igual a cero.</returns>
         public static double operator /(Numero n1, Numero n2)
         {
             double auxiliar = double.MinValue;
@@ -134,8 +128,7 @@ namespace Entidades
                 if(n2.numero!=0)
                 {
                     auxiliar = n1.numero / n2.numero;
-                }
-                
+                }               
                 
             }
 
@@ -172,7 +165,6 @@ namespace Entidades
 
             string bufferRetorno = "";
 
-            ///VARIABLES PARA CALCULO
             double resultado;
             int modulo;
             int bandera = 0;
@@ -210,11 +202,8 @@ namespace Entidades
                 {
                     invertida = invertida + bufferRetorno.Substring(posicion - 1, 1);
                     posicion -= 1;
-
                 }
-
-            }
-            
+            }           
 
             return invertida;
         }
@@ -231,19 +220,17 @@ namespace Entidades
 
         public string DecimalBinario(string numero)
         {
-            //string buffer;
             double salida = 0;
             double.TryParse(numero, out salida);
 
 
-            //buffer = this.DecimalBinario(numero);
 
             if(salida == 0)
             {
                 return "Valor invalido";
             }            
 
-            return this.DecimalBinario(salida);//buffer;
+            return this.DecimalBinario(salida);
 
 
         }

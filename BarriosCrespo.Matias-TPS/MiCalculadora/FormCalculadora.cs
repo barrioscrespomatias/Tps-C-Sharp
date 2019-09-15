@@ -19,7 +19,9 @@ namespace MiCalculadora
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Limpia los textBox. Metodo privado
+        /// </summary>
         private void Limpiar()
         {
             this.txtNumero1.Text = "";
@@ -28,16 +30,31 @@ namespace MiCalculadora
 
         }
 
+        /// <summary>
+        /// Limpia los textBox. Llama al metodo privado Limpiar().
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             this.Limpiar();
         }
 
+
+        /// <summary>
+        /// Boton Cerrar click. Cierra el formulario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
+        /// <summary>
+        /// Boton Convertir a Binario. Instancia un numero y lo utiliza
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnConvertirABinario_Click(object sender, EventArgs e)
         {
             Numero ingresado;
@@ -45,10 +62,16 @@ namespace MiCalculadora
 
             
            txtNumero2.Text= ingresado.DecimalBinario(this.txtNumero1.Text);
-            //this.txtNumero2
+            
             
         }
 
+
+        /// <summary>
+        /// Boton Convertir a Decimal. Instancia un numero y llama al metodo "BinarioDecimal".
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnConvertirADecimal_Click(object sender, EventArgs e)
         {
 
@@ -65,20 +88,28 @@ namespace MiCalculadora
 
         }
 
+
+        /// <summary>
+        /// Boton operar. Instancia dos numeros y opera con el motodo Calculadora.Operar(). Muestra el resultado por label.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnOperar_Click(object sender, EventArgs e)
         {
             string operador;
             string resultado;
 
-            operador = this.cmbOperador.SelectedItem.ToString();
+            if(this.cmbOperador.SelectedItem == null)
+            {
+                operador = "+";
+            }
+            else
+            {
+                operador = this.cmbOperador.SelectedItem.ToString();
+            }
 
             Numero num1 = new Numero(this.txtNumero1.Text);
             Numero num2 = new Numero(this.txtNumero2.Text);
-            
-
-            
-
-
 
             resultado = Calculadora.Operar(num1, num2, operador).ToString();
 

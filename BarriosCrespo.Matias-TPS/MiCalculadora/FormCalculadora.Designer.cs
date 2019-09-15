@@ -105,6 +105,7 @@
             // 
             // cmbOperador
             // 
+            this.cmbOperador.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbOperador.FormattingEnabled = true;
             this.cmbOperador.Items.AddRange(new object[] {
             "+",
@@ -119,7 +120,7 @@
             // lblResultado
             // 
             this.lblResultado.AutoSize = true;
-            this.lblResultado.Location = new System.Drawing.Point(449, 22);
+            this.lblResultado.Location = new System.Drawing.Point(457, 22);
             this.lblResultado.Name = "lblResultado";
             this.lblResultado.Size = new System.Drawing.Size(0, 13);
             this.lblResultado.TabIndex = 8;
@@ -158,8 +159,8 @@
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Button btnConvertirABinario;
         private System.Windows.Forms.Button btnConvertirADecimal;
-        private System.Windows.Forms.ComboBox cmbOperador;
         private System.Windows.Forms.Label lblResultado;
+        public System.Windows.Forms.ComboBox cmbOperador;
     }
 }
 

@@ -8,14 +8,18 @@ namespace Entidades
 {
     public class Calculadora
     {
+
+        /// <summary>
+        /// Realiza las operaciones entre dos atributos de tipo numero. Utiliza sobrecargas de "+,-,*,/".
+        /// </summary>
+        /// <param name="num1">Primer numero</param>
+        /// <param name="num2">Segundo numero</param>
+        /// <param name="operador"></param>
+        /// <returns>Retorna -1 en caso de error o el resultado de la operacion.</returns>
         public static double Operar(Numero num1, Numero num2, string operador)
         {
             double aux = -1;
-            string operadorAux;
-
-           
-
-            
+            string operadorAux;           
 
             operadorAux = ValidarOperador(operador);
 
