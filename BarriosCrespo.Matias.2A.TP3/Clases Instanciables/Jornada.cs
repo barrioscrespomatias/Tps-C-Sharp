@@ -46,6 +46,26 @@ namespace Clases_Instanciables
             return !(j == a);
         }
 
+        public static Jornada operator +(Jornada j, Alumno a)
+        {           
+            if(j!=a)
+            {
+                j.alumnos.Add(a);                
+            }
+            return j;
+        }
+
+        #endregion
+
+        #region metodos
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("JORNADA: \n");
+            sb.AppendFormat("CLASE DE: {0} POR {1}", this.clase,this.instructor);
+            sb.AppendLine(this.instructor.ToString());
+            return sb.ToString();
+        }
         #endregion
     }
 }
