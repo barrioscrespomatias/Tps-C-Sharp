@@ -19,5 +19,10 @@ namespace Clases_Instanciables
             Legislacion,
             SPD
         }
+
+        public Universidad()
+        {
+
+        }
     }
 }

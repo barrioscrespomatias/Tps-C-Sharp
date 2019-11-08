@@ -7,13 +7,14 @@ using Clases_Abstractas;
 
 namespace Clases_Instanciables
 {
-    sealed class Profesor:Universitario
+    public sealed class Profesor:Universitario
     {
-        private static Queue<Universidad.EClases> clasesDelDia;
+        private Queue<Universidad.EClases> clasesDelDia;
         private static Random random;
 
         public Profesor()
         {
+            clasesDelDia = new Queue<Universidad.EClases>();
             
         }
 
@@ -48,7 +49,33 @@ namespace Clases_Instanciables
 
         private void _randomClases()
         {
+            
+            int i = 0;
+            while(i<2)
+            {
+                this.clasesDelDia.Enqueue((Universidad.EClases)Profesor.random.Next(1, 2));
+                i++;
+            }
 
+        }
+
+        public static bool operator ==(Profesor i, Universidad.EClases clase)
+        {
+            bool retorno = false;
+            foreach(Universidad.EClases aux in i.clasesDelDia)
+            {
+                if (clase == aux)
+                {
+                    retorno = true;
+                    break;
+                }                
+            }
+            return retorno;
+        }
+
+        public static bool operator !=(Profesor i, Universidad.EClases clase)
+        {
+            return !(i == clase);
         }
 
     }
