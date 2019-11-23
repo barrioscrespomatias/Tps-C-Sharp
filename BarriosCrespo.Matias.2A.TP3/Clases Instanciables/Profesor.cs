@@ -47,6 +47,13 @@ namespace Clases_Instanciables
             return sb.ToString();
         }
 
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendFormat(this.MostrarDatos());
+            return sb.ToString();
+        }
+
         private void _randomClases()
         {
             

@@ -19,7 +19,7 @@ namespace Clases_Instanciables
             alumnos = new List<Alumno>();
         }
 
-        public Jornada(Universidad.EClases clase, Profesor instructor):this()
+        public Jornada(Universidad.EClases clase, Profesor instructor) : this()
         {
             this.clase = clase;
             this.instructor = instructor;
@@ -27,12 +27,12 @@ namespace Clases_Instanciables
         #endregion
 
         #region sobrecargas operadores
-        public static bool operator == (Jornada j, Alumno a)
+        public static bool operator ==(Jornada j, Alumno a)
         {
             bool retorno = true;
-            foreach(Alumno aux in j.alumnos)
+            foreach (Alumno aux in j.alumnos)
             {
-                if(aux == a)
+                if (aux == a)
                 {
                     retorno = true;
                     break;
@@ -47,10 +47,10 @@ namespace Clases_Instanciables
         }
 
         public static Jornada operator +(Jornada j, Alumno a)
-        {           
-            if(j!=a)
+        {
+            if (j != a)
             {
-                j.alumnos.Add(a);                
+                j.alumnos.Add(a);
             }
             return j;
         }
@@ -62,10 +62,17 @@ namespace Clases_Instanciables
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("JORNADA: \n");
-            sb.AppendFormat("CLASE DE: {0} POR {1}", this.clase,this.instructor);
+            //sb.AppendFormat("CLASE DE: {0} POR {1}", this.clase,this.instructor);
             sb.AppendLine(this.instructor.ToString());
             return sb.ToString();
         }
+
+        public static bool Guardar(Jornada jornada)
+        {
+            
+
+        }
+
         #endregion
     }
 }
