@@ -13,6 +13,9 @@ namespace Entidades
         private static SqlCommand comando;
         private static SqlConnection conexion;
 
+        /// <summary>
+        /// Constructor.
+        /// </summary>
         static PaqueteDAO()
         {
             comando = new SqlCommand();            
@@ -20,6 +23,11 @@ namespace Entidades
             comando.Connection = conexion;
         }
 
+        /// <summary>
+        /// Inserta el paquete en la base de datos.
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
         public static bool Insertar(Paquete p)
         {
             bool retorno = false;

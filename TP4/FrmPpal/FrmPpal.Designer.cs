@@ -44,10 +44,12 @@
             this.lblDireccion = new System.Windows.Forms.Label();
             this.lblTrackingID = new System.Windows.Forms.Label();
             this.rtbMostrar = new System.Windows.Forms.RichTextBox();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmnuBtnDer = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mostrarToolStripMenuItem = new System.Windows.Forms.MenuStrip();
+            this.cmnuMostrar = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.cmnuBtnDer.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnAgregar
@@ -114,6 +116,7 @@
             // 
             // lstEstadoEntregado
             // 
+            this.lstEstadoEntregado.ContextMenuStrip = this.cmnuBtnDer;
             this.lstEstadoEntregado.FormattingEnabled = true;
             this.lstEstadoEntregado.Location = new System.Drawing.Point(521, 69);
             this.lstEstadoEntregado.Name = "lstEstadoEntregado";
@@ -161,6 +164,7 @@
             // mtxTrackingId
             // 
             this.mtxTrackingId.Location = new System.Drawing.Point(6, 35);
+            this.mtxTrackingId.Mask = "000-000-0000";
             this.mtxTrackingId.Name = "mtxTrackingId";
             this.mtxTrackingId.Size = new System.Drawing.Size(157, 20);
             this.mtxTrackingId.TabIndex = 8;
@@ -185,16 +189,19 @@
             // 
             // rtbMostrar
             // 
+            this.rtbMostrar.Enabled = false;
             this.rtbMostrar.Location = new System.Drawing.Point(12, 315);
             this.rtbMostrar.Name = "rtbMostrar";
             this.rtbMostrar.Size = new System.Drawing.Size(422, 96);
             this.rtbMostrar.TabIndex = 9;
             this.rtbMostrar.Text = "";
             // 
-            // contextMenuStrip1
+            // cmnuBtnDer
             // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.cmnuBtnDer.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmnuMostrar});
+            this.cmnuBtnDer.Name = "contextMenuStrip1";
+            this.cmnuBtnDer.Size = new System.Drawing.Size(116, 26);
             // 
             // mostrarToolStripMenuItem
             // 
@@ -204,6 +211,13 @@
             this.mostrarToolStripMenuItem.TabIndex = 10;
             this.mostrarToolStripMenuItem.Text = "menuStrip1";
             this.mostrarToolStripMenuItem.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.mostrarToolStripMenuItem_ItemClicked);
+            // 
+            // cmnuMostrar
+            // 
+            this.cmnuMostrar.Name = "cmnuMostrar";
+            this.cmnuMostrar.Size = new System.Drawing.Size(180, 22);
+            this.cmnuMostrar.Text = "Mostrar";
+            this.cmnuMostrar.Click += new System.EventHandler(this.cmnuMostrar_Click);
             // 
             // FrmPpal
             // 
@@ -222,6 +236,7 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.cmnuBtnDer.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -244,8 +259,9 @@
         private System.Windows.Forms.Label lblDireccion;
         private System.Windows.Forms.Label lblTrackingID;
         private System.Windows.Forms.RichTextBox rtbMostrar;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ContextMenuStrip cmnuBtnDer;
         private System.Windows.Forms.MenuStrip mostrarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cmnuMostrar;
     }
 }
 

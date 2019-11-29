@@ -9,28 +9,30 @@ namespace Entidades
 {
     public static class GuardaString
     {
+        /// <summary>
+        /// Guarda en una ruta determinada.
+        /// </summary>
+        /// <param name="texto"></param>
+        /// <param name="archivo"></param>
+        /// <returns></returns>
         public static bool Guardar(this string texto, string archivo)
         {
             bool retorno = false;
             string ruta = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\" + archivo;
             
             try
-            {
-                
+            {                
                 if(File.Exists(ruta))
                 {
                     using (StreamWriter swtr = new StreamWriter(ruta, true))
-                    swtr.WriteLine(texto);
-                    
+                    swtr.WriteLine(texto);                    
                 }
                 else
                 {
                     using (StreamWriter swtr = new StreamWriter(ruta, false))
-                    swtr.WriteLine(texto);
-                    
+                    swtr.WriteLine(texto);                    
                 }
-                retorno = true;
-                                
+                retorno = true;                                
             }
             catch(Exception e)
             {
@@ -38,7 +40,6 @@ namespace Entidades
                 Console.WriteLine(e.Message);
                 Console.ReadKey();
             }
-
             return retorno;
         }
     }

@@ -10,22 +10,20 @@ namespace Entidades
 {
     public class Paquete:IMostrar<Paquete>
     {
+        public delegate void DelegadoEstado(object sender, EventArgs e);
         private string direccionEntrega;
         private EEstado estado;
-        private string trackingId;
-
-        public delegate void DelegadoEstado(object sender, EventArgs e);
-
+        private string trackingId;        
         public DelegadoEstado InformaEstado;
-        
-
+        #region enumerado
         public enum EEstado
         {
             Ingresado,
             EnViaje,
             Entregado
         }
-
+        #endregion
+        
         public Paquete(string direccionEntrega, string trackingID)
         {
             this.direccionEntrega = direccionEntrega;
@@ -74,26 +72,41 @@ namespace Entidades
         }
 
         #endregion
-
+        
         #region sobrecarga operadores
+        /// <summary>
+        /// sobre carga operador "==". Dos paquetes seran iguales si tienen el mismo trackID. 
+        /// </summary>
+        /// <param name="p1"></param>
+        /// <param name="p2"></param>
+        /// <returns></returns>
         public static bool operator==(Paquete p1, Paquete p2)
         {
             bool retorno = false;
             if (p1.trackingId == p2.trackingId)
+            {
                 retorno = true;
+            }
+                
             return retorno;
         }
-
+        /// <summary>
+        /// Sobrecarga != . Dos paquetes serán distintos si tienen diferente trackID.
+        /// </summary>
+        /// <param name="p1"></param>
+        /// <param name="p2"></param>
+        /// <returns></returns>
         public static bool operator !=(Paquete p1, Paquete p2)
         {
             return !(p1 == p2);
         }
-
-
         #endregion
 
         #region sobrecarga metodos
-
+        /// <summary>
+        /// Sobrecarga metodo ToString, retornando metodo Paquete.MostrarDatos().
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return MostrarDatos(this);
@@ -102,23 +115,23 @@ namespace Entidades
         #endregion
 
         #region metodos
+        /// <summary>
+        /// Muestra el paquete con su informacion.
+        /// </summary>
+        /// <param name="elemento"></param>
+        /// <returns></returns>
         public string MostrarDatos(IMostrar<Paquete> elemento)
         {
             return string.Format("{0} para {1}",((Paquete)elemento).TrackingID, ((Paquete)elemento).DireccionEntrega);
-        }
-
-        /*a. Colocar una demora de 4 segundos.
-        b. Pasar al siguiente estado.
-        c. Informar el estado a través de InformarEstado. EventArgs no tendrá ningún dato extra.
-        d. Repetir las acciones desde el punto A hasta que el estado sea Entregado.
-        e. Finalmente guardar los datos del paquete en la base de datos */
-
+        }   
+        
+        /// <summary>
+        /// Refleja el cambio de estado del paquete. Si el paquete es entregado, se guarda en base de datos.
+        /// </summary>
         public void MockCicloDeVida()
-        {            
-                
+        {               
                 while(this.estado != EEstado.Entregado)
-                {
-                
+                {                
                     Thread.Sleep(4000);
                     if(this.estado == EEstado.Ingresado)
                     {
@@ -129,20 +142,17 @@ namespace Entidades
                         this.estado = EEstado.Entregado;
                     }
                     this.InformaEstado(this, EventArgs.Empty);
-                }
-            
+                }           
 
         try
         {
-                PaqueteDAO.Insertar(this);
-        
+                PaqueteDAO.Insertar(this);        
         }
             catch(Exception e)
             {
                MessageBox.Show(e.Message);
             }
         }
-
         #endregion 
 
     }
