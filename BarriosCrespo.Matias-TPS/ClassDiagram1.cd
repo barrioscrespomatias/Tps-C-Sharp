@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="BarriosCrespo.Matias_TPS.Calculadora">
+    <Position X="0.5" Y="0.5" Width="5.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Calculadora.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BarriosCrespo.Matias_TPS.Numero">
+    <Position X="6.75" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AQABAAAAAAAAAQAEYAUAAAAAgAAAAAAAAAEAAAAAAIA=</HashCode>
+      <FileName>Numero.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Program">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

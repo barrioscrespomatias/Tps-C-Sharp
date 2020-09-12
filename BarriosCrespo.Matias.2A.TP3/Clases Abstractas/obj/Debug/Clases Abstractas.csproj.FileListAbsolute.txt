@@ -1,6 +1,0 @@
-C:\Users\matias\Desktop\tp_laboratorio_2\BarriosCrespo.Matias.2A.TP3\Clases Abstractas\bin\Debug\Clases Abstractas.dll
-C:\Users\matias\Desktop\tp_laboratorio_2\BarriosCrespo.Matias.2A.TP3\Clases Abstractas\bin\Debug\Clases Abstractas.pdb
-C:\Users\matias\Desktop\tp_laboratorio_2\BarriosCrespo.Matias.2A.TP3\Clases Abstractas\obj\Debug\Clases Abstractas.csprojAssemblyReference.cache
-C:\Users\matias\Desktop\tp_laboratorio_2\BarriosCrespo.Matias.2A.TP3\Clases Abstractas\obj\Debug\Clases Abstractas.csproj.CoreCompileInputs.cache
-C:\Users\matias\Desktop\tp_laboratorio_2\BarriosCrespo.Matias.2A.TP3\Clases Abstractas\obj\Debug\Clases Abstractas.dll
-C:\Users\matias\Desktop\tp_laboratorio_2\BarriosCrespo.Matias.2A.TP3\Clases Abstractas\obj\Debug\Clases Abstractas.pdb

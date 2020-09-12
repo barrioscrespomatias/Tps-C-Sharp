@@ -1,0 +1,10 @@
+C:\Users\pc\source\repos\BarriosCrespo.Matias-TPS\bin\Debug\BarriosCrespo.Matias-TPS.exe.config
+C:\Users\pc\source\repos\BarriosCrespo.Matias-TPS\bin\Debug\BarriosCrespo.Matias-TPS.exe
+C:\Users\pc\source\repos\BarriosCrespo.Matias-TPS\bin\Debug\BarriosCrespo.Matias-TPS.pdb
+C:\Users\pc\source\repos\BarriosCrespo.Matias-TPS\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\pc\source\repos\BarriosCrespo.Matias-TPS\obj\Debug\BarriosCrespo.Matias-TPS.exe
+C:\Users\pc\source\repos\BarriosCrespo.Matias-TPS\obj\Debug\BarriosCrespo.Matias-TPS.pdb
+C:\Users\pc\source\repos\BarriosCrespo.Matias-TPS\obj\Debug\Entidades.csprojAssemblyReference.cache
+D:\DOCUMENTOS\Github\tp_laboratorio_2\BarriosCrespo.Matias-TPS\bin\Debug\Entidades.dll
+D:\DOCUMENTOS\Github\tp_laboratorio_2\BarriosCrespo.Matias-TPS\obj\Debug\Entidades.csprojAssemblyReference.cache
+D:\DOCUMENTOS\Github\tp_laboratorio_2\BarriosCrespo.Matias-TPS\obj\Debug\Entidades.csproj.CoreCompileInputs.cache

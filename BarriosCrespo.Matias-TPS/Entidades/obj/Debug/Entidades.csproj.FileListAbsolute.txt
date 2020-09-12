@@ -1,0 +1,5 @@
+D:\DOCUMENTOS\Github\tp_laboratorio_2\BarriosCrespo.Matias-TPS\Entidades\bin\Debug\Entidades.dll
+D:\DOCUMENTOS\Github\tp_laboratorio_2\BarriosCrespo.Matias-TPS\Entidades\bin\Debug\Entidades.pdb
+D:\DOCUMENTOS\Github\tp_laboratorio_2\BarriosCrespo.Matias-TPS\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+D:\DOCUMENTOS\Github\tp_laboratorio_2\BarriosCrespo.Matias-TPS\Entidades\obj\Debug\Entidades.dll
+D:\DOCUMENTOS\Github\tp_laboratorio_2\BarriosCrespo.Matias-TPS\Entidades\obj\Debug\Entidades.pdb

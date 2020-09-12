@@ -1,0 +1,6 @@
+C:\Users\pc\source\repos\BarriosCrespo.Matias-TPS\bin\Debug\BarriosCrespo.Matias-TPS.exe.config
+C:\Users\pc\source\repos\BarriosCrespo.Matias-TPS\bin\Debug\BarriosCrespo.Matias-TPS.exe
+C:\Users\pc\source\repos\BarriosCrespo.Matias-TPS\bin\Debug\BarriosCrespo.Matias-TPS.pdb
+C:\Users\pc\source\repos\BarriosCrespo.Matias-TPS\obj\Debug\Entidades_A.csproj.CoreCompileInputs.cache
+C:\Users\pc\source\repos\BarriosCrespo.Matias-TPS\obj\Debug\BarriosCrespo.Matias-TPS.exe
+C:\Users\pc\source\repos\BarriosCrespo.Matias-TPS\obj\Debug\BarriosCrespo.Matias-TPS.pdb
