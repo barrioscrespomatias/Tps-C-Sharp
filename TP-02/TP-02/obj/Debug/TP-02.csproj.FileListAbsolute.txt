@@ -31,13 +31,3 @@ C:\Users\pc\Desktop\Nueva carpeta (2)\TP-02\TP-02\bin\Debug\Entidades.dll
 C:\Users\pc\Desktop\Nueva carpeta (2)\TP-02\TP-02\bin\Debug\Entidades.pdb
 C:\Users\pc\Desktop\Nueva carpeta (2)\TP-02\TP-02\obj\Debug\TP-02.csproj.CopyComplete
 C:\Users\pc\Desktop\Nueva carpeta (2)\TP-02\TP-02\obj\Debug\TP-02.pdb
-D:\DOCUMENTOS\Github\tp_laboratorio_2\TP-02\TP-02\bin\Debug\TP-02.exe.config
-D:\DOCUMENTOS\Github\tp_laboratorio_2\TP-02\TP-02\bin\Debug\TP-02.exe
-D:\DOCUMENTOS\Github\tp_laboratorio_2\TP-02\TP-02\bin\Debug\TP-02.pdb
-D:\DOCUMENTOS\Github\tp_laboratorio_2\TP-02\TP-02\bin\Debug\Entidades.dll
-D:\DOCUMENTOS\Github\tp_laboratorio_2\TP-02\TP-02\bin\Debug\Entidades.pdb
-D:\DOCUMENTOS\Github\tp_laboratorio_2\TP-02\TP-02\obj\Debug\TP-02.csprojAssemblyReference.cache
-D:\DOCUMENTOS\Github\tp_laboratorio_2\TP-02\TP-02\obj\Debug\TP-02.csproj.CoreCompileInputs.cache
-D:\DOCUMENTOS\Github\tp_laboratorio_2\TP-02\TP-02\obj\Debug\TP-02.csproj.CopyComplete
-D:\DOCUMENTOS\Github\tp_laboratorio_2\TP-02\TP-02\obj\Debug\TP-02.exe
-D:\DOCUMENTOS\Github\tp_laboratorio_2\TP-02\TP-02\obj\Debug\TP-02.pdb
