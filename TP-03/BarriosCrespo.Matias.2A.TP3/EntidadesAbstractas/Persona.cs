@@ -194,14 +194,16 @@ namespace EntidadesAbstractas
         private string ValidarNombreApellido(string dato)
         {
             string retorno = "";
-            bool parseaCaracteres = false;
-            int salida = -1;           
+            //bool parseaCaracteres = false;
+            //int salida = -1;           
 
             foreach (char c in dato)
             {
-                parseaCaracteres = int.TryParse(c.ToString(), out salida);
-                if (parseaCaracteres)
-                    return retorno;
+                if (!Char.IsLetter(c))
+                    return retorno;                    
+                //parseaCaracteres = int.TryParse(c.ToString(), out salida);                
+                //if (parseaCaracteres)
+                //    return retorno;
             }
             //Si valida que el el dato es una cadaena valida, la devuelve.
             return dato;

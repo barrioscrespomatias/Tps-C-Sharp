@@ -11,3 +11,16 @@ C:\Users\pc\source\repos\BarriosCrespo.Matias.2A.TP3\EntidadesInstanciables\bin\
 C:\Users\pc\source\repos\BarriosCrespo.Matias.2A.TP3\EntidadesInstanciables\obj\Debug\EntidadesInstanciables.csproj.CopyComplete
 C:\Users\pc\source\repos\BarriosCrespo.Matias.2A.TP3\EntidadesInstanciables\obj\Debug\EntidadesInstanciables.dll
 C:\Users\pc\source\repos\BarriosCrespo.Matias.2A.TP3\EntidadesInstanciables\obj\Debug\EntidadesInstanciables.pdb
+D:\DOCUMENTOS\Github\tp_laboratorio_2\TP-03\BarriosCrespo.Matias.2A.TP3\EntidadesInstanciables\bin\Debug\EntidadesInstanciables.dll
+D:\DOCUMENTOS\Github\tp_laboratorio_2\TP-03\BarriosCrespo.Matias.2A.TP3\EntidadesInstanciables\bin\Debug\EntidadesInstanciables.pdb
+D:\DOCUMENTOS\Github\tp_laboratorio_2\TP-03\BarriosCrespo.Matias.2A.TP3\EntidadesInstanciables\bin\Debug\Archivos.dll
+D:\DOCUMENTOS\Github\tp_laboratorio_2\TP-03\BarriosCrespo.Matias.2A.TP3\EntidadesInstanciables\bin\Debug\EntidadesAbstractas.dll
+D:\DOCUMENTOS\Github\tp_laboratorio_2\TP-03\BarriosCrespo.Matias.2A.TP3\EntidadesInstanciables\bin\Debug\Excepciones.dll
+D:\DOCUMENTOS\Github\tp_laboratorio_2\TP-03\BarriosCrespo.Matias.2A.TP3\EntidadesInstanciables\bin\Debug\Archivos.pdb
+D:\DOCUMENTOS\Github\tp_laboratorio_2\TP-03\BarriosCrespo.Matias.2A.TP3\EntidadesInstanciables\bin\Debug\EntidadesAbstractas.pdb
+D:\DOCUMENTOS\Github\tp_laboratorio_2\TP-03\BarriosCrespo.Matias.2A.TP3\EntidadesInstanciables\bin\Debug\Excepciones.pdb
+D:\DOCUMENTOS\Github\tp_laboratorio_2\TP-03\BarriosCrespo.Matias.2A.TP3\EntidadesInstanciables\obj\Debug\EntidadesInstanciables.csprojAssemblyReference.cache
+D:\DOCUMENTOS\Github\tp_laboratorio_2\TP-03\BarriosCrespo.Matias.2A.TP3\EntidadesInstanciables\obj\Debug\EntidadesInstanciables.csproj.CoreCompileInputs.cache
+D:\DOCUMENTOS\Github\tp_laboratorio_2\TP-03\BarriosCrespo.Matias.2A.TP3\EntidadesInstanciables\obj\Debug\EntidadesInstanciables.csproj.CopyComplete
+D:\DOCUMENTOS\Github\tp_laboratorio_2\TP-03\BarriosCrespo.Matias.2A.TP3\EntidadesInstanciables\obj\Debug\EntidadesInstanciables.dll
+D:\DOCUMENTOS\Github\tp_laboratorio_2\TP-03\BarriosCrespo.Matias.2A.TP3\EntidadesInstanciables\obj\Debug\EntidadesInstanciables.pdb
