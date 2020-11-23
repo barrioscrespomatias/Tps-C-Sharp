@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0F724D37-B5BF-4A1D-BD0B-33924C571553}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Formularios</RootNamespace>
+    <AssemblyName>Formularios</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Delegados.cs" />
+    <Compile Include="frmAltaAntiparra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAltaAntiparra.Designer.cs">
+      <DependentUpon>frmAltaAntiparra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAltaColono.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAltaColono.Designer.cs">
+      <DependentUpon>frmAltaColono.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAltaGorrito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAltaGorrito.Designer.cs">
+      <DependentUpon>frmAltaGorrito.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAltaProfesor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAltaProfesor.Designer.cs">
+      <DependentUpon>frmAltaProfesor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmModificarColono.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmModificarColono.Designer.cs">
+      <DependentUpon>frmModificarColono.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMostrarColonos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMostrarColonos.Designer.cs">
+      <DependentUpon>frmMostrarColonos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMostrarGrupo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMostrarGrupo.Designer.cs">
+      <DependentUpon>frmMostrarGrupo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrincipal.Designer.cs">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVenta.Designer.cs">
+      <DependentUpon>frmVenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmAltaAntiparra.resx">
+      <DependentUpon>frmAltaAntiparra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAltaColono.resx">
+      <DependentUpon>frmAltaColono.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAltaGorrito.resx">
+      <DependentUpon>frmAltaGorrito.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAltaProfesor.resx">
+      <DependentUpon>frmAltaProfesor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmModificarColono.resx">
+      <DependentUpon>frmModificarColono.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMostrarColonos.resx">
+      <DependentUpon>frmMostrarColonos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMostrarGrupo.resx">
+      <DependentUpon>frmMostrarGrupo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrincipal.resx">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVenta.resx">
+      <DependentUpon>frmVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entidades\Entidades.csproj">
+      <Project>{8737be0a-265b-4d30-bcf0-df247c74b6fc}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Stock\Stock.csproj">
+      <Project>{9e26d2d3-b515-4a19-9fc3-12fc7727a841}</Project>
+      <Name>Stock</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
