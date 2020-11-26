@@ -12,15 +12,15 @@ namespace Stock
     /// Ha sido utilizado como clase contenedora de dos tipos diferentes de productos a vender: “Gorritas”
     //y “Antiparras”. Se implementa en el namespace STOCK en la clase ControlStock.Esta clase
     //contiene una List<T> que puede ser cargada por cualquiera de los productos vendidos.
-     
+
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class ControlStock<T>
+    public class ControlStock<T> where T : Producto
     {
         private int capacidad;
         private List<T> lista;
 
-       
+
         /// <summary>
         /// Constructor por defecto. Inicializa la capacidad en 5.
         /// </summary>
@@ -37,10 +37,10 @@ namespace Stock
 
         public int CantidadEnStock
         {
-            get { return this.lista.Count; }            
+            get { return this.lista.Count; }
         }
 
-      
+
 
 
         /// <summary>
@@ -51,14 +51,25 @@ namespace Stock
         /// <returns></returns>
         public static ControlStock<T> operator +(ControlStock<T> cs, T p)
         {
-            if(cs.lista.Count == 0)
+            if (cs.lista.Count == 0)
             {
                 cs.lista = new List<T>();
             }
 
             if (cs.lista.Count < cs.capacidad)
             {
-                cs.lista.Add(p);
+                //Si el producto ya existe, agrego cantidad.
+                if (cs == p)
+                {
+                    //Agregar la cantidad a cs[indice que es igual]
+                    int indice = ControlStock<T>.ObtenerIndice(cs, p);
+                    cs.lista[indice].Cantidad++;
+                }
+                else
+                {
+                    //sino lo agrego a la lista
+                    cs.lista.Add(p);
+                }
             }
             else
             {
@@ -87,12 +98,12 @@ namespace Stock
         /// <param name="cs"></param>
         /// <param name="p"></param>
         /// <returns></returns>
-        public static bool operator == (ControlStock<T> cs, T p)
+        public static bool operator ==(ControlStock<T> cs, T p)
         {
             bool retorno = false;
-            foreach(T aux in cs.lista)
+            foreach (T aux in cs.lista)
             {
-                if(aux.Equals(p))
+                if (aux.Equals(p))
                 {
                     retorno = true;
                     break;
@@ -101,6 +112,9 @@ namespace Stock
             }
             return retorno;
         }
+
+
+
         /// <summary>
         /// Sobrecarga distinto entre la lista y un atributo genérico.
         /// </summary>
@@ -111,6 +125,52 @@ namespace Stock
         {
             return !(cs == p);
         }
+        /// <summary>
+        /// Obtiene el índice del elemento pasado como parámetro.
+        /// </summary>
+        /// <param name="cs"></param>
+        /// <param name="p"></param>
+        /// <returns></returns>
+
+        private static int ObtenerIndice(ControlStock<T> cs, T p)
+        {
+            int retorno = -1;
+            int indice = 0;
+            foreach (T aux in cs.lista)
+            {
+                if (aux.Equals(p))
+                {
+                    retorno = indice;
+                    break;
+                }
+                indice++;
+            }
+            return retorno;
+        }
+        /// <summary>
+        /// Baja la cantidad de productos en stock segun la cantidad de productos que se deseen comprar.
+        /// </summary>
+        /// <param name="cs"></param>
+        /// <param name="p"></param>
+        /// <param name="cantidadCompra"></param>
+        public void BajarCantidad(ControlStock<T> cs, T p, int cantidadCompra)
+        {
+            //Si la cantidad de productos en stock es igual o mayor a la cantidad que se 
+            //desea comprar, bajo la cantidad de productos en stock teniendo en cuenta la cantidad
+            //que el cliente quiere comprar.
+            if (cs == p && p.Cantidad >= cantidadCompra)
+            {
+                p.Cantidad -= cantidadCompra;
+                //Si me quedo sin productos, elimino de la lista.
+                if (p.Cantidad == 0)
+                    cs -= p;
+            }
+
+            else
+                throw new CantidadInexistenteException("La cantidad de productos en stock es insuficiente");
+        }    
+
+
 
         /// <summary>
         /// Expone los datos de la clase.

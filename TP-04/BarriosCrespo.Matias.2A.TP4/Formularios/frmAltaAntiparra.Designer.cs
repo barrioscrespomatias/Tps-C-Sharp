@@ -43,16 +43,17 @@
             this.btnCancelar.Location = new System.Drawing.Point(133, 203);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 25;
+            this.btnCancelar.TabIndex = 4;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // bntAceptar
             // 
             this.bntAceptar.Location = new System.Drawing.Point(18, 203);
             this.bntAceptar.Name = "bntAceptar";
             this.bntAceptar.Size = new System.Drawing.Size(75, 23);
-            this.bntAceptar.TabIndex = 24;
+            this.bntAceptar.TabIndex = 3;
             this.bntAceptar.Text = "Aceptar";
             this.bntAceptar.UseVisualStyleBackColor = true;
             this.bntAceptar.Click += new System.EventHandler(this.bntAceptar_Click);
@@ -80,7 +81,7 @@
             this.txtBoxPrecio.Location = new System.Drawing.Point(18, 155);
             this.txtBoxPrecio.Name = "txtBoxPrecio";
             this.txtBoxPrecio.Size = new System.Drawing.Size(190, 20);
-            this.txtBoxPrecio.TabIndex = 26;
+            this.txtBoxPrecio.TabIndex = 2;
             // 
             // lblPrecio
             // 
@@ -97,7 +98,7 @@
             this.cmbBoxColores.Location = new System.Drawing.Point(18, 91);
             this.cmbBoxColores.Name = "cmbBoxColores";
             this.cmbBoxColores.Size = new System.Drawing.Size(190, 21);
-            this.cmbBoxColores.TabIndex = 28;
+            this.cmbBoxColores.TabIndex = 1;
             // 
             // cmbBoxMarca
             // 
@@ -105,7 +106,7 @@
             this.cmbBoxMarca.Location = new System.Drawing.Point(18, 30);
             this.cmbBoxMarca.Name = "cmbBoxMarca";
             this.cmbBoxMarca.Size = new System.Drawing.Size(190, 21);
-            this.cmbBoxMarca.TabIndex = 29;
+            this.cmbBoxMarca.TabIndex = 0;
             // 
             // frmAltaAntiparra
             // 

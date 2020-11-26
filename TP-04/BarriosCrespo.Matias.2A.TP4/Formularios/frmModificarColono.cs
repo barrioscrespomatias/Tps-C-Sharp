@@ -39,37 +39,37 @@ namespace Formularios
         public string Nombre
         {
             get { return this.txtBoxNombre.Text; }
-            set { value = this.txtBoxNombre.Text; }
+           
         }
 
         public string Apellido
         {
             get { return this.txtBoxApellido.Text; }
-            set { value = this.txtBoxApellido.Text; }
+    
         }
 
         public string FechaNacimiento
         {
             get { return this.txtBoxFechaNacimiento.Text; }
-            set { value = this.txtBoxFechaNacimiento.Text; }
+           
         }
 
         public int Dni
         {
             get { return int.Parse(this.txtBoxDni.Text); }
-            set { value = int.Parse(this.txtBoxDni.Text); }
+           
         }
 
         public string Periodo
         {
             get { return this.cmbPeriodo.SelectedItem.ToString(); }
-            set { value = this.cmbPeriodo.SelectedItem.ToString(); }
+           
         }
 
         public string Mes
         {
             get { return this.cmbMes.SelectedItem.ToString(); }
-            set { value = EMesIncripcion.Enero.ToString(); }
+            
         }
 
 
@@ -85,7 +85,7 @@ namespace Formularios
             this.txtBoxDni.Text = c.Dni.ToString();
             this.txtBoxFechaNacimiento.Text = c.FechaNacimiento.ToString();
             this.cmbMes.SelectedItem = c.CargarMes;
-            this.cmbPeriodo.SelectedItem = c.CargarPeriodo;
+            this.cmbPeriodo.SelectedItem = c.Periodo;
 
         }
         /// <summary>
@@ -96,6 +96,11 @@ namespace Formularios
         private void bntAceptar_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
         }
     }
 }

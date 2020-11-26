@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Excepciones
 {
-    public class GrupoConProfesorException:Exception
+    public class CantidadInexistenteException:Exception
     {
-        public GrupoConProfesorException(string msj)
-            :base(msj)
+        public CantidadInexistenteException(string msj)
+            : base(msj)
         {
 
         }

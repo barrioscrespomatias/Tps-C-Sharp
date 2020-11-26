@@ -22,10 +22,8 @@ namespace Entidades
 
         protected ConsoleColor colorID;
         protected EEdad eDadDelGrupo;
-        protected Profesor profesorDelGrupo;
         protected List<Colono> listaDeColonos;
         protected int capacidad;
-        ETurnoPileta turnoPileta;
 
         public Grupo()
         {
@@ -52,11 +50,11 @@ namespace Entidades
         /// <param name="turnoPileta"></param>
         /// <param name="capacidad"></param>
         /// <param name="edadGrupo"></param>
-        public Grupo(ConsoleColor nombreColor, Profesor profesor, ETurnoPileta turnoPileta, int capacidad, EEdad edadGrupo)
+        public Grupo(ConsoleColor nombreColor,int capacidad, EEdad edadGrupo)
             : this(capacidad, nombreColor, edadGrupo)
         {
-            this.profesorDelGrupo = profesor;
-            this.turnoPileta = turnoPileta;
+         
+            
         }
 
 
@@ -71,20 +69,13 @@ namespace Entidades
             get { return this.colorID; }
         }
 
-        public Profesor Profesor
-        {
-            get { return this.profesorDelGrupo; }
-        }
-
+       
         public List<Colono> ListadoColonos
         {
             get { return this.listaDeColonos; }
         }
 
-        public ETurnoPileta TurnoPileta
-        {
-            get { return this.turnoPileta; }
-        }
+       
 
         public EEdad EdadDelGrupo
         {
@@ -122,36 +113,9 @@ namespace Entidades
             return !(g1 == g2);
 
         }
+                   
 
-
-
-        /// <summary>
-        /// Sobrecarga  == entre el grupo y un profesor.
-        /// </summary>
-        /// <param name="g1"></param>
-        /// <param name="p1"></param>
-        /// <returns>Retorna True si el profesor forma parte del grupo.</returns>
-        public static bool operator ==(Grupo g1, Profesor p1)
-        {
-            bool retorno = false;
-            if (g1.profesorDelGrupo == p1)
-                retorno = true;
-
-            return retorno;
-
-        }
-
-        /// <summary>
-        /// Sobrecarga  != entre el grupo y un profesor.
-        /// </summary>
-        /// <param name="g1"></param>
-        /// <param name="p1"></param>
-        /// <returns>Retorna True si el profesor no forma parte del grupo.</returns>
-        public static bool operator !=(Grupo g1, Profesor p1)
-        {
-            return !(g1 == p1);
-        }
-
+       
 
         /// <summary>
         /// Sobrecarga  == entre el grupo y un colono.

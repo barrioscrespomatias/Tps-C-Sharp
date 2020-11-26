@@ -58,8 +58,8 @@ namespace Formularios
                         fila["apellido"] = c.Apellido;
                         fila["dni"] = c.Dni;
                         fila["fechaNacimiento"] = c.FechaNacimiento;
-                        fila["periodo"] = c.CargarPeriodo;
-                        fila["saldo"] = c.Deuda;
+                        fila["periodo"] = c.Periodo;
+                        fila["saldo"] = c.Saldo;
                         this.dt.Rows.Add(fila);
                     }
                 }
@@ -99,9 +99,16 @@ namespace Formularios
         {
             foreach (Grupo aux in catalinas.ListaDeGrupos)
             {
+                if(aux.EdadDelGrupo!= EEdad.DemasiadoGrande)
                 this.cmbSeleccionGrupos.Items.Add(aux.EdadDelGrupo.ToString());
             }
             this.cmbSeleccionGrupos.SelectedIndex = 0;
+
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically;
+            this.dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.AllowUserToAddRows = false;
         }
     }
 }

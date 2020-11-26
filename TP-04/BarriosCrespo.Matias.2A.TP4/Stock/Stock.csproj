@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Antiparra.cs" />
     <Compile Include="ControlStock.cs" />
+    <Compile Include="EEnumeradosSotck.cs" />
     <Compile Include="EMarca.cs" />
     <Compile Include="ETalle.cs" />
     <Compile Include="Gorrito.cs" />

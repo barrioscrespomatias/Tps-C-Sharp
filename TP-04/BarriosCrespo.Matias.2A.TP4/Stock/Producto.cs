@@ -14,7 +14,7 @@ namespace Stock
         public double precio;
         protected int codigo;
         protected int cantidad;
-
+        
         /// <summary>
         /// Constructor por defecto.
         /// </summary>

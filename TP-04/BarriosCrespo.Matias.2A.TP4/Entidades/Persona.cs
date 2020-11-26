@@ -49,8 +49,18 @@ namespace Entidades
         public string Nombre
         {
             get { return this.nombre; }
-            set { this.nombre = value; }
-            
+            set
+            {
+                if (this.ValidarNombreApellido(value).Length > 0)
+                    this.nombre = value;
+                else
+                {
+                    value = "";
+                    this.nombre = value;
+                }
+
+            }
+
         }
 
         public string Apellido
@@ -64,6 +74,12 @@ namespace Entidades
             get { return this.dni; }
             set { this.dni = value; }
         }
+
+        //public string DniToString
+        //{
+        //    get { return this.dni.ToString(); }
+        //    set { this.dni = value; }
+        //}
 
         public DateTime FechaNacimiento
         {
@@ -140,6 +156,37 @@ namespace Entidades
         }
 
         #endregion
+        /// <summary>
+        /// Analiza si una cadena contiene todas letras.
+        /// </summary>
+        /// <param name="dato"></param>
+        /// <returns>Retorna 0 si contiene algun número</returns>
+        protected string ValidarNombreApellido(string dato)
+        {
+            string retorno = "";
+            foreach (char c in dato)
+            {
+                if (!Char.IsLetter(c))
+                    return retorno;
+            }
+            //Si valida que el el dato es una cadaena valida, la devuelve.
+            return dato;
+        }
+        /// <summary>
+        /// Analiza que si el valor ingresado es numérico. 
+        /// </summary>
+        /// <param name="dato"></param>
+        /// <returns>Retorna 0 si el valor no es numérico</returns>
+        public static int ValidarEntero(string dato)
+        {
+            int salida = -1;
+            bool parseo = int.TryParse(dato, out salida);
+            if (salida > 0)
+                return salida;
+
+            else
+                return -1;
+        }
 
     }
 }

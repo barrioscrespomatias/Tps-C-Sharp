@@ -14,9 +14,7 @@ namespace Entidades
     {
 
         protected double saldoActual;
-        protected double gastos;
         protected string nombre;
-        protected List<Profesor> listadoDeProfesores;
         protected List<Grupo> listadoDeGrupos;
         protected ControlStock<Producto> stockProductos;
 
@@ -33,14 +31,18 @@ namespace Entidades
         {
             this.nombre = nombre;
             this.listadoDeGrupos = new List<Grupo>();
-            this.listadoDeProfesores = new List<Profesor>();
             this.stockProductos = new ControlStock<Producto>();
 
-
-            //Stock de diez productos
-            //this.stockProductos = new ControlStock<Producto>(10);
-
         }
+
+
+        public ControlStock<Producto> StockProductos
+        {
+            get { return this.stockProductos; }
+            set { this.stockProductos = value; }
+        }
+
+
 
         public List<Grupo> ListaDeGrupos
         {
@@ -48,11 +50,10 @@ namespace Entidades
             set { this.listadoDeGrupos = value; }
         }
 
-        public List<Profesor> ListaDeProfesores
-        {
-            get { return this.listadoDeProfesores; }
-            set { this.listadoDeProfesores = value; }
-        }
+
+
+
+
 
         public double SaldoActual
         {
@@ -60,11 +61,6 @@ namespace Entidades
             set { this.saldoActual = value; }
         }
 
-        public double Gastos
-        {
-            get { return this.gastos; }
-            set { this.gastos = value; }
-        }
 
         public ControlStock<Producto> ProductosEnVenta
         {
@@ -102,35 +98,8 @@ namespace Entidades
         {
             return !(ca == co);
         }
-        /// <summary>
-        /// Igualdad entre Colonia y profeosor. Inspecciona si el profesor está en la colonia.
-        /// </summary>
-        /// <param name="ca"></param>
-        /// <param name="p1"></param>
-        /// <returns>Retorna true si el profesor trabaja en la colonia.</returns>
-        public static bool operator ==(Colonia ca, Profesor p1)
-        {
-            bool retorno = false;
-            foreach (Profesor aux in ca.listadoDeProfesores)
-            {
-                if (aux == p1)
-                {
-                    retorno = true;
-                    break;
-                }
-            }
-            return retorno;
-        }
-        /// <summary>
-        /// Distinto entre Colonia y profesor. 
-        /// </summary>
-        /// <param name="ca"></param>
-        /// <param name="p1"></param>
-        /// <returns>Retorna true si el profesor no trabaja en la colonia.</returns>
-        public static bool operator !=(Colonia ca, Profesor p1)
-        {
-            return !(ca == p1);
-        }
+
+
 
         /// <summary>
         /// Igualdad entre Colonia y grupo. Inspecciona si el grupo se encuentra en la colonia (segun color)
@@ -265,8 +234,6 @@ namespace Entidades
         /// <returns></returns>
         public static Colonia operator -(Colonia colonia, Colono c)
         {
-
-
             foreach (Grupo aux in colonia.ListaDeGrupos)
             {
                 foreach (Colono colono in aux.ListadoColonos)
@@ -284,21 +251,41 @@ namespace Entidades
 
             return colonia;
         }
-
-
         /// <summary>
-        /// Sobrecarga "+" entre colonia y profesor.
+        /// Sobrecarga igualdad entre colonia y dni. Si alguno de los colonos tiene el dni
+        /// pasado por parámetro, retorna true.
         /// </summary>
         /// <param name="colonia"></param>
-        /// <param name="p1"></param>
-        /// <returns>Si pudo agregarlo, retorna una colonia con el nuevo profesor.</returns>
-        public static Colonia operator +(Colonia colonia, Profesor p1)
+        /// <param name="dni"></param>
+        /// <returns></returns>
+        public static bool operator == (Colonia colonia, int dni)
         {
-            if (colonia != p1)
-                colonia.listadoDeProfesores.Add(p1);
-
-            return colonia;
+            bool retorno = false;
+            foreach(Grupo grupo in colonia.ListaDeGrupos)
+            {
+                foreach(Colono colono in grupo.ListadoColonos)
+                {
+                    if (colono.Dni == dni)
+                    {
+                        retorno = true;
+                        break;
+                    }
+                }
+            }
+            return retorno;            
         }
+        /// <summary>
+        /// Sobrecarga != entre colonia y dni.
+        /// </summary>
+        /// <param name="colonia"></param>
+        /// <param name="dni"></param>
+        /// <returns></returns>
+        public static bool operator !=(Colonia colonia, int dni)
+        {
+            return !(colonia == dni);
+        }
+
+
 
 
         #endregion
@@ -352,12 +339,6 @@ namespace Entidades
             StringBuilder sb = new StringBuilder();
             sb.AppendFormat("Colonia: {0} 1.0\n", this.nombre);
             sb.AppendFormat("Saldo actual: ${0}\n", this.saldoActual);
-            if (this.listadoDeProfesores.Count > 0)
-                sb.AppendFormat("Profesores: \n\n");
-            foreach (Profesor aux in this.listadoDeProfesores)
-            {
-                sb.AppendFormat(aux.MostrarDatos());
-            }
 
             foreach (Grupo aux in this.listadoDeGrupos)
             {
@@ -372,23 +353,63 @@ namespace Entidades
         /// <param name="colonia"></param>
         /// <param name="p1"></param>
         /// <param name="c1"></param>
-        public void RealizaVenta(Colonia colonia, Producto p1, Colono c1)
+        public void RealizaVenta(Colonia colonia, Producto p1, Colono c1, int cantidad)
         {
             if (colonia.stockProductos == p1)
             {
-                this.saldoActual += p1.Precio;
-                c1.Deuda += p1.precio;
-                colonia.stockProductos -= p1;
-                c1.ListaProductosComprados.Add(p1);
+                Producto aux = p1;
+
+                this.saldoActual += aux.Precio * cantidad;
+                c1.Saldo += aux.precio * cantidad;
+                for (int i = 0; i < cantidad; i++)
+                {
+                    if (c1.ListaProductosComprados == null)
+                        c1.ListaProductosComprados = new List<Producto>();
+
+                    c1.ListaProductosComprados.Add(aux);
+                }
+                
+
+                //Por último bajar stock
+                this.stockProductos.BajarCantidad(stockProductos, p1, cantidad);
+
 
             }
             else
             {
                 Console.WriteLine("No se pudo realizar venta");
             }
-
-
         }
+
+        public void AumentarStock(Colonia colonia, Producto p1, int cantidad)
+        {
+            if (colonia.stockProductos == p1)
+            {
+                colonia.stockProductos += p1;
+            }
+            else
+                colonia.stockProductos.Listado.Add(p1);
+        }
+
+        public Colono BuscarColono(Colonia catalinas, int dni)
+        {
+            Colono auxiliar = new Colono();
+
+            foreach (Grupo grupo in catalinas.listadoDeGrupos)
+            {
+                foreach (Colono colono in grupo.ListadoColonos)
+                {
+                    if (colono.Dni == dni)
+                    {
+                        auxiliar = colono;
+                        break;
+                    }
+
+                }
+            }
+            return auxiliar;
+        }
+
 
         /// <summary>
         /// Método para obtener los datos desde un dataRow y retornar un colono.
@@ -478,6 +499,7 @@ namespace Entidades
         }
 
 
+        
 
 
     }

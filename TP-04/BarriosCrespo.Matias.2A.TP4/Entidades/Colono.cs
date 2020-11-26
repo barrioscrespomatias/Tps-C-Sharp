@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,12 +7,13 @@ using System.Threading.Tasks;
 using Stock;
 
 
+
 namespace Entidades
 {
     public class Colono : Persona
     {
-        
-
+        private const int nacimientoValido = 2007;
+        protected bool sinDeudas;
         protected int edad;
         protected EEdad grupo;
         protected DateTime fechaInscripcion;
@@ -24,11 +26,12 @@ namespace Entidades
         public List<Producto> ListaProductosComprados
         {
             get { return this.productosComprados; }
-           
+            set { this.productosComprados = value; }
+
         }
 
 
-        public EPeriodoInscripcion CargarPeriodo
+        public EPeriodoInscripcion Periodo
         {
             get { return this.periodo; }
             set { this.periodo = value; }
@@ -44,19 +47,27 @@ namespace Entidades
         public int Edad
         {
             get { return this.edad; }
+            set { this.edad = value; }
         }
 
         public EEdad EdadGrupo
         {
             get { return this.grupo; }
+            set { this.grupo = value;}
 
         }
 
-        public double Deuda
+        public double Saldo
         {
             get { return this.estadoDeuda; }
             set { this.estadoDeuda = value; }
 
+        }
+
+        public bool SinDeudas
+        {
+            get { return this.sinDeudas; }
+            set { this.sinDeudas = value; }
         }
 
 
@@ -77,13 +88,14 @@ namespace Entidades
         /// <param name="fechaNacimiento"></param>
         /// <param name="dni"></param>
         /// <param name="tiempo"></param>
-        public Colono(string nombre, string apellido, DateTime fechaNacimiento, int dni, EPeriodoInscripcion tiempo)
+        public Colono(string nombre, string apellido, DateTime fechaNacimiento, int dni, EPeriodoInscripcion periodo)
             : base(nombre, apellido, fechaNacimiento, dni)
         {
             this.edad = DateTime.Today.Year - this.fechaNacimiento.Year;
             this.grupo = this.AsignarGrupo(edad);
-            this.estadoDeuda = this.CalcularDeuda(tiempo);
-
+            this.estadoDeuda = Colono.CalcularDeuda(periodo);
+            this.periodo = periodo;
+            this.sinDeudas = false;
             //Lista de productos vacia.
             this.productosComprados = new List<Producto>();
         }
@@ -98,13 +110,14 @@ namespace Entidades
         /// <param name="dni"></param>
         /// <param name="tiempo"></param>
         /// <param name="deuda"></param>
-        public Colono(string nombre, string apellido, DateTime fechaNacimiento, int dni, EPeriodoInscripcion tiempo, double deuda)
+        public Colono(string nombre, string apellido, DateTime fechaNacimiento, int dni, EPeriodoInscripcion periodo, double deuda)
            : base(nombre, apellido, fechaNacimiento, dni)
         {
             this.edad = DateTime.Today.Year - this.fechaNacimiento.Year;
             this.grupo = this.AsignarGrupo(edad);
             this.estadoDeuda = deuda;
-
+            this.periodo = periodo;
+            this.sinDeudas = false;
 
             //Lista de productos vacia.
             this.productosComprados = new List<Producto>();
@@ -116,7 +129,7 @@ namespace Entidades
         /// </summary>
         /// <param name="tiempo"></param>
         /// <returns>Retorna double con la deuda</returns>
-        private double CalcularDeuda(EPeriodoInscripcion tiempo)
+        public static double CalcularDeuda(EPeriodoInscripcion tiempo)
         {
             double deuda = 0;
             switch (tiempo)
@@ -139,7 +152,7 @@ namespace Entidades
         /// </summary>
         /// <param name="edad"></param>
         /// <returns>Retorna el grupo correspondiente.</returns>
-        private EEdad AsignarGrupo(int edad)
+        public EEdad AsignarGrupo(int edad)
         {
             EEdad aux = EEdad.DemasiadoGrande;
 
@@ -161,22 +174,38 @@ namespace Entidades
         /// <returns></returns>
         public override string ToString()
         {
+            double total = 0;
             StringBuilder sb = new StringBuilder();
             sb.AppendFormat(base.ToString());
             sb.AppendFormat("Edad: {0}\n", this.edad);
             sb.AppendFormat("Deuda actual:${0:N2}\n", this.estadoDeuda);
             sb.AppendFormat("Lista de productos comprados: \n\n");
-            foreach(Producto aux in this.productosComprados)
+            foreach (Producto aux in this.productosComprados)
             {
-                sb.AppendFormat(aux.ToString());
+                total += aux.precio;
+                sb.AppendFormat("{0} - ${1}\n",aux.GetType().Name,aux.precio);
             }
+            sb.AppendFormat("Total por ventas: ${0}\n", total);
             return sb.ToString();
         }
 
+        public static bool EsValido(Colono colono)
+        {
+            bool retorno = false;
+            if
+                (
+                    colono.Nombre.Length > 0
+                    && colono.Apellido.Length > 0
+                    && colono.Dni > 0
+                    && colono.FechaNacimiento < DateTime.Now
+                    && colono.fechaNacimiento.Year>=nacimientoValido
+                )
+            {
+                retorno = true;
+            }
+            return retorno;
+        }
 
-
-       
-      
 
 
 

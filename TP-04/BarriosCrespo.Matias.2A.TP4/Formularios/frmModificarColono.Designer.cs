@@ -49,9 +49,10 @@
             this.btnCancelar.Location = new System.Drawing.Point(192, 251);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 27;
+            this.btnCancelar.TabIndex = 7;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // lblMes
             // 
@@ -68,7 +69,7 @@
             this.cmbMes.Location = new System.Drawing.Point(185, 157);
             this.cmbMes.Name = "cmbMes";
             this.cmbMes.Size = new System.Drawing.Size(121, 21);
-            this.cmbMes.TabIndex = 25;
+            this.cmbMes.TabIndex = 5;
             // 
             // lblPeriodo
             // 
@@ -85,14 +86,14 @@
             this.cmbPeriodo.Location = new System.Drawing.Point(11, 157);
             this.cmbPeriodo.Name = "cmbPeriodo";
             this.cmbPeriodo.Size = new System.Drawing.Size(121, 21);
-            this.cmbPeriodo.TabIndex = 23;
+            this.cmbPeriodo.TabIndex = 4;
             // 
             // txtBoxFechaNacimiento
             // 
             this.txtBoxFechaNacimiento.Location = new System.Drawing.Point(185, 92);
             this.txtBoxFechaNacimiento.Name = "txtBoxFechaNacimiento";
             this.txtBoxFechaNacimiento.Size = new System.Drawing.Size(121, 20);
-            this.txtBoxFechaNacimiento.TabIndex = 21;
+            this.txtBoxFechaNacimiento.TabIndex = 3;
             // 
             // lblFechaNacimiento
             // 
@@ -108,7 +109,7 @@
             this.txtBoxDni.Location = new System.Drawing.Point(11, 92);
             this.txtBoxDni.Name = "txtBoxDni";
             this.txtBoxDni.Size = new System.Drawing.Size(121, 20);
-            this.txtBoxDni.TabIndex = 19;
+            this.txtBoxDni.TabIndex = 2;
             // 
             // lblDni
             // 
@@ -124,7 +125,7 @@
             this.txtBoxApellido.Location = new System.Drawing.Point(186, 34);
             this.txtBoxApellido.Name = "txtBoxApellido";
             this.txtBoxApellido.Size = new System.Drawing.Size(121, 20);
-            this.txtBoxApellido.TabIndex = 17;
+            this.txtBoxApellido.TabIndex = 1;
             // 
             // lblApellido
             // 
@@ -140,7 +141,7 @@
             this.bntAceptar.Location = new System.Drawing.Point(49, 251);
             this.bntAceptar.Name = "bntAceptar";
             this.bntAceptar.Size = new System.Drawing.Size(75, 23);
-            this.bntAceptar.TabIndex = 26;
+            this.bntAceptar.TabIndex = 6;
             this.bntAceptar.Text = "Aceptar";
             this.bntAceptar.UseVisualStyleBackColor = true;
             this.bntAceptar.Click += new System.EventHandler(this.bntAceptar_Click);
@@ -150,7 +151,7 @@
             this.txtBoxNombre.Location = new System.Drawing.Point(12, 34);
             this.txtBoxNombre.Name = "txtBoxNombre";
             this.txtBoxNombre.Size = new System.Drawing.Size(121, 20);
-            this.txtBoxNombre.TabIndex = 15;
+            this.txtBoxNombre.TabIndex = 0;
             // 
             // lblNombre
             // 

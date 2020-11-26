@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MisTestUnitarios", "MisTest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgregarColono", "AgregarColono\AgregarColono.csproj", "{3613CC76-4006-4979-BE6F-B6C7E4822738}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseDatos", "BaseDatos\BaseDatos.csproj", "{1659B0DE-669C-4801-9CB0-F75951F55BAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validaciones", "Validaciones\Validaciones.csproj", "{7BDD0D57-AC85-4F6E-BF37-0D43DACF86B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{3613CC76-4006-4979-BE6F-B6C7E4822738}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3613CC76-4006-4979-BE6F-B6C7E4822738}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3613CC76-4006-4979-BE6F-B6C7E4822738}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1659B0DE-669C-4801-9CB0-F75951F55BAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1659B0DE-669C-4801-9CB0-F75951F55BAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1659B0DE-669C-4801-9CB0-F75951F55BAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1659B0DE-669C-4801-9CB0-F75951F55BAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BDD0D57-AC85-4F6E-BF37-0D43DACF86B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BDD0D57-AC85-4F6E-BF37-0D43DACF86B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BDD0D57-AC85-4F6E-BF37-0D43DACF86B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BDD0D57-AC85-4F6E-BF37-0D43DACF86B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

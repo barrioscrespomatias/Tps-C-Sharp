@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidades;
 using Stock;
+using Excepciones;
 
 namespace Formularios
 {
@@ -39,13 +40,29 @@ namespace Formularios
         /// <param name="e"></param>
         private void bntAceptar_Click(object sender, EventArgs e)
         {
-            EMarca marca = EMarca.Pirulito;
-            ConsoleColor color = (ConsoleColor)this.cmbBoxColores.SelectedItem;
-            double precio = double.Parse(this.txtBoxPrecio.Text);
+            this.cmbBoxMarca.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.cmbBoxColores.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            ingresante = new Antiparra(marca, color, precio);
-            this.catalinas.ProductosEnVenta.Listado.Add(ingresante);
-            this.DialogResult = DialogResult.OK;
+            EMarca marca = (EMarca)this.cmbBoxMarca.SelectedIndex;
+            EColores color = (EColores)this.cmbBoxColores.SelectedIndex;
+            try
+            {
+                double precio = Validaciones.Validar.ValidarSoloNumeros(this.txtBoxPrecio.Text);
+                ingresante = new Antiparra(marca, color, precio);
+                this.catalinas.AumentarStock(this.catalinas, ingresante, 1);
+                this.DialogResult = DialogResult.OK;
+            }
+            catch(ValidacionIncorrectaException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+           
+
+            
+
+            ///Error al cargar el producto. No agrega a la colonia
+
+            
         }
         /// <summary>
         /// Carga previamente los datos de los combobox. Hardcodeo.
@@ -55,12 +72,24 @@ namespace Formularios
         private void frmAltaAntiparra_Load(object sender, EventArgs e)
         {
             this.cmbBoxColores.DropDownStyle = ComboBoxStyle.DropDownList;
-            this.cmbBoxColores.Items.Add(ConsoleColor.Red);
-            this.cmbBoxColores.Items.Add(ConsoleColor.Green);
-            this.cmbBoxColores.Items.Add(ConsoleColor.Blue);
-            this.cmbBoxMarca.Items.Add(EMarca.Adidas);
-            this.cmbBoxMarca.Items.Add(EMarca.Pirulito);
-            this.cmbBoxMarca.Items.Add(EMarca.Speedo);
+
+            foreach (EColores color in Enum.GetValues(typeof(EColores)))
+            {
+                this.cmbBoxColores.Items.Add(color.ToString());
+            }
+
+            foreach (EMarca marca in Enum.GetValues(typeof(EMarca)))
+            {
+                this.cmbBoxMarca.Items.Add(marca.ToString());
+            }
+
+            this.cmbBoxColores.SelectedIndex = 0;
+            this.cmbBoxMarca.SelectedIndex = 0;
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
         }
     }
 }

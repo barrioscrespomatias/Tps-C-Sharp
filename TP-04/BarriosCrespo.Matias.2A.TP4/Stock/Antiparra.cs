@@ -11,7 +11,8 @@ namespace Stock
     public class Antiparra : Producto
     {
         private EMarca marca;
-        private ConsoleColor color;
+        private EColores color;
+       
         /// <summary>
         /// Constructor por defecto
         /// </summary>
@@ -25,7 +26,7 @@ namespace Stock
         /// <param name="marca"></param>
         /// <param name="color"></param>
         /// <param name="precio"></param>
-        public Antiparra(EMarca marca, ConsoleColor color, double precio)
+        public Antiparra(EMarca marca, EColores color, double precio)
         {
             this.marca = marca;
             this.color = color;
@@ -49,7 +50,7 @@ namespace Stock
         public static bool operator ==(Antiparra a, Antiparra b)
         {
             bool retorno = false;
-            if (a.marca == b.marca)
+            if (a.marca == b.marca && a.precio==b.precio && a.color == b.color)
                 retorno = true;
 
             return retorno;
@@ -73,8 +74,19 @@ namespace Stock
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendFormat(base.ToString());
-            sb.AppendFormat("Marca {0} - Precio: {1}\n", this.marca, this.precio);
+            sb.AppendFormat("{0} - ${1:N2} - {2} - Cantidad: {3}\n", this.marca, this.precio,this.color,this.cantidad);
             return sb.ToString();
         }
+
+        public override bool Equals(object obj)
+        {
+            bool retorno = false;
+            if (obj is Antiparra)
+                retorno = this == (Antiparra)obj;
+
+            return retorno;
+
+        }
+
     }
 }

@@ -48,7 +48,6 @@
     <Compile Include="Grupo.cs" />
     <Compile Include="IComprar.cs" />
     <Compile Include="Persona.cs" />
-    <Compile Include="Profesor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

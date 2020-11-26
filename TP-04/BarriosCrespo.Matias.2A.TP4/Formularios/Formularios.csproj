@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -65,23 +66,29 @@
     <Compile Include="frmAltaGorrito.Designer.cs">
       <DependentUpon>frmAltaGorrito.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmAltaProfesor.cs">
+    <Compile Include="frmAltaProducto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAltaProfesor.Designer.cs">
-      <DependentUpon>frmAltaProfesor.cs</DependentUpon>
+    <Compile Include="frmAltaProducto.Designer.cs">
+      <DependentUpon>frmAltaProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBuscarColono.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBuscarColono.Designer.cs">
+      <DependentUpon>frmBuscarColono.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDatosPersonales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDatosPersonales.Designer.cs">
+      <DependentUpon>frmDatosPersonales.cs</DependentUpon>
     </Compile>
     <Compile Include="frmModificarColono.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmModificarColono.Designer.cs">
       <DependentUpon>frmModificarColono.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmMostrarColonos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmMostrarColonos.Designer.cs">
-      <DependentUpon>frmMostrarColonos.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMostrarGrupo.cs">
       <SubType>Form</SubType>
@@ -112,14 +119,17 @@
     <EmbeddedResource Include="frmAltaGorrito.resx">
       <DependentUpon>frmAltaGorrito.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAltaProfesor.resx">
-      <DependentUpon>frmAltaProfesor.cs</DependentUpon>
+    <EmbeddedResource Include="frmAltaProducto.resx">
+      <DependentUpon>frmAltaProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBuscarColono.resx">
+      <DependentUpon>frmBuscarColono.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDatosPersonales.resx">
+      <DependentUpon>frmDatosPersonales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmModificarColono.resx">
       <DependentUpon>frmModificarColono.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmMostrarColonos.resx">
-      <DependentUpon>frmMostrarColonos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMostrarGrupo.resx">
       <DependentUpon>frmMostrarGrupo.cs</DependentUpon>
@@ -153,13 +163,25 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BaseDatos\BaseDatos.csproj">
+      <Project>{1659b0de-669c-4801-9cb0-f75951f55bac}</Project>
+      <Name>BaseDatos</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Entidades\Entidades.csproj">
       <Project>{8737be0a-265b-4d30-bcf0-df247c74b6fc}</Project>
       <Name>Entidades</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Excepciones\Excepciones.csproj">
+      <Project>{547cd29f-2abc-4ea9-b008-c7d43f8dfe2b}</Project>
+      <Name>Excepciones</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Stock\Stock.csproj">
       <Project>{9e26d2d3-b515-4a19-9fc3-12fc7727a841}</Project>
       <Name>Stock</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Validaciones\Validaciones.csproj">
+      <Project>{7bdd0d57-ac85-4f6e-bf37-0d43dacf86b9}</Project>
+      <Name>Validaciones</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

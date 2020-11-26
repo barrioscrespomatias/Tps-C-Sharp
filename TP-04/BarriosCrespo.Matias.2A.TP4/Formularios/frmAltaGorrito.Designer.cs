@@ -50,16 +50,17 @@
             this.btnCancelar.Location = new System.Drawing.Point(127, 205);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 17;
+            this.btnCancelar.TabIndex = 3;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // bntAceptar
             // 
             this.bntAceptar.Location = new System.Drawing.Point(12, 205);
             this.bntAceptar.Name = "bntAceptar";
             this.bntAceptar.Size = new System.Drawing.Size(75, 23);
-            this.bntAceptar.TabIndex = 16;
+            this.bntAceptar.TabIndex = 2;
             this.bntAceptar.Text = "Aceptar";
             this.bntAceptar.UseVisualStyleBackColor = true;
             this.bntAceptar.Click += new System.EventHandler(this.bntAceptar_Click);
@@ -69,7 +70,7 @@
             this.textBoxPrecio.Location = new System.Drawing.Point(12, 134);
             this.textBoxPrecio.Name = "textBoxPrecio";
             this.textBoxPrecio.Size = new System.Drawing.Size(190, 20);
-            this.textBoxPrecio.TabIndex = 18;
+            this.textBoxPrecio.TabIndex = 1;
             // 
             // lblPrecio
             // 
@@ -86,7 +87,7 @@
             this.cmbColores.Location = new System.Drawing.Point(12, 55);
             this.cmbColores.Name = "cmbColores";
             this.cmbColores.Size = new System.Drawing.Size(190, 21);
-            this.cmbColores.TabIndex = 20;
+            this.cmbColores.TabIndex = 0;
             // 
             // frmAltaGorrito
             // 

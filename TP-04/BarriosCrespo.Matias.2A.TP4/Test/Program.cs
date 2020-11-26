@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using Entidades;
 using Stock;
 using Excepciones;
+using BaseDatos;
+using System.Data.Sql;
+using System.Data.SqlClient;
 
 namespace Test
 {
@@ -15,7 +18,15 @@ namespace Test
         {
             Colonia catalinas = new Colonia("Catalinas");
 
-            //Colonos
+            Colono c11 = new Colono();
+
+            SqlConnection connection = new SqlConnection(Properties.Settings.Default.conexionDB);
+            VincularDB nuevaConexion = new VincularDB(connection);
+
+            nuevaConexion.ProbarConexion();
+        
+
+
 
             Colono c1 = new Colono("Rene", "Perez", new DateTime(2008, 10, 06), 1111, EPeriodoInscripcion.Mes);
 
@@ -34,20 +45,18 @@ namespace Test
 
             //Profesores
 
-            Profesor p1 = new Profesor("Lautaro", "Martinez", new DateTime(1985, 1, 15), 3333, 25000f);
-            Profesor p2 = new Profesor("Mike", "Amigorena", new DateTime(1991, 11, 17), 4444, 25000f);
-            Profesor p3 = new Profesor("Toni", "Kroos", new DateTime(1998, 7, 29), 5555, 25000f);
+          
 
 
             //Productos
 
-            Gorrito g1 = new Gorrito(ConsoleColor.Yellow, 1);
-            Gorrito g2 = new Gorrito(ConsoleColor.Green, 1);
-            Gorrito g3 = new Gorrito(ConsoleColor.Red, 1);
+            Gorrito g1 = new Gorrito(EColores.Amarillo, 1);
+            Gorrito g2 = new Gorrito(EColores.Verde, 1);
+            Gorrito g3 = new Gorrito(EColores.Rojo, 1);
 
-            Antiparra a1 = new Antiparra(EMarca.Pirulito, ConsoleColor.Red, 500f);
-            Antiparra a2 = new Antiparra(EMarca.Adidas, ConsoleColor.Green, 100f);
-            Antiparra a3 = new Antiparra(EMarca.Speedo, ConsoleColor.Yellow, 150);
+            Antiparra a1 = new Antiparra(EMarca.Pirulito, EColores.Rojo, 500f);
+            Antiparra a2 = new Antiparra(EMarca.Adidas, EColores.Verde, 100f);
+            Antiparra a3 = new Antiparra(EMarca.Speedo, EColores.Verde, 150);
 
 
             //Agregar productos a la lista genérica
@@ -98,27 +107,22 @@ namespace Test
             {
                 Console.WriteLine(e.Message);
             }
-
-            try
-            {
-                catalinas += p1;
-                catalinas += p2;
-                catalinas += p3;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
+                       
 
             Console.WriteLine(catalinas.ProductosEnVenta);
             Console.WriteLine(catalinas.ToString());
 
 
             //Serializacion
-            catalinas.SerializacionXml();     
+            catalinas.SerializacionXml();
 
-           
 
+            c6.Periodo = EPeriodoInscripcion.Mes;
+            nuevaConexion.ModificarColono(c6);
+
+
+
+            
 
 
             Console.ReadKey();

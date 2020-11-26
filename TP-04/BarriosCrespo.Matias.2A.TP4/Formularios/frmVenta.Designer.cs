@@ -28,48 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnAltaAntiparra = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbBoxSeleccionProducto = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnAltaGorrito = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblCantidad = new System.Windows.Forms.Label();
+            this.cmbCantidadProducto = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
-            // btnAltaAntiparra
+            // cmbBoxSeleccionProducto
             // 
-            this.btnAltaAntiparra.Location = new System.Drawing.Point(9, 35);
-            this.btnAltaAntiparra.Name = "btnAltaAntiparra";
-            this.btnAltaAntiparra.Size = new System.Drawing.Size(116, 38);
-            this.btnAltaAntiparra.TabIndex = 0;
-            this.btnAltaAntiparra.Text = "+ Antiparra";
-            this.btnAltaAntiparra.UseVisualStyleBackColor = true;
-            this.btnAltaAntiparra.Click += new System.EventHandler(this.btnAltaAntiparra_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Cargar nuevo gorrito";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(26, 135);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(261, 21);
-            this.comboBox1.TabIndex = 2;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.cmbBoxSeleccionProducto.FormattingEnabled = true;
+            this.cmbBoxSeleccionProducto.Location = new System.Drawing.Point(12, 89);
+            this.cmbBoxSeleccionProducto.Name = "cmbBoxSeleccionProducto";
+            this.cmbBoxSeleccionProducto.Size = new System.Drawing.Size(295, 21);
+            this.cmbBoxSeleccionProducto.TabIndex = 0;
+            this.cmbBoxSeleccionProducto.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(94, 119);
+            this.label2.Location = new System.Drawing.Point(96, 47);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(116, 13);
             this.label2.TabIndex = 3;
@@ -77,71 +56,66 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(12, 247);
+            this.btnAceptar.Location = new System.Drawing.Point(15, 235);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(113, 32);
-            this.btnAceptar.TabIndex = 6;
+            this.btnAceptar.TabIndex = 2;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(188, 247);
+            this.btnCancelar.Location = new System.Drawing.Point(194, 235);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(113, 32);
-            this.btnCancelar.TabIndex = 7;
+            this.btnCancelar.TabIndex = 3;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // btnAltaGorrito
+            // lblCantidad
             // 
-            this.btnAltaGorrito.Location = new System.Drawing.Point(188, 35);
-            this.btnAltaGorrito.Name = "btnAltaGorrito";
-            this.btnAltaGorrito.Size = new System.Drawing.Size(116, 38);
-            this.btnAltaGorrito.TabIndex = 8;
-            this.btnAltaGorrito.Text = "+Gorrito";
-            this.btnAltaGorrito.UseVisualStyleBackColor = true;
-            this.btnAltaGorrito.Click += new System.EventHandler(this.btnAltaGorrito_Click);
+            this.lblCantidad.AutoSize = true;
+            this.lblCantidad.Location = new System.Drawing.Point(12, 149);
+            this.lblCantidad.Name = "lblCantidad";
+            this.lblCantidad.Size = new System.Drawing.Size(86, 13);
+            this.lblCantidad.TabIndex = 11;
+            this.lblCantidad.Text = "Ingrese cantidad";
             // 
-            // label3
+            // cmbCantidadProducto
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(189, 19);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(115, 13);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Cargar nueva antiparra";
+            this.cmbCantidadProducto.FormattingEnabled = true;
+            this.cmbCantidadProducto.Location = new System.Drawing.Point(15, 179);
+            this.cmbCantidadProducto.Name = "cmbCantidadProducto";
+            this.cmbCantidadProducto.Size = new System.Drawing.Size(83, 21);
+            this.cmbCantidadProducto.TabIndex = 1;
             // 
             // frmVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(329, 297);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.btnAltaGorrito);
+            this.ClientSize = new System.Drawing.Size(329, 299);
+            this.Controls.Add(this.cmbCantidadProducto);
+            this.Controls.Add(this.lblCantidad);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnAltaAntiparra);
+            this.Controls.Add(this.cmbBoxSeleccionProducto);
             this.Name = "frmVenta";
             this.Text = "frmVenta";
+            this.Load += new System.EventHandler(this.frmVenta_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnAltaAntiparra;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbBoxSeleccionProducto;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button btnAltaGorrito;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblCantidad;
+        private System.Windows.Forms.ComboBox cmbCantidadProducto;
     }
 }

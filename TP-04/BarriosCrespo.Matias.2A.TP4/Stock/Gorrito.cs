@@ -5,12 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
+
 namespace Stock
 {
 
     public class Gorrito : Producto
     {
-        private ConsoleColor color;
+        private EColores color;
+       
         /// <summary>
         /// Constructor por defecto.
         /// </summary>
@@ -23,7 +25,7 @@ namespace Stock
         /// </summary>
         /// <param name="color"></param>
         /// <param name="precio"></param>
-        public Gorrito(ConsoleColor color, double precio)
+        public Gorrito(EColores color, double precio)
         {
             this.color = color;
             this.precio = precio;
@@ -33,7 +35,7 @@ namespace Stock
         }
 
 
-        public ConsoleColor Color
+        public EColores Color
         {
             get { return this.color; }
         }
@@ -47,7 +49,7 @@ namespace Stock
         public static bool operator ==(Gorrito a, Gorrito b)
         {
             bool retorno = false;
-            if (a.color == b.color)
+            if (a.color == b.color && a.precio == b.precio && a.color == b.color)
                 retorno = true;
 
             return retorno;
@@ -70,8 +72,18 @@ namespace Stock
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendFormat(base.ToString());
-            sb.AppendFormat("Color {0} - Precio: {1}\n", this.color, this.precio);
+            sb.AppendFormat("{0} - ${1:N2} - Cantidad: {2}\n", this.color, this.precio, this.cantidad);
             return sb.ToString();
+        }
+
+        public override bool Equals(object obj)
+        {
+            bool retorno = false;
+            if (obj is Gorrito)
+                retorno = this == (Gorrito)obj;
+
+            return retorno;
+
         }
 
 

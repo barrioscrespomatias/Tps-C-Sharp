@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidades;
 using Stock;
+using Excepciones;
 
 namespace Formularios
 {
@@ -40,9 +41,10 @@ namespace Formularios
         private void frmAltaGorrito_Load(object sender, EventArgs e)
         {
             this.cmbColores.DropDownStyle = ComboBoxStyle.DropDownList;
-            this.cmbColores.Items.Add(ConsoleColor.Red);
-            this.cmbColores.Items.Add(ConsoleColor.Green);
-            this.cmbColores.Items.Add(ConsoleColor.Blue);
+            foreach(EColores color in Enum.GetValues(typeof(EColores)))
+            {
+                this.cmbColores.Items.Add(color.ToString());
+            }
 
         }
         /// <summary>
@@ -54,12 +56,26 @@ namespace Formularios
         private void bntAceptar_Click(object sender, EventArgs e)
         {
 
-            ConsoleColor color = (ConsoleColor)this.cmbColores.SelectedItem;
-            double precio = double.Parse(this.textBoxPrecio.Text);
+            EColores color = (EColores)this.cmbColores.SelectedIndex;
 
-            ingresante = new Gorrito(color, precio);
-            this.catalinas.ProductosEnVenta.Listado.Add(ingresante);
-            this.DialogResult = DialogResult.OK;
+            try
+            {
+                double precio = Validaciones.Validar.ValidarSoloNumeros(this.textBoxPrecio.Text);
+                ingresante = new Gorrito(color, precio);
+                this.catalinas.AumentarStock(this.catalinas, ingresante, 1);
+                this.DialogResult = DialogResult.OK;
+            }
+
+            catch(ValidacionIncorrectaException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
         }
     }
 }

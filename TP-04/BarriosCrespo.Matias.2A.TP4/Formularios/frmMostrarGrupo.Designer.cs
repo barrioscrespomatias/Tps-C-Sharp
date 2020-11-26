@@ -41,7 +41,7 @@
             this.cmbSeleccionGrupos.Location = new System.Drawing.Point(12, 47);
             this.cmbSeleccionGrupos.Name = "cmbSeleccionGrupos";
             this.cmbSeleccionGrupos.Size = new System.Drawing.Size(136, 21);
-            this.cmbSeleccionGrupos.TabIndex = 1;
+            this.cmbSeleccionGrupos.TabIndex = 0;
             // 
             // lblTitulo
             // 
@@ -58,14 +58,14 @@
             this.dataGridView1.Location = new System.Drawing.Point(12, 128);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(576, 230);
-            this.dataGridView1.TabIndex = 3;
+            this.dataGridView1.TabIndex = 2;
             // 
             // btnMostrar
             // 
             this.btnMostrar.Location = new System.Drawing.Point(12, 86);
             this.btnMostrar.Name = "btnMostrar";
             this.btnMostrar.Size = new System.Drawing.Size(75, 23);
-            this.btnMostrar.TabIndex = 4;
+            this.btnMostrar.TabIndex = 1;
             this.btnMostrar.Text = "Mostrar";
             this.btnMostrar.UseVisualStyleBackColor = true;
             this.btnMostrar.Click += new System.EventHandler(this.btnMostrar_Click);

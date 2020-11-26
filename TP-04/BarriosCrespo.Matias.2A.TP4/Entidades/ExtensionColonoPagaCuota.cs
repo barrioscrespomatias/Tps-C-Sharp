@@ -16,11 +16,11 @@ namespace Entidades
         {
             double retorno = 0;
 
-            if (colono.Deuda > 0)
+            if (colono.Saldo > 0)
             {
-                colonia.SaldoActual += colono.Deuda;
-                retorno = colono.Deuda;
-                colono.Deuda = 0;
+                colonia.SaldoActual += colono.Saldo;
+                retorno = colono.Saldo;
+                colono.Saldo = 0;
             }
 
             return retorno;
