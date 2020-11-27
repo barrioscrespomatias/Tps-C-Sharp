@@ -12,21 +12,23 @@ namespace Entidades
 {
     public class Colonia : IComprar
     {
-
         protected double saldoActual;
         protected string nombre;
         protected List<Grupo> listadoDeGrupos;
         protected ControlStock<Producto> stockProductos;
 
-
+        /// <summary>
+        /// Constructor por defecto
+        /// </summary>
         public Colonia()
         {
 
         }
 
         /// <summary>
-        /// Constructor por defecto
+        /// Constructor 3 parámetros
         /// </summary>
+        /// <param name="nombre"></param>
         public Colonia(string nombre) : this()
         {
             this.nombre = nombre;
@@ -35,6 +37,8 @@ namespace Entidades
 
         }
 
+        #region Propiedades
+
 
         public ControlStock<Producto> StockProductos
         {
@@ -42,18 +46,11 @@ namespace Entidades
             set { this.stockProductos = value; }
         }
 
-
-
         public List<Grupo> ListaDeGrupos
         {
             get { return this.listadoDeGrupos; }
             set { this.listadoDeGrupos = value; }
         }
-
-
-
-
-
 
         public double SaldoActual
         {
@@ -61,12 +58,12 @@ namespace Entidades
             set { this.saldoActual = value; }
         }
 
-
         public ControlStock<Producto> ProductosEnVenta
         {
             get { return this.stockProductos; }
             set { this.stockProductos = value; }
         }
+        #endregion
 
         #region sobrecargas == + -
         /// <summary>
@@ -98,8 +95,6 @@ namespace Entidades
         {
             return !(ca == co);
         }
-
-
 
         /// <summary>
         /// Igualdad entre Colonia y grupo. Inspecciona si el grupo se encuentra en la colonia (segun color)
@@ -191,13 +186,12 @@ namespace Entidades
                     Grupo nuevoGrupo = new Grupo(10, Colonia.GeneradorColores(), co.EdadGrupo);
                     nuevoGrupo += co;
                     colonia.listadoDeGrupos.Add(nuevoGrupo);
-
                 }
                 else
                 {
                     foreach (Grupo aux in colonia.listadoDeGrupos)
                     {
-                        //Si el grupo existente es de la edad del colono lo agrega
+                        //Si el grupo existente y es de la edad del colono lo agrega
                         //si la capacidad del grupo no ha sido pasada.
                         if (Colonia.RecorrerGruposEdad(colonia, co.EdadGrupo, out indice))
                         {
@@ -258,12 +252,12 @@ namespace Entidades
         /// <param name="colonia"></param>
         /// <param name="dni"></param>
         /// <returns></returns>
-        public static bool operator == (Colonia colonia, int dni)
+        public static bool operator ==(Colonia colonia, int dni)
         {
             bool retorno = false;
-            foreach(Grupo grupo in colonia.ListaDeGrupos)
+            foreach (Grupo grupo in colonia.ListaDeGrupos)
             {
-                foreach(Colono colono in grupo.ListadoColonos)
+                foreach (Colono colono in grupo.ListadoColonos)
                 {
                     if (colono.Dni == dni)
                     {
@@ -272,7 +266,7 @@ namespace Entidades
                     }
                 }
             }
-            return retorno;            
+            return retorno;
         }
         /// <summary>
         /// Sobrecarga != entre colonia y dni.
@@ -284,9 +278,6 @@ namespace Entidades
         {
             return !(colonia == dni);
         }
-
-
-
 
         #endregion
 
@@ -327,6 +318,39 @@ namespace Entidades
             Random rd = new Random();
             return (ConsoleColor)rd.Next(0, 12);
         }
+        /// <summary>
+        /// Efectua una venta. Modifica el stock del producto, el saldo a favor de la colonia,
+        /// el saldo deudor al colono y agrega el producto a su lista de comprados.
+        /// </summary>
+        /// <param name="colonia"></param>
+        /// <param name="p1"></param>
+        /// <param name="c1"></param>
+        /// <param name="cantidad"></param>
+        public void RealizaVenta(Colonia colonia, Producto p1, Colono c1, int cantidad)
+        {
+            if (colonia.stockProductos == p1)
+            {
+                Producto aux = p1;
+
+                this.saldoActual += aux.Precio * cantidad;
+                c1.Saldo += aux.precio * cantidad;
+                for (int i = 0; i < cantidad; i++)
+                {
+                    if (c1.ListaProductosComprados == null)
+                        c1.ListaProductosComprados = new List<Producto>();
+
+                    c1.ListaProductosComprados.Add(aux);
+                }
+                //Por último bajar stock
+                this.stockProductos.BajarCantidad(stockProductos, p1, cantidad);
+            }
+            else
+            {
+                Console.WriteLine("No se pudo realizar venta");
+            }
+        }
+
+
         #endregion
 
 
@@ -348,39 +372,11 @@ namespace Entidades
             return sb.ToString();
         }
         /// <summary>
-        /// Realiza venta de un producto.
+        /// Aumenta el stock según la cantidad pasada por parámetro.
         /// </summary>
         /// <param name="colonia"></param>
         /// <param name="p1"></param>
-        /// <param name="c1"></param>
-        public void RealizaVenta(Colonia colonia, Producto p1, Colono c1, int cantidad)
-        {
-            if (colonia.stockProductos == p1)
-            {
-                Producto aux = p1;
-
-                this.saldoActual += aux.Precio * cantidad;
-                c1.Saldo += aux.precio * cantidad;
-                for (int i = 0; i < cantidad; i++)
-                {
-                    if (c1.ListaProductosComprados == null)
-                        c1.ListaProductosComprados = new List<Producto>();
-
-                    c1.ListaProductosComprados.Add(aux);
-                }
-                
-
-                //Por último bajar stock
-                this.stockProductos.BajarCantidad(stockProductos, p1, cantidad);
-
-
-            }
-            else
-            {
-                Console.WriteLine("No se pudo realizar venta");
-            }
-        }
-
+        /// <param name="cantidad"></param>
         public void AumentarStock(Colonia colonia, Producto p1, int cantidad)
         {
             if (colonia.stockProductos == p1)
@@ -390,7 +386,12 @@ namespace Entidades
             else
                 colonia.stockProductos.Listado.Add(p1);
         }
-
+        /// <summary>
+        /// Busca si un entero coincide con el DNI de un colono.
+        /// </summary>
+        /// <param name="catalinas"></param>
+        /// <param name="dni"></param>
+        /// <returns></returns>
         public Colono BuscarColono(Colonia catalinas, int dni)
         {
             Colono auxiliar = new Colono();
@@ -457,7 +458,9 @@ namespace Entidades
             }
             return retorno;
         }
-
+        /// <summary>
+        /// Ruta de entrada/salida
+        /// </summary>
         public string Path
         {
             get
@@ -467,7 +470,6 @@ namespace Entidades
             }
 
         }
-
         /// <summary>
         /// Método deserealizador.
         /// </summary>
@@ -499,7 +501,7 @@ namespace Entidades
         }
 
 
-        
+
 
 
     }

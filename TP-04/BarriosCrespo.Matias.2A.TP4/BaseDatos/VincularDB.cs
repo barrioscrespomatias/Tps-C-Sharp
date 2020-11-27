@@ -95,7 +95,7 @@ namespace BaseDatos
                 }
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw new ErrorDeConexionException("Error en la conexion a la base de datos");
             }
@@ -140,8 +140,9 @@ namespace BaseDatos
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
                 retorno = false;
+                throw e;
+                
             }
             finally
             {
@@ -188,8 +189,9 @@ namespace BaseDatos
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
                 retorno = false;
+                throw e;
+               
             }
             finally
             {
@@ -229,8 +231,9 @@ namespace BaseDatos
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
                 retorno = false;
+                throw e;
+               
             }
             finally
             {

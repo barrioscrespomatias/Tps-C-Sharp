@@ -16,8 +16,6 @@ namespace Entidades
     /// </summary>
     public interface IComprar
     {
-        void RealizaVenta(Colonia colonia, Producto p1, Colono c1,int cantidad);
-        
-
+        void RealizaVenta(Colonia colonia, Producto p1, Colono c1, int cantidad);
     }
 }

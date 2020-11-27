@@ -22,55 +22,6 @@ namespace Entidades
         protected double estadoDeuda;
         protected List<Producto> productosComprados;
 
-
-        public List<Producto> ListaProductosComprados
-        {
-            get { return this.productosComprados; }
-            set { this.productosComprados = value; }
-
-        }
-
-
-        public EPeriodoInscripcion Periodo
-        {
-            get { return this.periodo; }
-            set { this.periodo = value; }
-        }
-
-        public EMesIncripcion CargarMes
-        {
-            get { return this.mes; }
-            set { this.mes = value; }
-        }
-
-
-        public int Edad
-        {
-            get { return this.edad; }
-            set { this.edad = value; }
-        }
-
-        public EEdad EdadGrupo
-        {
-            get { return this.grupo; }
-            set { this.grupo = value;}
-
-        }
-
-        public double Saldo
-        {
-            get { return this.estadoDeuda; }
-            set { this.estadoDeuda = value; }
-
-        }
-
-        public bool SinDeudas
-        {
-            get { return this.sinDeudas; }
-            set { this.sinDeudas = value; }
-        }
-
-
         /// <summary>
         /// Colono por defecto para serializar.
         /// </summary>
@@ -123,6 +74,57 @@ namespace Entidades
             this.productosComprados = new List<Producto>();
         }
 
+        #region Propiedades
+
+        
+        public List<Producto> ListaProductosComprados
+        {
+            get { return this.productosComprados; }
+            set { this.productosComprados = value; }
+
+        }
+
+
+        public EPeriodoInscripcion Periodo
+        {
+            get { return this.periodo; }
+            set { this.periodo = value; }
+        }
+
+        public EMesIncripcion CargarMes
+        {
+            get { return this.mes; }
+            set { this.mes = value; }
+        }
+
+
+        public int Edad
+        {
+            get { return this.edad; }
+            set { this.edad = value; }
+        }
+
+        public EEdad EdadGrupo
+        {
+            get { return this.grupo; }
+            set { this.grupo = value;}
+
+        }
+
+        public double Saldo
+        {
+            get { return this.estadoDeuda; }
+            set { this.estadoDeuda = value; }
+
+        }
+
+        public bool SinDeudas
+        {
+            get { return this.sinDeudas; }
+            set { this.sinDeudas = value; }
+        }
+
+        #endregion
 
         /// <summary>
         /// Calcula la deuda que tiene el colono según el periodo de inscripcion
@@ -169,7 +171,7 @@ namespace Entidades
 
 
         /// <summary>
-        /// 
+        /// Hace pública la infromacion del colono.
         /// </summary>
         /// <returns></returns>
         public override string ToString()
@@ -188,7 +190,11 @@ namespace Entidades
             sb.AppendFormat("Total por ventas: ${0}\n", total);
             return sb.ToString();
         }
-
+        /// <summary>
+        /// Verifica que un colono ingresante sea válido. Teniendo en cuenta sus atributos.
+        /// </summary>
+        /// <param name="colono"></param>
+        /// <returns></returns>
         public static bool EsValido(Colono colono)
         {
             bool retorno = false;
@@ -205,9 +211,5 @@ namespace Entidades
             }
             return retorno;
         }
-
-
-
-
     }
 }

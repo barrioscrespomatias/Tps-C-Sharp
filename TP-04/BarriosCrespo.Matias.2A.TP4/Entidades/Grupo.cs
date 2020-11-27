@@ -9,53 +9,34 @@ namespace Entidades
 {
     public class Grupo
     {
-        public enum ETurnoPileta
-        {
-            Temprano,
-            MediaMañana,
-            Mediodía,
-            DespuesDeComer,
-            Tardecita,
-            AntesDeLaMerienda
-        }
-
 
         protected ConsoleColor colorID;
         protected EEdad eDadDelGrupo;
         protected List<Colono> listaDeColonos;
         protected int capacidad;
 
-        public Grupo()
-        {
-
-        }
-
         /// <summary>
         /// Constructor por defecto
         /// </summary>
-        public Grupo(int capacidad, ConsoleColor color, EEdad edadGrupo)
+        public Grupo()
+        {
+            this.listaDeColonos = new List<Colono>();
+        }
+
+        /// <summary>
+        /// Constructor 3 parámetros
+        /// </summary>
+        /// <param name="capacidad"></param>
+        /// <param name="color"></param>
+        /// <param name="edadGrupo"></param>
+        public Grupo(int capacidad, ConsoleColor color, EEdad edadGrupo) : this()
         {
             this.colorID = color;
             this.capacidad = capacidad;
             this.eDadDelGrupo = edadGrupo;
-            this.listaDeColonos = new List<Colono>();
-
-
         }
-        /// <summary>
-        /// Constructor 6 parámetros.
-        /// </summary>
-        /// <param name="nombreColor"></param>
-        /// <param name="profesor"></param>
-        /// <param name="turnoPileta"></param>
-        /// <param name="capacidad"></param>
-        /// <param name="edadGrupo"></param>
-        public Grupo(ConsoleColor nombreColor,int capacidad, EEdad edadGrupo)
-            : this(capacidad, nombreColor, edadGrupo)
-        {
-         
-            
-        }
+
+        #region Propiedades
 
 
 
@@ -69,19 +50,19 @@ namespace Entidades
             get { return this.colorID; }
         }
 
-       
+
         public List<Colono> ListadoColonos
         {
             get { return this.listaDeColonos; }
         }
 
-       
 
         public EEdad EdadDelGrupo
         {
             get { return this.eDadDelGrupo; }
         }
 
+        #endregion
 
 
         #region sobrecargas de igualdad
@@ -113,9 +94,6 @@ namespace Entidades
             return !(g1 == g2);
 
         }
-                   
-
-       
 
         /// <summary>
         /// Sobrecarga  == entre el grupo y un colono.
