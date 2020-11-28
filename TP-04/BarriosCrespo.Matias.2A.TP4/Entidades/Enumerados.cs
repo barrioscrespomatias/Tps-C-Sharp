@@ -4,7 +4,7 @@ public enum EEdad
     Peques,
     Medianos,
     Grandes,
-    DemasiadoGrande
+    EdadIncorrecta
 }
 
 public enum EPeriodoInscripcion

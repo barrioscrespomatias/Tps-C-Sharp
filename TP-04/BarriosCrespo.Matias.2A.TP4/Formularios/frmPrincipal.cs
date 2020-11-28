@@ -19,137 +19,98 @@ namespace Formularios
 {
     public partial class frmPrincipal : Form
     {
-        
+
+        public Colonia catalinas = new Colonia("Catalinas");
         frmMostrarGrupo mostrarGrupo;
         Thread hiloInicial;
-
-        //atributo principal de la colonia.
-        public Colonia catalinas = new Colonia("Catalinas");
-        frmBuscarColono buscar;
 
         public SqlConnection conexion = new SqlConnection(Properties.Settings.Default.conexionDB);
         public VincularDB nuevoVinculo;
 
-
-
         /// <summary>
-        /// Constructor sin parámetros. Inicializa hilo de color del formulario principal
+        /// Constructor sin parámetros. 
         /// </summary>
         public frmPrincipal()
         {
             InitializeComponent();
-            hiloInicial = new Thread(new ThreadStart(this.Comenzando));
-            hiloInicial.Start();
         }
         /// <summary>
-        /// Carga los grupos en la colonia, inicializa los productos en venta, carga los profesores
-        /// y productos hardcodeados. Muestra medante messageBox los docentes actuales.
+        /// Inicializa hilo cambia color del formulario principal
+        /// Inicializa un nuevo vínculo con la bae de datos, pasándole como parámetro un SqlConnection
+        /// Obtiene los colonos de la base de datos, cargándolos en la colonia de la clase.
+        /// Hardcodea una lista de productos.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
+            hiloInicial = new Thread(new ThreadStart(this.Comenzando));
+            hiloInicial.Start();
             this.nuevoVinculo = new VincularDB(this.conexion);
             this.catalinas = this.nuevoVinculo.ObtenerColonos(this.catalinas);
-            this.catalinas.ProductosEnVenta = new ControlStock<Producto>();
             this.HardcodeoProductos();
-        
-           
         }
         /// <summary>
-        /// Boton que levanta el formulario frmMostrarColonos.
+        /// Inicializa un frmBuscarColono pasándole por parámetro una colonia.
+        /// Si el DialogResult del formulario devuelve OK (si existe el colono) obtiene una instancia
+        /// de el colono que se buscó y lo muestra mediante el formulario frmDatosPersonales.        
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnBuscarColono_Click(object sender, EventArgs e)
-        {       
-
+        {
             frmBuscarColono buscar = new frmBuscarColono(this.catalinas);
             buscar.Owner = this;
             buscar.StartPosition = FormStartPosition.CenterParent;
-
             if (buscar.ShowDialog() == DialogResult.OK)
-                {
+            {
                 int dniABuscar = buscar.dni;
-                Colono auxiliar = this.catalinas.BuscarColono(this.catalinas, dniABuscar);
-                frmDatosPersonales mostrarDatos = new frmDatosPersonales(auxiliar,this.catalinas);
-                if (mostrarDatos.ShowDialog() == DialogResult.OK)
-                {
-                    ///Producto vacío en el que se cargarán los datos del producto seleccionado.
-                    Producto p = new Producto();
-
-                    frmVenta nuevaVenta = new frmVenta(auxiliar, this.catalinas);
-                    nuevaVenta.StartPosition = FormStartPosition.CenterScreen;
-                    if (nuevaVenta.ShowDialog() == DialogResult.OK)
-                    {
-                        //Selecciona la cantidad del combo.
-                        int cantidad = nuevaVenta.frmVentaCantidad;
-                        this.catalinas.RealizaVenta(this.catalinas, nuevaVenta.producto, nuevaVenta.colono, cantidad);
-                        nuevaVenta.frmComboDeSeleccion.Items.Clear();
-                        foreach (Producto aux in catalinas.ProductosEnVenta.Listado)
-                        {
-                            nuevaVenta.frmComboDeSeleccion.Items.Add(aux);
-                        }
-                        this.DialogResult = DialogResult.OK;
-                    }
-                }
-
+                Colono auxiliar = this.catalinas.ObtenerDatos(this.catalinas, dniABuscar);
+                frmDatosPersonales mostrarDatos = new frmDatosPersonales(auxiliar, this.catalinas);
+                mostrarDatos.Show(this);
             }
-
-
         }
         /// <summary>
-        /// Boton que levanta el formulario frmMostrarGrupos (filtrados por edad...)
+        /// Inicializa una instancia de frmMostrarGrupo a la que le pasa una colonia.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnMostrarGrupos_Click(object sender, EventArgs e)
         {
-
             this.mostrarGrupo = new frmMostrarGrupo(this.catalinas);
             this.mostrarGrupo.Owner = this;
             this.mostrarGrupo.StartPosition = FormStartPosition.CenterParent;
             this.mostrarGrupo.Show();
         }
         /// <summary>
-        /// Boton que levanta el formulario del alta del alumno.
+        /// Inicializa una nueva instancia de frmAltaColono, pasándole por parámetro una colonia.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnAltaAlumno_Click(object sender, EventArgs e)
         {
-            
             frmAltaColono altaColono = new frmAltaColono(this.catalinas);
             altaColono.StartPosition = FormStartPosition.CenterScreen;
-
-            if (altaColono.ShowDialog() == DialogResult.OK)
-            {
-                //Mensaje de todo ok ya lo da el alta.
-            }
+            altaColono.Show();
         }
 
-      
+
         /// <summary>
-        /// Boton que muestra los datos de la colonia. Cantidad de dinero saliente por profesores,
-        /// cantidad de dinero entrante por cuotas y venta de productos, cantidad de saldo actual.
+        /// Muestra el saldo de la colonia: Ingresos por pago de cuotas y venta de productos.        
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void bntControlador_Click(object sender, EventArgs e)
-        {          
+        {
             double saldo = 0;
-            saldo = this.catalinas.SaldoActual;                  
+            saldo = this.catalinas.SaldoActual;
             MessageBox.Show("El saldo a favor es: $ " + saldo);
-        }      
-
-      
-
+        }
         /// <summary>
-        /// Hardocodeo de profesores y productos.
+        /// Hardocodeo productos.
         /// </summary>
         private void HardcodeoProductos()
-        {            
-
+        {
             Gorrito g1 = new Gorrito(EColores.Amarillo, 200f);
             Gorrito g2 = new Gorrito(EColores.Amarillo, 200f);
 
@@ -162,23 +123,21 @@ namespace Formularios
             this.catalinas.ProductosEnVenta += a1;
             this.catalinas.ProductosEnVenta += a2;
             this.catalinas.ProductosEnVenta += a3;
-
-
         }
         /// <summary>
-        /// Metodo manejador del evento de hilos. Lindos los colores (?
+        /// Metodo manejador del evento de hilos que cambia los colores del formulario.
         /// </summary>
         private void Comenzando()
         {
             Thread.Sleep(1000);
             this.BackColor = Color.Beige;
-
             for (int i = 0; i < 2; i++)
             {
                 this.btnAltaAlumno.BackColor = Color.BurlyWood;
                 Thread.Sleep(1000);
                 this.btnAltaAlumno.BackColor = (Color)default;
                 Thread.Sleep(100);
+
                 this.btnBuscarColono.BackColor = Color.BurlyWood;
                 Thread.Sleep(1000);
                 this.btnBuscarColono.BackColor = (Color)default;
@@ -188,7 +147,11 @@ namespace Formularios
                 Thread.Sleep(1000);
                 this.btnMostrarGrupos.BackColor = (Color)default;
                 Thread.Sleep(100);
-               
+
+                this.btnAbmProductos.BackColor = Color.BurlyWood;
+                Thread.Sleep(1000);
+                this.btnAbmProductos.BackColor = (Color)default;
+                Thread.Sleep(100);
 
                 this.bntControlador.BackColor = Color.BurlyWood;
                 Thread.Sleep(1000);
@@ -198,54 +161,7 @@ namespace Formularios
             this.BackColor = (Color)default;
             hiloInicial.Abort();
 
-
-
         }
 
-        //private void btnListadoDeProductosClick(object sender, EventArgs e)
-        //{
-            //frmBuscarColono buscar = new frmBuscarColono();
-            //buscar.StartPosition = FormStartPosition.CenterScreen;
-
-            //if (buscar.ShowDialog() == DialogResult.OK)
-            //{
-            //    int dniABuscar = buscar.dni;
-            //    Colono auxiliar = this.catalinas.BuscarColono(this.catalinas, dniABuscar);
-            //    frmDatosPersonales mostrarDatos = new frmDatosPersonales(auxiliar,this.catalinas);
-            //    if (mostrarDatos.ShowDialog() == DialogResult.OK)
-            //    {
-            //        ///Producto vacío en el que se cargarán los datos del producto seleccionado.
-            //        Producto p = new Producto();
-
-            //        frmVenta nuevaVenta = new frmVenta(auxiliar, this.catalinas, p);
-            //        nuevaVenta.StartPosition = FormStartPosition.CenterScreen;
-            //        if (nuevaVenta.ShowDialog() == DialogResult.OK)
-            //        {
-            //            //Selecciona la cantidad del combo.
-            //            int cantidad = nuevaVenta.frmVentaCantidad;
-            //            this.catalinas.RealizaVenta(this.catalinas, nuevaVenta.producto, nuevaVenta.colono, cantidad);
-            //            nuevaVenta.frmComboDeSeleccion.Items.Clear();
-            //            foreach (Producto aux in catalinas.ProductosEnVenta.Listado)
-            //            {
-            //                nuevaVenta.frmComboDeSeleccion.Items.Add(aux);
-            //            }
-            //            this.DialogResult = DialogResult.OK;
-            //        }
-            //    }
-            //}           
-
-        //}
-
-        private void btnListadoDeProductos_Click(object sender, EventArgs e)
-        {
-            frmAltaProducto nuevoProducto = new frmAltaProducto(this.catalinas);
-            nuevoProducto.StartPosition = FormStartPosition.CenterScreen;
-
-            if(nuevoProducto.ShowDialog() == DialogResult.OK)
-            {
-
-            }
-
-        }
     }
 }

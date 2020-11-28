@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidades;
 using Stock;
+using Excepciones;
+using System.Data.SqlClient;
+using BaseDatos;
 
 namespace Formularios
 {
@@ -16,7 +19,11 @@ namespace Formularios
     {
         public Colono colono;
         public Colonia catalinas;
-        public Producto producto;    
+        public Producto producto;
+
+        private SqlConnection conexion;
+        private VincularDB nuevaConexion;
+
 
         /// <summary>
         /// Constructor por defecto.
@@ -25,89 +32,87 @@ namespace Formularios
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Constructor con un parámetro que recibe una colonia.
+        /// </summary>
+        /// <param name="catalinas"></param>
         public frmVenta(Colonia catalinas) : this()
         {
             this.catalinas = catalinas;
         }
-
         /// <summary>
-        /// constturctor con 3 parámetros.
+        /// Constructor con 3 parámetros.
+        /// Carga en el comboBox los productos disponibles que tiene la colonia para vender.
         /// </summary>
         /// <param name="colono"></param>
         /// <param name="catalinas"></param>
         /// <param name="producto"></param>
-        public frmVenta(Colono colono, Colonia catalinas): this()
+        public frmVenta(Colono colono, Colonia catalinas) : this()
         {
             this.colono = colono;
-            this.catalinas = catalinas;            
-
+            this.catalinas = catalinas;
             foreach (Producto aux in catalinas.ProductosEnVenta.Listado)
             {
                 this.cmbBoxSeleccionProducto.Items.Add(aux);
             }
-
         }
-
-
-
-        public int frmVentaCantidad
-        {
-            get { return int.Parse(this.cmbCantidadProducto.Text); }
-        }
-
-        public ComboBox frmComboDeSeleccion
-        {
-            get { return this.cmbBoxSeleccionProducto; }
-        }
-
-
-
-
-
-
         /// <summary>
-        /// Acepta el formulario y realiza una venta. Elimina los datos del combobox.
+        /// Bloquea la entrada de datos a los comboBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void frmVenta_Load(object sender, EventArgs e)
+        {
+            this.cmbBoxSeleccionProducto.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.cmbCantidadProducto.DropDownStyle = ComboBoxStyle.DropDownList;
+            if (this.catalinas.ProductosEnVenta.Listado.Count > 0)
+                this.cmbBoxSeleccionProducto.SelectedIndex = 0;
+
+        }
+        /// <summary>
+        /// Llama al método realizarVenta que se encarga de manipular el stock, la cantidad de
+        /// productos disponibles para vender, modificar los valores del saldo de la colonia y
+        /// la deuda del colono.
+        /// Al realizar la venta actualiza los posibles productos a vender que se muestran en el comboBox.
+        /// Establece  el DialogResult en OK.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnAceptar_Click(object sender, EventArgs e)
-        {           
-            int cantidad = int.Parse(this.cmbCantidadProducto.SelectedItem.ToString());
-            this.catalinas.RealizaVenta(this.catalinas, this.producto, this.colono, cantidad);
-            
-            //Actualizar valores
-            this.cmbBoxSeleccionProducto.Items.Clear();            
-            foreach (Producto aux in catalinas.ProductosEnVenta.Listado)
+        {
+            this.conexion = new SqlConnection(Properties.Settings.Default.conexionDB);
+            this.nuevaConexion = new VincularDB(conexion);
+
+            if (this.catalinas.ProductosEnVenta.Listado.Count > 0)
             {
-                this.cmbBoxSeleccionProducto.Items.Add(aux);
+                int cantidad = int.Parse(this.cmbCantidadProducto.SelectedItem.ToString());
+                this.catalinas.RealizaVenta(this.catalinas, this.producto, this.colono, cantidad);
+                
+                //modifica el colono en la base de datos(saldo).
+                this.nuevaConexion.ModificarColono(this.colono);
+
+                //Actualizar valores
+                this.cmbBoxSeleccionProducto.Items.Clear();
+                foreach (Producto aux in catalinas.ProductosEnVenta.Listado)
+                {
+                    this.cmbBoxSeleccionProducto.Items.Add(aux);
+                }
+                MessageBox.Show("Venta realizada con exito!");
+                MessageBox.Show(colono.ToString());
+                this.DialogResult = DialogResult.OK;
             }
-
-            ///DEBERIA ACTUALIZAR LOS VALORES DE LA COLONIA           
-            MessageBox.Show("Venta realizada con exito!");
-            MessageBox.Show(colono.ToString());
-            this.DialogResult = DialogResult.OK;
-
-
-            ////Selecciona la cantidad del combo.
-            //int cantidad = int.Parse(this.cmbCantidadProducto.SelectedItem.ToString());
-            //this.catalinas.RealizaVenta(this.catalinas, producto, colono, cantidad);
-            //this.cmbBoxSeleccionProducto.Items.Clear();
-            //foreach (Producto aux in catalinas.ProductosEnVenta.Listado)
-            //{
-            //    this.cmbBoxSeleccionProducto.Items.Add(aux);
-            //}
-
-            /////DEBERIA ACTUALIZAR LOS VALORES DE LA COLONIA
-            //mostrarColonos = new frmMostrarColonos(this.catalinas);
-            //MessageBox.Show("Venta realizada con exito!");
-            //MessageBox.Show(colono.ToString());
-
-            //this.DialogResult = DialogResult.OK;
+            else
+                MessageBox.Show("No hay productos para vender!");
         }
+
+
+
 
         /// <summary>
         /// Genera un producto con los datos del combobox.
+        /// Actualiza los datos del comboBox que permite seleccionar el producto a vender.
+        /// Actualiza los datos del comboBox que permite seleccionar la cantidad disponible del producto
+        /// a vender.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -116,7 +121,7 @@ namespace Formularios
             this.cmbCantidadProducto.Items.Clear();
             //Cargo el producto
             this.producto = (Producto)cmbBoxSeleccionProducto.SelectedItem;
-
+            //Carga el combo de seleccion de la cantidad disponible del producto que se ha seleccionado.
             for (int i = 1; i <= producto.Cantidad; i++)
             {
                 this.cmbCantidadProducto.Items.Add(i);
@@ -125,48 +130,8 @@ namespace Formularios
 
         }
         /// <summary>
-        /// Genera un alta de una nueva antiparra. muestra su formulario y captura los datos.
+        /// Actualiza los productos disponibles para la venta.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnAltaAntiparra_Click(object sender, EventArgs e)
-        {
-            frmAltaAntiparra nuevaAntiparra = new frmAltaAntiparra(this.catalinas);
-            nuevaAntiparra.StartPosition = FormStartPosition.CenterScreen;
-            if (nuevaAntiparra.ShowDialog() == DialogResult.OK)
-            {
-                //Agregar el producto al stockDeProductos de la colonia
-
-                ///Recorrer y cargar stockDeProductos de la colonia
-                this.ActualizarComboBoxProductosEnVenta();
-
-
-
-                //this.comboBox1.Items.Add(nuevaAntiparra.ingresante);
-                MessageBox.Show("Alta exitosa");
-            }
-        }
-        /// Genera un alta de una nuevo gorrito. muestra su formulario y captura los datos.
-        private void btnAltaGorrito_Click(object sender, EventArgs e)
-        {
-            frmAltaGorrito nuevoGorrito = new frmAltaGorrito(this.catalinas);
-            nuevoGorrito.StartPosition = FormStartPosition.CenterScreen;
-            if (nuevoGorrito.ShowDialog() == DialogResult.OK)
-            {
-                this.cmbBoxSeleccionProducto.Items.Add(nuevoGorrito.ingresante);
-                MessageBox.Show("Alta exitosa");
-            }
-
-        }
-
-        private void frmVenta_Load(object sender, EventArgs e)
-        {
-            this.cmbBoxSeleccionProducto.DropDownStyle = ComboBoxStyle.DropDownList;
-            this.cmbCantidadProducto.DropDownStyle = ComboBoxStyle.DropDownList;
-
-        }
-
-
         private void ActualizarComboBoxProductosEnVenta()
         {
             this.cmbBoxSeleccionProducto.Items.Clear();
@@ -175,7 +140,11 @@ namespace Formularios
                 this.cmbBoxSeleccionProducto.Items.Add(aux);
             }
         }
-
+        /// <summary>
+        /// Establece en DialogResult en Cancel.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;

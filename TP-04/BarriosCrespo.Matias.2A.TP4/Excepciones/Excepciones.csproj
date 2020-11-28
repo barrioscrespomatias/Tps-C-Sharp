@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="CantidadInexistenteException.cs" />
     <Compile Include="ColonoRepetidoException.cs" />
+    <Compile Include="ComboBoxNoSeleccionadoException.cs" />
     <Compile Include="ErrorDeConexionException.cs" />
     <Compile Include="GrupoRepetidoException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

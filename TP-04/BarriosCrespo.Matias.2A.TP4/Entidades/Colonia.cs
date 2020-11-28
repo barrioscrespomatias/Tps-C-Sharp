@@ -22,7 +22,8 @@ namespace Entidades
         /// </summary>
         public Colonia()
         {
-
+            this.listadoDeGrupos = new List<Grupo>();
+            this.stockProductos = new ControlStock<Producto>();
         }
 
         /// <summary>
@@ -32,9 +33,6 @@ namespace Entidades
         public Colonia(string nombre) : this()
         {
             this.nombre = nombre;
-            this.listadoDeGrupos = new List<Grupo>();
-            this.stockProductos = new ControlStock<Producto>();
-
         }
 
         #region Propiedades
@@ -326,29 +324,66 @@ namespace Entidades
         /// <param name="p1"></param>
         /// <param name="c1"></param>
         /// <param name="cantidad"></param>
-        public void RealizaVenta(Colonia colonia, Producto p1, Colono c1, int cantidad)
+        public void RealizaVenta(Colonia colonia, Producto producto, Colono colono, int cantidad)
         {
-            if (colonia.stockProductos == p1)
+            
+            if (colonia.stockProductos == producto)
             {
-                Producto aux = p1;
-
-                this.saldoActual += aux.Precio * cantidad;
-                c1.Saldo += aux.precio * cantidad;
+                //this.saldoActual += producto.Precio* cantidad;
+                colono.Saldo += producto.Precio * cantidad;
                 for (int i = 0; i < cantidad; i++)
                 {
-                    if (c1.ListaProductosComprados == null)
-                        c1.ListaProductosComprados = new List<Producto>();
-
-                    c1.ListaProductosComprados.Add(aux);
+                    colono.ListaProductosComprados.Add(producto);
                 }
                 //Por último bajar stock
-                this.stockProductos.BajarCantidad(stockProductos, p1, cantidad);
+                this.stockProductos.BajarCantidad(stockProductos, producto, cantidad);
             }
             else
             {
                 Console.WriteLine("No se pudo realizar venta");
             }
         }
+
+        /// <summary>
+        /// Aumenta el stock según la cantidad pasada por parámetro.
+        /// </summary>
+        /// <param name="colonia"></param>
+        /// <param name="p1"></param>
+        /// <param name="cantidad"></param>
+        public void AumentarStock(Colonia colonia, Producto p1, int cantidad)
+        {
+            if (colonia.stockProductos == p1)
+            {
+                colonia.stockProductos += p1;
+            }
+            else
+                colonia.stockProductos.Listado.Add(p1);
+        }
+        /// <summary>
+        /// Busca si un entero coincide con el DNI de un colono.
+        /// </summary>
+        /// <param name="catalinas"></param>
+        /// <param name="dni"></param>
+        /// <returns></returns>
+        public Colono ObtenerDatos(Colonia catalinas, int dni)
+        {
+            Colono auxiliar = new Colono();
+
+            foreach (Grupo grupo in catalinas.listadoDeGrupos)
+            {
+                foreach (Colono colono in grupo.ListadoColonos)
+                {
+                    if (colono.Dni == dni)
+                    {
+                        auxiliar = colono;
+                        break;
+                    }
+
+                }
+            }
+            return auxiliar;
+        }
+
 
 
         #endregion
@@ -371,66 +406,7 @@ namespace Entidades
 
             return sb.ToString();
         }
-        /// <summary>
-        /// Aumenta el stock según la cantidad pasada por parámetro.
-        /// </summary>
-        /// <param name="colonia"></param>
-        /// <param name="p1"></param>
-        /// <param name="cantidad"></param>
-        public void AumentarStock(Colonia colonia, Producto p1, int cantidad)
-        {
-            if (colonia.stockProductos == p1)
-            {
-                colonia.stockProductos += p1;
-            }
-            else
-                colonia.stockProductos.Listado.Add(p1);
-        }
-        /// <summary>
-        /// Busca si un entero coincide con el DNI de un colono.
-        /// </summary>
-        /// <param name="catalinas"></param>
-        /// <param name="dni"></param>
-        /// <returns></returns>
-        public Colono BuscarColono(Colonia catalinas, int dni)
-        {
-            Colono auxiliar = new Colono();
 
-            foreach (Grupo grupo in catalinas.listadoDeGrupos)
-            {
-                foreach (Colono colono in grupo.ListadoColonos)
-                {
-                    if (colono.Dni == dni)
-                    {
-                        auxiliar = colono;
-                        break;
-                    }
-
-                }
-            }
-            return auxiliar;
-        }
-
-
-        /// <summary>
-        /// Método para obtener los datos desde un dataRow y retornar un colono.
-        /// </summary>
-        /// <param name="fila"></param>
-        /// <returns></returns>
-        public Colono ObtenerDatosDatRow(DataRow fila)
-        {
-            int id = int.Parse(fila["id"].ToString());
-            string nombre = fila["nombre"].ToString();
-            string apellido = fila["apellido"].ToString();
-            int dni = int.Parse(fila["dni"].ToString());
-            DateTime fechaNacimiento = Convert.ToDateTime(fila["fechaNacimiento"].ToString());
-            //EPeriodoInscripcion periodo = EnumConverter(typeof(EPeriodoInscripcion),fila["periodo"].ToString());
-            EPeriodoInscripcion periodo = EPeriodoInscripcion.Mes;
-            double saldo = double.Parse(fila["saldo"].ToString());
-            Colono c = new Colono(nombre, apellido, fechaNacimiento, dni, periodo, saldo);
-
-            return c;
-        }
         /// <summary>
         /// Método serializador.
         /// </summary>

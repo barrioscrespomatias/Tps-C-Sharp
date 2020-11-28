@@ -33,7 +33,7 @@
             this.bntControlador = new System.Windows.Forms.Button();
             this.btnMostrarGrupos = new System.Windows.Forms.Button();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.btnListadoDeProductos = new System.Windows.Forms.Button();
+            this.btnAbmProductos = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnBuscarColono
@@ -86,22 +86,21 @@
             this.lblTitulo.TabIndex = 6;
             this.lblTitulo.Text = "COLONIA CATALINAS 2021";
             // 
-            // btnListadoDeProductos
+            // btnAbmProductos
             // 
-            this.btnListadoDeProductos.Location = new System.Drawing.Point(12, 261);
-            this.btnListadoDeProductos.Name = "btnListadoDeProductos";
-            this.btnListadoDeProductos.Size = new System.Drawing.Size(189, 92);
-            this.btnListadoDeProductos.TabIndex = 3;
-            this.btnListadoDeProductos.Text = "ABM PRODUCTOS";
-            this.btnListadoDeProductos.UseVisualStyleBackColor = true;
-            this.btnListadoDeProductos.Click += new System.EventHandler(this.btnListadoDeProductos_Click);
+            this.btnAbmProductos.Location = new System.Drawing.Point(12, 261);
+            this.btnAbmProductos.Name = "btnAbmProductos";
+            this.btnAbmProductos.Size = new System.Drawing.Size(189, 92);
+            this.btnAbmProductos.TabIndex = 3;
+            this.btnAbmProductos.Text = "ABM PRODUCTOS";
+            this.btnAbmProductos.UseVisualStyleBackColor = true;
             // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnListadoDeProductos);
+            this.Controls.Add(this.btnAbmProductos);
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.bntControlador);
             this.Controls.Add(this.btnMostrarGrupos);
@@ -122,7 +121,7 @@
         private System.Windows.Forms.Button bntControlador;
         private System.Windows.Forms.Button btnMostrarGrupos;
         private System.Windows.Forms.Label lblTitulo;
-        private System.Windows.Forms.Button btnListadoDeProductos;
+        private System.Windows.Forms.Button btnAbmProductos;
     }
 }
 

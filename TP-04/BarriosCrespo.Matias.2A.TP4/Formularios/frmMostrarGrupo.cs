@@ -24,20 +24,20 @@ namespace Formularios
         public frmMostrarGrupo()
         {
             InitializeComponent();
-            this.cmbSeleccionGrupos.DropDownStyle = ComboBoxStyle.DropDownList;
-
         }
         /// <summary>
-        /// constructor con un parámetro. recibe una colonia.
+        /// Constructor con un parámetro que recibe una colonia con todos sus datos.
         /// </summary>
-        /// <param name="c1"></param>
-        public frmMostrarGrupo(Colonia c1) : this()
+        /// <param name="colonia"></param>
+        public frmMostrarGrupo(Colonia colonia) : this()
         {
-            this.catalinas = c1;
+            this.catalinas = colonia;
         }
 
         /// <summary>
-        /// Carga los colonos en el visor segun su edad. De esta manera logra mostrar filtrándo por grupos.
+        /// Crea filas en el dataTable cargando en cada una la informacion de un colono que pertenezca
+        /// al grupo seleccionado en el comboBox.
+        /// Carga el dataGridView con los valores del dataTable.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -45,37 +45,32 @@ namespace Formularios
         {
             this.dataGridView1.Columns.Clear();
             this.ConfigurarDataTable();
-
-
             foreach (Grupo aux in this.catalinas.ListaDeGrupos)
             {
                 if (aux.EdadDelGrupo.ToString() == this.cmbSeleccionGrupos.SelectedItem.ToString())
                 {
-                    foreach (Colono c in aux.ListadoColonos)
+                    foreach (Colono colono in aux.ListadoColonos)
                     {
                         DataRow fila = this.dt.NewRow();
-                        fila["nombre"] = c.Nombre;
-                        fila["apellido"] = c.Apellido;
-                        fila["dni"] = c.Dni;
-                        fila["fechaNacimiento"] = c.FechaNacimiento;
-                        fila["periodo"] = c.Periodo;
-                        fila["saldo"] = c.Saldo;
+                        fila["nombre"] = colono.Nombre;
+                        fila["apellido"] = colono.Apellido;
+                        fila["dni"] = colono.Dni;
+                        fila["fechaNacimiento"] = colono.FechaNacimiento;
+                        fila["periodo"] = colono.Periodo;
+                        fila["saldo"] = colono.Saldo;
                         this.dt.Rows.Add(fila);
                     }
                 }
             }
-
+            //Carga dataGridView con los valores del dataTable.
             this.dataGridView1.DataSource = this.dt;
-
         }
         /// <summary>
         /// Configurar datatable.
         /// </summary>
         private void ConfigurarDataTable()
         {
-
             this.dt = new DataTable("Colonos");
-
             this.dt.Columns.Add("id", typeof(int));
             this.dt.Columns.Add("nombre", typeof(string));
             this.dt.Columns.Add("apellido", typeof(string));
@@ -91,19 +86,23 @@ namespace Formularios
             this.dt.Columns["id"].AutoIncrementStep = 1;
         }
         /// <summary>
-        /// Load.Carga los combobox.
+        /// Carga los grupos en el comboBox que permite seleccionar el grupo a mostrar.
+        /// Configura el dataGridView.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void frmMostrarGrupo_Load(object sender, EventArgs e)
         {
+            this.cmbSeleccionGrupos.DropDownStyle = ComboBoxStyle.DropDownList;
+
             foreach (Grupo aux in catalinas.ListaDeGrupos)
             {
-                if(aux.EdadDelGrupo!= EEdad.DemasiadoGrande)
-                this.cmbSeleccionGrupos.Items.Add(aux.EdadDelGrupo.ToString());
+                if (aux.EdadDelGrupo != EEdad.EdadIncorrecta)
+                    this.cmbSeleccionGrupos.Items.Add(aux.EdadDelGrupo.ToString());
             }
             this.cmbSeleccionGrupos.SelectedIndex = 0;
 
+            //configuracion del dataGridView
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically;

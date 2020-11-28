@@ -13,83 +13,44 @@ namespace Formularios
 {
     public partial class frmModificarColono : Form
     {
+        Colono colono;
+
         /// <summary>
-        /// Constructor por defecto.
-        /// Carga los datos en el combobox.
+        /// Constructor por defecto.        
         /// </summary>
         public frmModificarColono()
         {
             InitializeComponent();
-
-            foreach (string aux in Enum.GetNames(typeof(EPeriodoInscripcion)))
-            {
-                this.cmbPeriodo.Items.Add(aux);
-            }
-
-            foreach (string aux in Enum.GetNames(typeof(EMesIncripcion)))
-            {
-                this.cmbMes.Items.Add(aux);
-            }
-            this.cmbMes.SelectedIndex = (int)EMesIncripcion.Enero;
-            this.cmbPeriodo.SelectedIndex = (int)EPeriodoInscripcion.Mes;
         }
-
-
-
-        public string Nombre
-        {
-            get { return this.txtBoxNombre.Text; }
-           
-        }
-
-        public string Apellido
-        {
-            get { return this.txtBoxApellido.Text; }
-    
-        }
-
-        public string FechaNacimiento
-        {
-            get { return this.txtBoxFechaNacimiento.Text; }
-           
-        }
-
-        public int Dni
-        {
-            get { return int.Parse(this.txtBoxDni.Text); }
-           
-        }
-
-        public string Periodo
-        {
-            get { return this.cmbPeriodo.SelectedItem.ToString(); }
-           
-        }
-
-        public string Mes
-        {
-            get { return this.cmbMes.SelectedItem.ToString(); }
-            
-        }
-
-
-
         /// <summary>
-        /// Constructor con un parámetro. Obtiene los datos del colono a modificar.
+        /// Constructor con un parámetro que recibe un colono.
         /// </summary>
         /// <param name="c"></param>
         public frmModificarColono(Colono c) : this()
         {
-            this.txtBoxApellido.Text = c.Apellido;
-            this.txtBoxNombre.Text = c.Nombre;
-            this.txtBoxDni.Text = c.Dni.ToString();
-            this.txtBoxFechaNacimiento.Text = c.FechaNacimiento.ToString();
-            this.cmbMes.SelectedItem = c.CargarMes;
-            this.cmbPeriodo.SelectedItem = c.Periodo;
-
+            this.colono = c;
         }
         /// <summary>
-        /// Acepta el formulario. modifica el dialog result.
+        /// Carga los comboBox de los peridodos, los meses de inscripcion y establece los indices
+        /// seleccionados de los comboBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void frmModificarColono_Load(object sender, EventArgs e)
+        {
+            foreach (string aux in Enum.GetNames(typeof(EPeriodoInscripcion)))
+            {
+                this.cmbPeriodo.Items.Add(aux);
+            }
+            foreach (string aux in Enum.GetNames(typeof(EMesIncripcion)))
+            {
+                this.cmbMes.Items.Add(aux);
+            }
+            this.ActualizarTextBox();
+        }
+
+        /// <summary>
+        /// Acepta el formulario. Establece el DialogResult en OK.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -97,10 +58,26 @@ namespace Formularios
         {
             this.DialogResult = DialogResult.OK;
         }
-
+        /// <summary>
+        /// Cancela la modificación.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
+        }
+        /// <summary>
+        /// Actualiza los textBox con los datos del colono.
+        /// </summary>
+        public void ActualizarTextBox()
+        {
+            this.txtBoxApellido.Text = this.colono.Apellido;
+            this.txtBoxNombre.Text = this.colono.Nombre;
+            this.txtBoxDni.Text = this.colono.Dni.ToString();
+            this.txtBoxFechaNacimiento.Text = this.colono.FechaNacimiento.ToString();
+            this.cmbMes.SelectedIndex = (int)this.colono.CargarMes;
+            this.cmbPeriodo.SelectedIndex = (int)this.colono.Periodo;            
         }
     }
 }

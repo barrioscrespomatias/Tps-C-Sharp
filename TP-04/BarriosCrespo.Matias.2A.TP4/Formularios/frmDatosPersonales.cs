@@ -12,6 +12,7 @@ using BaseDatos;
 using System.Data.Sql;
 using System.Data.SqlClient;
 using Excepciones;
+using Stock;
 
 namespace Formularios
 {
@@ -21,75 +22,62 @@ namespace Formularios
         public Colonia catalinas;
         public SqlConnection conexion = new SqlConnection(Properties.Settings.Default.conexionDB);
         public VincularDB vincular;
-
+        /// <summary>
+        /// Constructor por defecto.
+        /// </summary>
         public frmDatosPersonales()
         {
             InitializeComponent();
         }
-
-        public frmDatosPersonales(Colono colono,Colonia catalinas) : this()
+        /// <summary>
+        /// Constructor que recibe un colono y una colonia.
+        /// </summary>
+        /// <param name="colono"></param>
+        /// <param name="catalinas"></param>
+        public frmDatosPersonales(Colono colono, Colonia catalinas) : this()
         {
             this.catalinas = catalinas;
             this.colono = colono;
         }
-
-
-        public TextBox Nombre
-        {
-            get { return this.txtBoxNombre; }
-            set { this.txtBoxNombre = value; }
-        }
-
-        public Button Comprar
-        {
-            get { return this.btnComprar; }
-            set { this.btnComprar = value; }
-        }
-
-
-
-
-
+        /// <summary>
+        /// Bloquea los textbox.
+        /// Solo muestra los datos si el DNI ingresado es mayor que cero.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmDatosPersonales_Load(object sender, EventArgs e)
         {
-
-            this.txtBoxApellido.Enabled = false;
-            this.txtBoxNombre.Enabled = false;
-            this.txtBoxDni.Enabled = false;
-            this.txtBoxFechaNacimiento.Enabled = false;
-            this.txtBoxEdad.Enabled = false;
-            this.txtBoxGrupo.Enabled = false;
-            this.txtBoxDeuda.Enabled = false;
-
-
-            //this.txtBoxNombre.Text = this.colono.Nombre;
-            //this.txtBoxApellido.Text = this.colono.Apellido;
-            //this.txtBoxDni.Text = this.colono.Dni.ToString();
-            //this.txtBoxNombre.Text = this.colono.Nombre;
-            //this.txtBoxFechaNacimiento.Text = this.colono.FechaNacimiento.ToString();
-            //this.txtBoxEdad.Text = this.colono.Edad.ToString();
-            //this.txtBoxGrupo.Text = this.colono.EdadGrupo.ToString();
-            //this.txtBoxDeuda.Text = this.colono.Saldo.ToString();
+            this.BloquearTextBox();
             if (!this.ActualizarTextBox())
             {
                 MessageBox.Show("El dni ingresado no coincide con ninguno de los colonos");
             }
-
-
         }
-
+        /// <summary>
+        /// Genera una nueva instancia de frmVenta en la que se cargarán los datos de una nueva venta
+        /// A dicho formulario le pasa por parámetro un colono y la colonia con todos sus datos.
+        /// Si la venta se produce, actualiza los textBox con la informacion del colono.(actualiza su deuda)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnComprar_Click(object sender, EventArgs e)
         {
-            frmVenta venta = new frmVenta(this.colono,this.catalinas);
-            venta.Owner = this;
-            venta.StartPosition = FormStartPosition.CenterParent;
-
-            if (venta.ShowDialog() == DialogResult.OK)
+            frmVenta nuevaVenta = new frmVenta(this.colono, this.catalinas);
+            nuevaVenta.Owner = this;
+            nuevaVenta.StartPosition = FormStartPosition.CenterParent;
+            if (nuevaVenta.ShowDialog() == DialogResult.OK)
             {
                 this.ActualizarTextBox();
             }
         }
-
+        /// <summary>
+        /// Genera un nuevo formulario frmModificarColono en el que muestra los datos del colono.
+        /// En dicho formulario permite cambiar algunos de los datos del colono.
+        /// Valida los datos del formulario frmModificarColono.
+        /// Si los datos son correctos vincula con la base de datos cargando los nuevos valores.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             bool modificado = false;
@@ -97,7 +85,6 @@ namespace Formularios
             frmModificarColono modificar = new frmModificarColono(this.colono);
             modificar.Owner = this;
             modificar.StartPosition = FormStartPosition.CenterParent;
-
             if (modificar.ShowDialog() == DialogResult.OK)
             {
                 try
@@ -132,7 +119,72 @@ namespace Formularios
             }
 
         }
+        /// <summary>
+        /// Realiza vínculo con la base de datos y elimina el registro de la misma previa
+        /// validacion con pregunta a confirmar.        
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+            this.vincular = new VincularDB(this.conexion);
+            DialogResult resultado = MessageBox.Show("¿Realmente desea eliminar?", "Borrar alumno", MessageBoxButtons.YesNo);
+            if (resultado == DialogResult.Yes)
+            {
+                //Elimina al colono de la instancia actual.
+                this.catalinas -= this.colono;
+                //Elimiina de la base de datos.
+                if (this.vincular.EliminarColono(this.colono))
+                {
+                    MessageBox.Show("Se ha eliminado el colono");
+                    this.Close();
+                }
+            }
+        }
+        /// <summary>       
+        /// Pagar saldo aumentará el saldo a favor de la colonia según el saldo deudor que tenga un colono.
+        /// El saldo del colono bajará a cero y no tendrá más deudas.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnPagarSaldo_Click(object sender, EventArgs e)
+        {
+            this.vincular = new VincularDB(this.conexion);
+            double saldo = this.colono.Saldo;
+            this.colono.SinDeudas = true;
+            if (this.colono.Saldo > 0)
+            {
+                DialogResult resultado = MessageBox.Show("¿Desea pagar $" + saldo + "?", "Saldar deuda", MessageBoxButtons.YesNo);
+                if (resultado == DialogResult.Yes)
+                {
+                    this.catalinas.SaldoActual += saldo;
+                    this.colono.Saldo = 0;
+                    if (this.vincular.ModificarColono(this.colono))
+                    {
+                        this.ActualizarTextBox();
+                        MessageBox.Show("El colono ya no tiene deudas!!");
+                    }
+                    else
+                        MessageBox.Show("No se ha podido procesar el pago");
+                }
+            }
+            else
+                MessageBox.Show("El colono no tiene deudas. Impecable");
+        }
+        /// <summary>
+        /// Cierra el formulario de datos personales.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
+        /// <summary>
+        /// Actualiza los textBox validando que el dni ingresado sea mayor que cero.
+        /// </summary>
+        /// <returns></returns>
         private bool ActualizarTextBox()
         {
             bool retorno = false;
@@ -145,59 +197,24 @@ namespace Formularios
                 this.txtBoxDeuda.Text = colono.Saldo.ToString();
                 this.txtBoxFechaNacimiento.Text = colono.FechaNacimiento.ToString();
                 this.txtBoxGrupo.Text = colono.EdadGrupo.ToString();
+                this.txtBoxMes.Text = colono.CargarMes.ToString();
                 retorno = true;
             }
             return retorno;
         }
-
-        private void btnBorrar_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Bloquea los TextBox para que no reciban datos.
+        /// </summary>
+        private void BloquearTextBox()
         {
-            this.vincular = new VincularDB(this.conexion);
-
-            DialogResult resultado = MessageBox.Show("¿Realmente desea eliminar?", "Borrar alumno", MessageBoxButtons.YesNo);
-            if (resultado == DialogResult.Yes)
-            {
-                if (this.vincular.EliminarColono(this.colono))
-                {
-                    MessageBox.Show("Se ha eliminado el colono");
-                    this.Close();
-                }
-
-            }
+            this.txtBoxApellido.Enabled = false;
+            this.txtBoxNombre.Enabled = false;
+            this.txtBoxDni.Enabled = false;
+            this.txtBoxFechaNacimiento.Enabled = false;
+            this.txtBoxEdad.Enabled = false;
+            this.txtBoxGrupo.Enabled = false;
+            this.txtBoxDeuda.Enabled = false;
+            this.txtBoxMes.Enabled = false;
         }
-
-        private void btnPagarSaldo_Click(object sender, EventArgs e)
-        {
-            this.vincular = new VincularDB(this.conexion);
-
-            double saldo = this.colono.Saldo;
-            this.colono.SinDeudas = true;
-            if (this.colono.Saldo > 0)
-            {
-
-                DialogResult resultado = MessageBox.Show("¿Desea pagar $" + saldo + "?", "Saldar deuda", MessageBoxButtons.YesNo);
-                if (resultado == DialogResult.Yes)
-                {
-
-                    this.colono.Saldo = 0;
-                    if (this.vincular.ModificarColono(this.colono))
-                    {
-                        this.ActualizarTextBox();
-                        MessageBox.Show("El colono ya no tiene deudas!!");
-                    }
-
-                    else
-                        MessageBox.Show("No se ha podido procesar el pago");
-
-
-                }
-            }
-            else
-                MessageBox.Show("El colono no tiene deudas. Impecable");
-
-
-        }
-
-        
     }
 }

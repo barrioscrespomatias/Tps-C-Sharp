@@ -34,22 +34,24 @@ namespace Formularios
         }
 
         /// <summary>
-        /// Carga los combobox. Hardcodeo.
+        /// Carga los colores a mostrar en el ComboBox.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void frmAltaGorrito_Load(object sender, EventArgs e)
         {
             this.cmbColores.DropDownStyle = ComboBoxStyle.DropDownList;
-            foreach(EColores color in Enum.GetValues(typeof(EColores)))
+            foreach (EColores color in Enum.GetValues(typeof(EColores)))
             {
                 this.cmbColores.Items.Add(color.ToString());
             }
-
         }
         /// <summary>
-        /// Acepta el alta del gorrito. Obtiene sus datos desde formulario, agrega el gorrito a la 
-        /// colonia.
+        /// Toma los datos del nuevo gorrito por formulario.
+        /// Valida que los datos sean correctos.
+        /// Llama al método "AumentarStock" de la colonia. Este se encarga de verificar la existencia
+        /// y aumentar el stock.
+        /// Establece el dialogResult en OK. 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -65,14 +67,17 @@ namespace Formularios
                 this.catalinas.AumentarStock(this.catalinas, ingresante, 1);
                 this.DialogResult = DialogResult.OK;
             }
-
-            catch(ValidacionIncorrectaException ex)
+            catch (ValidacionIncorrectaException ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            
-        }
 
+        }
+        /// <summary>
+        /// Establece el dialogResult en Cancel.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;

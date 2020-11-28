@@ -27,7 +27,7 @@ namespace Entidades
         /// </summary>
         public Colono()
         {
-
+            this.ListaProductosComprados = new List<Producto>();
         }
 
 
@@ -69,7 +69,6 @@ namespace Entidades
             this.estadoDeuda = deuda;
             this.periodo = periodo;
             this.sinDeudas = false;
-
             //Lista de productos vacia.
             this.productosComprados = new List<Producto>();
         }
@@ -156,7 +155,7 @@ namespace Entidades
         /// <returns>Retorna el grupo correspondiente.</returns>
         public EEdad AsignarGrupo(int edad)
         {
-            EEdad aux = EEdad.DemasiadoGrande;
+            EEdad aux = EEdad.EdadIncorrecta;
 
             if (this.edad > 2 && this.edad < 7)
                 aux = EEdad.Peques;

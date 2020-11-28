@@ -183,6 +183,7 @@
             this.Controls.Add(this.lblNombre);
             this.Name = "frmAltaColono";
             this.Text = "frmAltaColono";
+            this.Load += new System.EventHandler(this.frmAltaColono_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

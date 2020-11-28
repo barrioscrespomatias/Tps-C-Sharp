@@ -183,6 +183,7 @@
             this.Controls.Add(this.lblNombre);
             this.Name = "frmModificarColono";
             this.Text = "frmModificarColono";
+            this.Load += new System.EventHandler(this.frmModificarColono_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

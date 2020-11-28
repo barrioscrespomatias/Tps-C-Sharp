@@ -18,35 +18,20 @@ namespace Formularios
 {
     public partial class frmAltaColono : Form
     {
-        public event DelegadoColono EventoCargarColono;
         public Colonia catalinas;
+
         private SqlConnection conexion;
         private VincularDB nuevaConexion;
 
         /// <summary>
-        /// Constructor por defecto colono.
-        /// Carga los enumerados para los combobox.
-        /// 
+        /// Constructor por defecto.         
         /// </summary>
         public frmAltaColono()
         {
-            InitializeComponent();
+            InitializeComponent();          
 
+        }      
 
-
-            foreach (string aux in Enum.GetNames(typeof(EPeriodoInscripcion)))
-            {
-                this.cmbPeriodo.Items.Add(aux);
-            }
-
-            foreach (string aux in Enum.GetNames(typeof(EMesIncripcion)))
-            {
-                this.cmbMes.Items.Add(aux);
-            }
-            this.cmbMes.SelectedIndex = (int)EMesIncripcion.Diciembre;
-            this.cmbPeriodo.SelectedIndex = (int)EPeriodoInscripcion.Quincena;
-
-        }
         /// <summary>
         /// Constructor un parámetro que recibe una colonia.
         /// </summary>
@@ -71,42 +56,30 @@ namespace Formularios
 
         }
 
-        public string frmNombre
-        {
-            get { return this.txtBoxNombre.Text; }
-        }
-
-        public string frmApellido
-        {
-            get { return this.txtBoxApellido.Text; }
-
-        }
-
-        public string frmFechaNacimiento
-        {
-            get { return this.txtBoxFechaNacimiento.Text; }
-
-        }
-
-        public int frmDni
-        {
-            get { return int.Parse(this.txtBoxDni.Text); }
-
-        }
-
-        public string frmPeriodo
-        {
-            get { return this.cmbPeriodo.SelectedItem.ToString(); }
-
-        }
-
-        public string frmMes
-        {
-            get { return this.cmbMes.SelectedItem.ToString(); }
-        }
         /// <summary>
-        /// Acepta el formulario de alta. Obtiene los datos del colono desde el formulario
-        /// Sino se encuentra lo agrega a la colonia. Envia los datos mediante delegado  a la DB.
+        /// Establece los combos a mostrar el periodo de inscripcion y el mes de inscripcion.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void frmAltaColono_Load(object sender, EventArgs e)
+        {
+            foreach (string aux in Enum.GetNames(typeof(EPeriodoInscripcion)))
+            {
+                this.cmbPeriodo.Items.Add(aux);
+            }
+            foreach (string aux in Enum.GetNames(typeof(EMesIncripcion)))
+            {
+                this.cmbMes.Items.Add(aux);
+            }
+            this.cmbMes.SelectedIndex = (int)EMesIncripcion.Diciembre;
+            this.cmbPeriodo.SelectedIndex = (int)EPeriodoInscripcion.Quincena;
+        }
+
+        /// <summary>
+        /// Toma los datos del formulario para crear un nuevo colono. 
+        /// Valida que los campos sean correctos.
+        /// Agrega el colono a la colonia y a la base de datos.
+        /// Si todo es correcto establece el dialogResult en ok.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -137,17 +110,24 @@ namespace Formularios
                 {
                     this.catalinas += c;
                     if (nuevaConexion.AgregarColono(c))
+                    {
                         MessageBox.Show("Se ha agregado el colono a la base de datos!");
-                    this.DialogResult = DialogResult.OK;
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
+                        
+                    
                 }
                 else
                 {
                     MessageBox.Show("Uno o mas campos son incorrectos");
                 }
             }
+            else
+                MessageBox.Show("Ya existe un colono con ese DNI.");
         }
         /// <summary>
-        /// Cancela el formulario.
+        /// Establece el dialogResult en Cancel.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -155,5 +135,7 @@ namespace Formularios
         {
             this.DialogResult = DialogResult.Cancel;
         }
+
+       
     }
 }

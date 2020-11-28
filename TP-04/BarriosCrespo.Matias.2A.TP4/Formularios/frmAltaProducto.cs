@@ -16,18 +16,42 @@ namespace Formularios
     public partial class frmAltaProducto : Form
     {
         private Colonia catalinas;
-
+        /// <summary>
+        /// Constructor por defecto
+        /// </summary>
         public frmAltaProducto()
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Constructor que recibe un parámetro de tipo Colonia.
+        /// </summary>
+        /// <param name="catalinas"></param>
         public frmAltaProducto(Colonia catalinas) : this()
         {
             this.catalinas = catalinas;
         }
+        /// <summary>
+        /// Carga en el comboBox de manera Hardcodeada los dos productos que se pueden dar
+        /// de alta: Gorrito y Antiparra.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void frmAltaProducto_Load(object sender, EventArgs e)
+        {
+            this.cmbTiposProductos.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.cmbTiposProductos.Items.Add("Atiparras");
+            this.cmbTiposProductos.Items.Add("Gorritos");
+            this.cmbTiposProductos.SelectedIndex = 0;
 
+        }
 
+        /// <summary>
+        /// Deriva a los formularios de alta de Gorrito y Antiparras según el índice seleccionado
+        /// del ComboBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             try
@@ -44,30 +68,21 @@ namespace Formularios
                     nuevoGorrito.StartPosition = FormStartPosition.CenterScreen;
                     nuevoGorrito.ShowDialog();
                 }
-
             }
-            catch(ValidacionIncorrectaException ex)
+            catch (ValidacionIncorrectaException ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
-
         }
-
+        /// <summary>
+        /// Establece el DialogResult en Cancel.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
-        }
-
-        private void frmAltaProducto_Load(object sender, EventArgs e)
-        {
-            this.cmbTiposProductos.DropDownStyle = ComboBoxStyle.DropDownList;
-            this.cmbTiposProductos.Items.Add("Atiparras");
-            this.cmbTiposProductos.Items.Add("Gorritos");
-
-            this.cmbTiposProductos.SelectedIndex = 0;
-
-        }
+        }       
 
     }
 }

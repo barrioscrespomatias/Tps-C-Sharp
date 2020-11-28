@@ -33,8 +33,9 @@ namespace Formularios
             this.catalinas = catalinas;
         }
         /// <summary>
-        /// Acepta el alta de la antiparra. Hardcodea la marca, el resto de los datos los toma
+        /// Acepta el alta de la antiparra. Toma los datos 
         /// por formulaio. Crea el producto y lo  ingresa a la colonia.
+        /// Utiliza método AumentarStock de la colonia.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -52,20 +53,13 @@ namespace Formularios
                 this.catalinas.AumentarStock(this.catalinas, ingresante, 1);
                 this.DialogResult = DialogResult.OK;
             }
-            catch(ValidacionIncorrectaException ex)
+            catch (ValidacionIncorrectaException ex)
             {
                 MessageBox.Show(ex.Message);
             }
-           
-
-            
-
-            ///Error al cargar el producto. No agrega a la colonia
-
-            
         }
         /// <summary>
-        /// Carga previamente los datos de los combobox. Hardcodeo.
+        /// Load en donde se cargan los combos a mostrar Marca y color a seleccionar.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -86,7 +80,11 @@ namespace Formularios
             this.cmbBoxColores.SelectedIndex = 0;
             this.cmbBoxMarca.SelectedIndex = 0;
         }
-
+        /// <summary>
+        /// Establece el dialogResult en Cancelado.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
