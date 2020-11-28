@@ -25,11 +25,11 @@ namespace Stock
         /// </summary>
         /// <param name="color"></param>
         /// <param name="precio"></param>
-        public Gorrito(EColores color, double precio)
+        public Gorrito(EColores color, double precio,int cantidad)
         {
             this.color = color;
             this.precio = precio;
-            this.cantidad = 1;
+            this.cantidad = cantidad;
             this.codigo = 001;
 
         }

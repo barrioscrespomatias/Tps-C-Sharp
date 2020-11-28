@@ -71,6 +71,7 @@ namespace BaseDatos
 
 
                 Colono c;
+                int id;
                 string nombre;
                 string apellido;
                 int dni;
@@ -80,6 +81,7 @@ namespace BaseDatos
 
                 while (lector.Read())
                 {
+                    id = lector.GetInt32(0);
                     nombre = lector.GetString(1);
                     apellido = lector.GetString(2);
                     dni = lector.GetInt32(3);
@@ -89,7 +91,7 @@ namespace BaseDatos
 
 
                     //MODFICIAR PERIODO
-                    c = new Colono(nombre, apellido, fechaNacimiento, dni, EPeriodoInscripcion.Mes,saldo);
+                    c = new Colono(nombre, apellido, fechaNacimiento, dni, EPeriodoInscripcion.Mes,saldo,id);
                     if (catalinas != c)
                         catalinas += c;
                 }
@@ -157,7 +159,7 @@ namespace BaseDatos
         {
             bool retorno = false;
             string sql = "UPDATE colonos_table SET nombre=@nombre, apellido=@apellido," +
-                " dni=@dni, fechaNacimiento=@fechaNacimiento, periodo=@periodo, saldo=@saldo WHERE dni=@dni";
+                " dni=@dni, fechaNacimiento=@fechaNacimiento, periodo=@periodo, saldo=@saldo WHERE id=@id";
 
 
 
@@ -167,6 +169,7 @@ namespace BaseDatos
                 this.comando.CommandType = System.Data.CommandType.Text;
                 this.comando.Connection = conexion;
 
+                this.comando.Parameters.AddWithValue("@id", colono.Id);
                 this.comando.Parameters.AddWithValue("@nombre", colono.Nombre);
                 this.comando.Parameters.AddWithValue("@apellido", colono.Apellido);
                 this.comando.Parameters.AddWithValue("@dni", colono.Dni);

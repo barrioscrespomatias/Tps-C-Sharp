@@ -12,6 +12,7 @@ namespace Entidades
 {
     public class Colono : Persona
     {
+        protected int id;
         private const int nacimientoValido = 2007;
         protected bool sinDeudas;
         protected int edad;
@@ -21,6 +22,7 @@ namespace Entidades
         protected EMesIncripcion mes;
         protected double estadoDeuda;
         protected List<Producto> productosComprados;
+       
 
         /// <summary>
         /// Colono por defecto para serializar.
@@ -28,28 +30,28 @@ namespace Entidades
         public Colono()
         {
             this.ListaProductosComprados = new List<Producto>();
-        }
+        }       
 
 
-        /// <summary>
-        /// Constructor 5 parámtros. Llama a base
-        /// </summary>
-        /// <param name="nombre"></param>
-        /// <param name="apellido"></param>
-        /// <param name="fechaNacimiento"></param>
-        /// <param name="dni"></param>
-        /// <param name="tiempo"></param>
-        public Colono(string nombre, string apellido, DateTime fechaNacimiento, int dni, EPeriodoInscripcion periodo)
-            : base(nombre, apellido, fechaNacimiento, dni)
-        {
-            this.edad = DateTime.Today.Year - this.fechaNacimiento.Year;
-            this.grupo = this.AsignarGrupo(edad);
-            this.estadoDeuda = Colono.CalcularDeuda(periodo);
-            this.periodo = periodo;
-            this.sinDeudas = false;
-            //Lista de productos vacia.
-            this.productosComprados = new List<Producto>();
-        }
+        ///// <summary>
+        ///// Constructor 5 parámtros. Llama a base
+        ///// </summary>
+        ///// <param name="nombre"></param>
+        ///// <param name="apellido"></param>
+        ///// <param name="fechaNacimiento"></param>
+        ///// <param name="dni"></param>
+        ///// <param name="tiempo"></param>
+        //public Colono(string nombre, string apellido, DateTime fechaNacimiento, int dni, EPeriodoInscripcion periodo)
+        //    : base(nombre, apellido, fechaNacimiento, dni)
+        //{
+        //    this.edad = DateTime.Today.Year - this.fechaNacimiento.Year;
+        //    this.grupo = this.AsignarGrupo(edad);
+        //    this.estadoDeuda = Colono.CalcularDeuda(periodo);
+        //    this.periodo = periodo;
+        //    this.sinDeudas = false;
+        //    //Lista de productos vacia.
+        //    this.productosComprados = new List<Producto>();
+        //}
 
 
         /// <summary>
@@ -63,7 +65,7 @@ namespace Entidades
         /// <param name="deuda"></param>
         public Colono(string nombre, string apellido, DateTime fechaNacimiento, int dni, EPeriodoInscripcion periodo, double deuda)
            : base(nombre, apellido, fechaNacimiento, dni)
-        {
+        {         
             this.edad = DateTime.Today.Year - this.fechaNacimiento.Year;
             this.grupo = this.AsignarGrupo(edad);
             this.estadoDeuda = deuda;
@@ -73,9 +75,26 @@ namespace Entidades
             this.productosComprados = new List<Producto>();
         }
 
-        #region Propiedades
+        public Colono(string nombre, string apellido, DateTime fechaNacimiento, int dni, EPeriodoInscripcion periodo, double deuda, int id)
+          : this(nombre,apellido,fechaNacimiento,dni,periodo,deuda)
+        {
+            this.id = id;
+            //this.edad = DateTime.Today.Year - this.fechaNacimiento.Year;
+            //this.grupo = this.AsignarGrupo(edad);
+            //this.estadoDeuda = deuda;
+            //this.periodo = periodo;
+            //this.sinDeudas = false;
+            ////Lista de productos vacia.
+            //this.productosComprados = new List<Producto>();
+        }
 
-        
+        #region Propiedades
+        public int Id
+        {
+            get { return this.id; }
+            set { this.id = value; }
+        }
+
         public List<Producto> ListaProductosComprados
         {
             get { return this.productosComprados; }

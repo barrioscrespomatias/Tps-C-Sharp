@@ -94,6 +94,7 @@
             this.btnAbmProductos.TabIndex = 3;
             this.btnAbmProductos.Text = "ABM PRODUCTOS";
             this.btnAbmProductos.UseVisualStyleBackColor = true;
+            this.btnAbmProductos.Click += new System.EventHandler(this.btnAbmProductos_Click);
             // 
             // frmPrincipal
             // 

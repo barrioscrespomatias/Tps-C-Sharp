@@ -26,12 +26,12 @@ namespace Stock
         /// <param name="marca"></param>
         /// <param name="color"></param>
         /// <param name="precio"></param>
-        public Antiparra(EMarca marca, EColores color, double precio)
+        public Antiparra(EMarca marca, EColores color, double precio,int cantidad)
         {
             this.marca = marca;
             this.color = color;
             this.precio = precio;
-            this.cantidad = 1;
+            this.cantidad = cantidad;
 
             this.codigo = 002;
         }

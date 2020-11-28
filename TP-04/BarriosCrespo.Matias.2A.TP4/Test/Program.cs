@@ -50,13 +50,13 @@ namespace Test
 
             //Productos
 
-            Gorrito g1 = new Gorrito(EColores.Amarillo, 1);
-            Gorrito g2 = new Gorrito(EColores.Verde, 1);
-            Gorrito g3 = new Gorrito(EColores.Rojo, 1);
+            Gorrito g1 = new Gorrito(EColores.Amarillo, 200f,1);
+            Gorrito g2 = new Gorrito(EColores.Verde, 200f,1);
+            Gorrito g3 = new Gorrito(EColores.Rojo, 200f,1);
 
-            Antiparra a1 = new Antiparra(EMarca.Pirulito, EColores.Rojo, 500f);
-            Antiparra a2 = new Antiparra(EMarca.Adidas, EColores.Verde, 100f);
-            Antiparra a3 = new Antiparra(EMarca.Speedo, EColores.Verde, 150);
+            Antiparra a1 = new Antiparra(EMarca.Pirulito, EColores.Rojo, 500f,1);
+            Antiparra a2 = new Antiparra(EMarca.Adidas, EColores.Verde, 100f,1);
+            Antiparra a3 = new Antiparra(EMarca.Speedo, EColores.Verde, 150,1);
 
 
             //Agregar productos a la lista genérica

@@ -26,7 +26,7 @@ namespace Stock
         /// </summary>
         public ControlStock()
         {
-            this.capacidad = 5;
+            this.capacidad = 20;
             this.lista = new List<T>();
         }
 
@@ -63,7 +63,7 @@ namespace Stock
                 {
                     //Agregar la cantidad a cs[indice que es igual]
                     int indice = ControlStock<T>.ObtenerIndice(cs, p);
-                    cs.lista[indice].Cantidad++;
+                    cs.lista[indice].Cantidad+=p.Cantidad;
                 }
                 else
                 {

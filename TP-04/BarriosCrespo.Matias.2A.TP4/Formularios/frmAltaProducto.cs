@@ -56,6 +56,7 @@ namespace Formularios
         {
             try
             {
+               
                 if (cmbTiposProductos.SelectedIndex == 0)
                 {
                     frmAltaAntiparra nuevaAntiparra = new frmAltaAntiparra(this.catalinas);
@@ -68,6 +69,9 @@ namespace Formularios
                     nuevoGorrito.StartPosition = FormStartPosition.CenterScreen;
                     nuevoGorrito.ShowDialog();
                 }
+                
+                this.Close();
+
             }
             catch (ValidacionIncorrectaException ex)
             {

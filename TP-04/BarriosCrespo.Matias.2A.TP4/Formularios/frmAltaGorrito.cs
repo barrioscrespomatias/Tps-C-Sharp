@@ -63,8 +63,10 @@ namespace Formularios
             try
             {
                 double precio = Validaciones.Validar.ValidarSoloNumeros(this.textBoxPrecio.Text);
-                ingresante = new Gorrito(color, precio);
-                this.catalinas.AumentarStock(this.catalinas, ingresante, 1);
+                int cantidad= Validaciones.Validar.ValidarSoloNumeros(this.txtBoxCantidad.Text);
+                ingresante = new Gorrito(color, precio,cantidad);
+                this.catalinas.AumentarStock(this.catalinas, ingresante);
+                MessageBox.Show(ingresante.ToString(),"ALTA");
                 this.DialogResult = DialogResult.OK;
             }
             catch (ValidacionIncorrectaException ex)

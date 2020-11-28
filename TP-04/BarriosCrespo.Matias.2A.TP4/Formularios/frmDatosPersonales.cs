@@ -158,6 +158,8 @@ namespace Formularios
                 if (resultado == DialogResult.Yes)
                 {
                     this.catalinas.SaldoActual += saldo;
+                    Colonia.GuardarPagos(colono);
+                    Colonia.GuardarImporte(this.catalinas);
                     this.colono.Saldo = 0;
                     if (this.vincular.ModificarColono(this.colono))
                     {

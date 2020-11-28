@@ -36,24 +36,26 @@
             this.lblPrecio = new System.Windows.Forms.Label();
             this.cmbBoxColores = new System.Windows.Forms.ComboBox();
             this.cmbBoxMarca = new System.Windows.Forms.ComboBox();
+            this.txtBoxCantidad = new System.Windows.Forms.TextBox();
+            this.lblCantidad = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(133, 203);
+            this.btnCancelar.Location = new System.Drawing.Point(133, 250);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 4;
+            this.btnCancelar.TabIndex = 5;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // bntAceptar
             // 
-            this.bntAceptar.Location = new System.Drawing.Point(18, 203);
+            this.bntAceptar.Location = new System.Drawing.Point(18, 250);
             this.bntAceptar.Name = "bntAceptar";
             this.bntAceptar.Size = new System.Drawing.Size(75, 23);
-            this.bntAceptar.TabIndex = 3;
+            this.bntAceptar.TabIndex = 4;
             this.bntAceptar.Text = "Aceptar";
             this.bntAceptar.UseVisualStyleBackColor = true;
             this.bntAceptar.Click += new System.EventHandler(this.bntAceptar_Click);
@@ -108,11 +110,29 @@
             this.cmbBoxMarca.Size = new System.Drawing.Size(190, 21);
             this.cmbBoxMarca.TabIndex = 0;
             // 
+            // txtBoxCantidad
+            // 
+            this.txtBoxCantidad.Location = new System.Drawing.Point(18, 208);
+            this.txtBoxCantidad.Name = "txtBoxCantidad";
+            this.txtBoxCantidad.Size = new System.Drawing.Size(190, 20);
+            this.txtBoxCantidad.TabIndex = 3;
+            // 
+            // lblCantidad
+            // 
+            this.lblCantidad.AutoSize = true;
+            this.lblCantidad.Location = new System.Drawing.Point(18, 192);
+            this.lblCantidad.Name = "lblCantidad";
+            this.lblCantidad.Size = new System.Drawing.Size(49, 13);
+            this.lblCantidad.TabIndex = 29;
+            this.lblCantidad.Text = "Cantidad";
+            // 
             // frmAltaAntiparra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(229, 240);
+            this.ClientSize = new System.Drawing.Size(229, 285);
+            this.Controls.Add(this.lblCantidad);
+            this.Controls.Add(this.txtBoxCantidad);
             this.Controls.Add(this.cmbBoxMarca);
             this.Controls.Add(this.cmbBoxColores);
             this.Controls.Add(this.lblPrecio);
@@ -138,5 +158,7 @@
         public System.Windows.Forms.Label lblPrecio;
         private System.Windows.Forms.ComboBox cmbBoxColores;
         private System.Windows.Forms.ComboBox cmbBoxMarca;
+        private System.Windows.Forms.TextBox txtBoxCantidad;
+        public System.Windows.Forms.Label lblCantidad;
     }
 }

@@ -13,7 +13,7 @@ using System.Data.SqlClient;
 using Stock;
 using System.Threading;
 using BaseDatos;
-
+using System.IO;
 
 namespace Formularios
 {
@@ -38,6 +38,7 @@ namespace Formularios
         /// Inicializa hilo cambia color del formulario principal
         /// Inicializa un nuevo vínculo con la bae de datos, pasándole como parámetro un SqlConnection
         /// Obtiene los colonos de la base de datos, cargándolos en la colonia de la clase.
+        /// Obtiene el saldo actual de la colonia desde un archivo.
         /// Hardcodea una lista de productos.
         /// </summary>
         /// <param name="sender"></param>
@@ -94,6 +95,18 @@ namespace Formularios
             altaColono.Show();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAbmProductos_Click(object sender, EventArgs e)
+        {
+            frmAltaProducto nuevoProducto = new frmAltaProducto(this.catalinas);
+            nuevoProducto.StartPosition = FormStartPosition.CenterScreen;
+            nuevoProducto.ShowDialog();
+        }
+
 
         /// <summary>
         /// Muestra el saldo de la colonia: Ingresos por pago de cuotas y venta de productos.        
@@ -102,21 +115,29 @@ namespace Formularios
         /// <param name="e"></param>
         private void bntControlador_Click(object sender, EventArgs e)
         {
-            double saldo = 0;
+
+            double saldo;
+            string pagos;
+
+            this.catalinas.SaldoActual = Colonia.ObtenerSaldo();
+            this.catalinas.Pagos = Colonia.ObtenerPagos();
+
+            pagos = this.catalinas.Pagos;
             saldo = this.catalinas.SaldoActual;
             MessageBox.Show("El saldo a favor es: $ " + saldo);
+            MessageBox.Show("Lista de pagos: \n" + pagos+"\n\n---------------------\n Total:$"+saldo);
         }
         /// <summary>
         /// Hardocodeo productos.
         /// </summary>
         private void HardcodeoProductos()
         {
-            Gorrito g1 = new Gorrito(EColores.Amarillo, 200f);
-            Gorrito g2 = new Gorrito(EColores.Amarillo, 200f);
+            Gorrito g1 = new Gorrito(EColores.Amarillo, 200f, 1);
+            Gorrito g2 = new Gorrito(EColores.Amarillo, 200f, 1);
 
-            Antiparra a1 = new Antiparra(EMarca.Adidas, EColores.Negro, 500f);
-            Antiparra a2 = new Antiparra(EMarca.Adidas, EColores.Negro, 500f);
-            Antiparra a3 = new Antiparra(EMarca.Adidas, EColores.Verde, 500f);
+            Antiparra a1 = new Antiparra(EMarca.Adidas, EColores.Negro, 500f, 1);
+            Antiparra a2 = new Antiparra(EMarca.Adidas, EColores.Negro, 500f, 1);
+            Antiparra a3 = new Antiparra(EMarca.Adidas, EColores.Verde, 500f, 1);
 
             this.catalinas.ProductosEnVenta += g1;
             this.catalinas.ProductosEnVenta += g2;
@@ -162,6 +183,8 @@ namespace Formularios
             hiloInicial.Abort();
 
         }
+
+
 
     }
 }

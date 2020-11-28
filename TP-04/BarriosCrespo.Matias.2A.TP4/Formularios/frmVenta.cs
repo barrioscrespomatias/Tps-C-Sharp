@@ -97,7 +97,7 @@ namespace Formularios
                 {
                     this.cmbBoxSeleccionProducto.Items.Add(aux);
                 }
-                MessageBox.Show("Venta realizada con exito!");
+                MessageBox.Show("Venta realizada con exito!");               
                 MessageBox.Show(colono.ToString());
                 this.DialogResult = DialogResult.OK;
             }

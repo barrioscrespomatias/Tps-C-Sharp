@@ -7,6 +7,7 @@ using Stock;
 using System.Data;
 using System.Xml;
 using System.Xml.Serialization;
+using System.IO;
 
 namespace Entidades
 {
@@ -16,6 +17,8 @@ namespace Entidades
         protected string nombre;
         protected List<Grupo> listadoDeGrupos;
         protected ControlStock<Producto> stockProductos;
+        protected string ventas;
+        protected string pagos;
 
         /// <summary>
         /// Constructor por defecto
@@ -55,6 +58,19 @@ namespace Entidades
             get { return this.saldoActual; }
             set { this.saldoActual = value; }
         }
+
+        public string Pagos
+        {
+            get { return this.pagos; }
+            set { this.pagos = value; }
+        }
+
+        public string Ventas
+        {
+            get { return this.ventas; }
+            set { this.ventas = value; }
+        }
+
 
         public ControlStock<Producto> ProductosEnVenta
         {
@@ -326,7 +342,7 @@ namespace Entidades
         /// <param name="cantidad"></param>
         public void RealizaVenta(Colonia colonia, Producto producto, Colono colono, int cantidad)
         {
-            
+
             if (colonia.stockProductos == producto)
             {
                 //this.saldoActual += producto.Precio* cantidad;
@@ -335,8 +351,9 @@ namespace Entidades
                 {
                     colono.ListaProductosComprados.Add(producto);
                 }
-                //Por último bajar stock
+                //bajar stock
                 this.stockProductos.BajarCantidad(stockProductos, producto, cantidad);
+
             }
             else
             {
@@ -350,7 +367,7 @@ namespace Entidades
         /// <param name="colonia"></param>
         /// <param name="p1"></param>
         /// <param name="cantidad"></param>
-        public void AumentarStock(Colonia colonia, Producto p1, int cantidad)
+        public void AumentarStock(Colonia colonia, Producto p1)
         {
             if (colonia.stockProductos == p1)
             {
@@ -383,11 +400,100 @@ namespace Entidades
             }
             return auxiliar;
         }
-
-
-
         #endregion
 
+        /// <summary>
+        /// Guarda en un archivo de texto el importe que el colono ha saldado.
+        /// </summary>
+        /// <param name="catalinas"></param>
+        /// <returns></returns>
+        public static bool GuardarImporte(Colonia catalinas)
+        {
+            bool retorno = false;
+            string rutaDeGuardado = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\" + "saldo-colonia.txt";
+            Encoding miCodificacion = Encoding.UTF8;
+            try
+            {
+                using (StreamWriter sw = new StreamWriter(rutaDeGuardado, false, miCodificacion))
+                {
+                    sw.WriteLine(catalinas.SaldoActual);
+                    retorno = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return retorno;
+        }
+        /// <summary>
+        /// Guarda el pago realizado con su descripción.
+        /// </summary>
+        /// <param name="colono"></param>
+        /// <returns></returns>
+        public static bool GuardarPagos(Colono colono)
+        {
+
+            bool retorno = false;
+            string rutaDeGuardado = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\" + "pagos-colonia.txt";
+            Encoding miCodificacion = Encoding.UTF8;
+            try
+            {
+                using (StreamWriter sw = new StreamWriter(rutaDeGuardado, true, miCodificacion))
+                {
+                    sw.WriteLine(colono.Nombre + " " + colono.Apellido + " con DNI: " + colono.Dni + " ha abonado $" + colono.Saldo + ".-");
+                    retorno = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return retorno;
+        }
+        /// <summary>
+        /// Obtiene el saldo a favor de la colonia desde un archivo que ha sido generado.
+        /// </summary>
+        /// <returns></returns>
+        public static double ObtenerSaldo()
+        {
+            double importe = 0;
+            try
+            {
+                string rutaDeLectura = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\" + "saldo-colonia.txt";
+                StreamReader sw = new StreamReader(rutaDeLectura);
+                importe = double.Parse(sw.ReadLine());
+                sw.Close();
+            }
+            catch (Exception)
+            {
+
+            }
+            return importe;
+
+        }
+        /// <summary>
+        /// Obtiene la descripción de los pagos realizados.
+        /// </summary>
+        /// <returns></returns>
+        public static string ObtenerPagos()
+        {
+            string cuotasPagas = "";
+            try
+            {
+                string rutaDeLectura = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\" + "pagos-colonia.txt";
+                StreamReader sw = new StreamReader(rutaDeLectura);
+                cuotasPagas = sw.ReadToEnd();
+                sw.Close();
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return cuotasPagas;
+
+        }
 
         /// <summary>
         /// Muestra la colonia con toda su informacion.
