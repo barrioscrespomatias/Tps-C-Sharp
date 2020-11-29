@@ -1,0 +1,87 @@
+C:\Users\pc\source\repos\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.csprojAssemblyReference.cache
+C:\Users\pc\source\repos\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.frmAltaAntiparra.resources
+C:\Users\pc\source\repos\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.frmAltaColono.resources
+C:\Users\pc\source\repos\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.frmAltaGorrito.resources
+C:\Users\pc\source\repos\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.frmAltaProfesor.resources
+C:\Users\pc\source\repos\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.frmModificarColono.resources
+C:\Users\pc\source\repos\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.frmMostrarColonos.resources
+C:\Users\pc\source\repos\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.frmMostrarGrupo.resources
+C:\Users\pc\source\repos\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.frmPrincipal.resources
+C:\Users\pc\source\repos\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.frmVenta.resources
+C:\Users\pc\source\repos\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.Properties.Resources.resources
+C:\Users\pc\source\repos\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.csproj.GenerateResource.cache
+C:\Users\pc\source\repos\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.csproj.CoreCompileInputs.cache
+C:\Users\pc\source\repos\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\Formularios.exe.config
+C:\Users\pc\source\repos\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\Formularios.exe
+C:\Users\pc\source\repos\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\Formularios.pdb
+C:\Users\pc\source\repos\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\Entidades.dll
+C:\Users\pc\source\repos\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\Stock.dll
+C:\Users\pc\source\repos\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\Excepciones.dll
+C:\Users\pc\source\repos\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\Entidades.pdb
+C:\Users\pc\source\repos\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\Stock.pdb
+C:\Users\pc\source\repos\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\Excepciones.pdb
+C:\Users\pc\source\repos\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.csproj.CopyComplete
+C:\Users\pc\source\repos\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.exe
+C:\Users\pc\source\repos\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.pdb
+C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\Formularios.exe.config
+C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\Formularios.exe
+C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\Formularios.pdb
+C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\Entidades.dll
+C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\Stock.dll
+C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\Excepciones.dll
+C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\Entidades.pdb
+C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\Stock.pdb
+C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\Excepciones.pdb
+C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.csprojAssemblyReference.cache
+C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.frmAltaAntiparra.resources
+C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.frmAltaColono.resources
+C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.frmAltaGorrito.resources
+C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.frmModificarColono.resources
+C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.frmMostrarGrupo.resources
+C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.frmPrincipal.resources
+C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.frmVenta.resources
+C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.Properties.Resources.resources
+C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.csproj.GenerateResource.cache
+C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.csproj.CoreCompileInputs.cache
+C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.csproj.CopyComplete
+C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.exe
+C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.pdb
+C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.frmBuscarColono.resources
+C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.frmDatosPersonales.resources
+C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\BaseDatos.dll
+C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\BaseDatos.pdb
+C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\BaseDatos.dll.config
+C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\Validaciones.dll
+C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\Validaciones.pdb
+C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.frmAltaProducto.resources
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\Formularios.exe.config
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\Formularios.exe
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\Formularios.pdb
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\BaseDatos.dll
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\Entidades.dll
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\Excepciones.dll
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\Stock.dll
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\Validaciones.dll
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\BaseDatos.pdb
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\BaseDatos.dll.config
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\Entidades.pdb
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\Excepciones.pdb
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\Stock.pdb
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\bin\Debug\Validaciones.pdb
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.csprojAssemblyReference.cache
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.frmAltaAntiparra.resources
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.frmAltaColono.resources
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.frmAltaGorrito.resources
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.frmAltaProducto.resources
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.frmBuscarColono.resources
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.frmDatosPersonales.resources
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.frmModificarColono.resources
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.frmMostrarGrupo.resources
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.frmPrincipal.resources
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.frmVenta.resources
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.Properties.Resources.resources
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.csproj.GenerateResource.cache
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.csproj.CoreCompileInputs.cache
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.csproj.CopyComplete
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.exe
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Formularios\obj\Debug\Formularios.pdb
