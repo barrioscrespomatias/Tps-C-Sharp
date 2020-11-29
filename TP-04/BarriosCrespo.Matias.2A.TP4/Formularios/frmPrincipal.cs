@@ -50,6 +50,9 @@ namespace Formularios
             this.nuevoVinculo = new VincularDB(this.conexion);
             this.catalinas = this.nuevoVinculo.ObtenerColonos(this.catalinas);
             this.HardcodeoProductos();
+            this.Text = "COLONIA CATALINAS SUR";
+
+           
         }
         /// <summary>
         /// Inicializa un frmBuscarColono pasándole por parámetro una colonia.
@@ -81,7 +84,7 @@ namespace Formularios
             this.mostrarGrupo = new frmMostrarGrupo(this.catalinas);
             this.mostrarGrupo.Owner = this;
             this.mostrarGrupo.StartPosition = FormStartPosition.CenterParent;
-            this.mostrarGrupo.Show();
+            this.mostrarGrupo.Show(this);
         }
         /// <summary>
         /// Inicializa una nueva instancia de frmAltaColono, pasándole por parámetro una colonia.
@@ -124,7 +127,7 @@ namespace Formularios
 
             pagos = this.catalinas.Pagos;
             saldo = this.catalinas.SaldoActual;
-            MessageBox.Show("El saldo a favor es: $ " + saldo);
+            MessageBox.Show("Ingresos en caja: $ " + saldo);
             MessageBox.Show("Lista de pagos: \n" + pagos+"\n\n---------------------\n Total:$"+saldo);
         }
         /// <summary>

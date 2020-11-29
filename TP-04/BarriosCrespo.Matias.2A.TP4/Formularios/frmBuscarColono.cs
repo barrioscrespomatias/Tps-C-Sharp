@@ -32,6 +32,16 @@ namespace Formularios
         {
             this.catalinas = catalinas;
         }
+
+        /// <summary>
+        /// Busca un colono por DNI.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void frmBuscarColono_Load(object sender, EventArgs e)
+        {
+            this.Text = "Buscar";
+        }
         /// <summary>       
         /// Toma por formulario el DNI a buscar.
         /// Valida que el dato ingresado sea correcto.        
@@ -56,5 +66,6 @@ namespace Formularios
             else
                 MessageBox.Show("No se encontró el DNI.");
         }
+       
     }
 }

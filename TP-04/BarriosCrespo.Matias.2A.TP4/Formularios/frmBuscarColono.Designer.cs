@@ -69,6 +69,7 @@
             this.Controls.Add(this.txtBoxBuscarColono);
             this.Name = "frmBuscarColono";
             this.Text = "frmBuscarColono";
+            this.Load += new System.EventHandler(this.frmBuscarColono_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

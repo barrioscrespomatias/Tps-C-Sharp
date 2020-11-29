@@ -52,6 +52,7 @@ namespace Formularios
             {
                 MessageBox.Show("El dni ingresado no coincide con ninguno de los colonos");
             }
+            this.Text = "Datos del colono";
         }
         /// <summary>
         /// Genera una nueva instancia de frmVenta en la que se cargarán los datos de una nueva venta

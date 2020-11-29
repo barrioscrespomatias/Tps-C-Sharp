@@ -47,6 +47,7 @@ namespace Formularios
                 this.cmbMes.Items.Add(aux);
             }
             this.ActualizarTextBox();
+            this.Text = "Modificar datos";
         }
 
         /// <summary>

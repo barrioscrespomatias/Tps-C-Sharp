@@ -55,7 +55,6 @@ namespace Formularios
             this.cmbPeriodo.SelectedItem = c.Periodo;
 
         }
-
         /// <summary>
         /// Establece los combos a mostrar el periodo de inscripcion y el mes de inscripcion.
         /// </summary>
@@ -73,6 +72,7 @@ namespace Formularios
             }
             this.cmbMes.SelectedIndex = (int)EMesIncripcion.Diciembre;
             this.cmbPeriodo.SelectedIndex = (int)EPeriodoInscripcion.Quincena;
+            this.Text = "Alta Colono";
         }
 
         /// <summary>

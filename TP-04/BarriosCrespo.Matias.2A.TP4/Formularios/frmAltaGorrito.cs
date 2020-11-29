@@ -45,6 +45,7 @@ namespace Formularios
             {
                 this.cmbColores.Items.Add(color.ToString());
             }
+            this.Text = "Alta Gorrito";
         }
         /// <summary>
         /// Toma los datos del nuevo gorrito por formulario.

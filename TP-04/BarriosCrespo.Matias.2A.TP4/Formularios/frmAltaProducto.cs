@@ -43,7 +43,7 @@ namespace Formularios
             this.cmbTiposProductos.Items.Add("Atiparras");
             this.cmbTiposProductos.Items.Add("Gorritos");
             this.cmbTiposProductos.SelectedIndex = 0;
-
+            this.Text = "Alta productos";
         }
 
         /// <summary>

@@ -33,6 +33,31 @@ namespace Formularios
             this.catalinas = catalinas;
         }
         /// <summary>
+        /// Load en donde se cargan los combos a mostrar Marca y color a seleccionar.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void frmAltaAntiparra_Load(object sender, EventArgs e)
+        {
+            this.cmbBoxColores.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.cmbBoxMarca.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            foreach (EColores color in Enum.GetValues(typeof(EColores)))
+            {
+                this.cmbBoxColores.Items.Add(color.ToString());
+            }
+
+            foreach (EMarca marca in Enum.GetValues(typeof(EMarca)))
+            {
+                this.cmbBoxMarca.Items.Add(marca.ToString());
+            }
+
+            this.cmbBoxColores.SelectedIndex = 0;
+            this.cmbBoxMarca.SelectedIndex = 0;
+
+            this.Text = "Alta antiparras";
+        }
+        /// <summary>
         /// Acepta el alta de la antiparra. Toma los datos 
         /// por formulaio. Crea el producto y lo  ingresa a la colonia.
         /// Utiliza método AumentarStock de la colonia.
@@ -59,29 +84,7 @@ namespace Formularios
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-        /// <summary>
-        /// Load en donde se cargan los combos a mostrar Marca y color a seleccionar.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void frmAltaAntiparra_Load(object sender, EventArgs e)
-        {
-            this.cmbBoxColores.DropDownStyle = ComboBoxStyle.DropDownList;
-
-            foreach (EColores color in Enum.GetValues(typeof(EColores)))
-            {
-                this.cmbBoxColores.Items.Add(color.ToString());
-            }
-
-            foreach (EMarca marca in Enum.GetValues(typeof(EMarca)))
-            {
-                this.cmbBoxMarca.Items.Add(marca.ToString());
-            }
-
-            this.cmbBoxColores.SelectedIndex = 0;
-            this.cmbBoxMarca.SelectedIndex = 0;
-        }
+        }        
         /// <summary>
         /// Establece el dialogResult en Cancelado.
         /// </summary>

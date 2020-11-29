@@ -67,7 +67,7 @@ namespace Formularios
             this.cmbCantidadProducto.DropDownStyle = ComboBoxStyle.DropDownList;
             if (this.catalinas.ProductosEnVenta.Listado.Count > 0)
                 this.cmbBoxSeleccionProducto.SelectedIndex = 0;
-
+            this.Text = "Ventas";
         }
         /// <summary>
         /// Llama al método realizarVenta que se encarga de manipular el stock, la cantidad de

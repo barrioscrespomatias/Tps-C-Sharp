@@ -62,7 +62,7 @@
             this.bntControlador.Name = "bntControlador";
             this.bntControlador.Size = new System.Drawing.Size(205, 92);
             this.bntControlador.TabIndex = 4;
-            this.bntControlador.Text = "RESUMEN DE CUENTAS";
+            this.bntControlador.Text = "DETALLES INGRESOS";
             this.bntControlador.UseVisualStyleBackColor = true;
             this.bntControlador.Click += new System.EventHandler(this.bntControlador_Click);
             // 

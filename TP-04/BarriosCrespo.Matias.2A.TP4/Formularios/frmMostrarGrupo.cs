@@ -33,6 +33,32 @@ namespace Formularios
         {
             this.catalinas = colonia;
         }
+        /// <summary>
+        /// Carga los grupos en el comboBox que permite seleccionar el grupo a mostrar.
+        /// Configura el dataGridView.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void frmMostrarGrupo_Load(object sender, EventArgs e)
+        {
+            this.cmbSeleccionGrupos.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            foreach (Grupo aux in catalinas.ListaDeGrupos)
+            {
+                if (aux.EdadDelGrupo != EEdad.EdadIncorrecta)
+                    this.cmbSeleccionGrupos.Items.Add(aux.EdadDelGrupo.ToString());
+            }
+            this.cmbSeleccionGrupos.SelectedIndex = 0;
+
+            //configuracion del dataGridView
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically;
+            this.dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.AllowUserToAddRows = false;
+
+            this.Text = "Mostrar grupo";
+        }
 
         /// <summary>
         /// Crea filas en el dataTable cargando en cada una la informacion de un colono que pertenezca
@@ -85,29 +111,6 @@ namespace Formularios
             this.dt.Columns["id"].AutoIncrementSeed = 1;
             this.dt.Columns["id"].AutoIncrementStep = 1;
         }
-        /// <summary>
-        /// Carga los grupos en el comboBox que permite seleccionar el grupo a mostrar.
-        /// Configura el dataGridView.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void frmMostrarGrupo_Load(object sender, EventArgs e)
-        {
-            this.cmbSeleccionGrupos.DropDownStyle = ComboBoxStyle.DropDownList;
-
-            foreach (Grupo aux in catalinas.ListaDeGrupos)
-            {
-                if (aux.EdadDelGrupo != EEdad.EdadIncorrecta)
-                    this.cmbSeleccionGrupos.Items.Add(aux.EdadDelGrupo.ToString());
-            }
-            this.cmbSeleccionGrupos.SelectedIndex = 0;
-
-            //configuracion del dataGridView
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically;
-            this.dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.AllowUserToAddRows = false;
-        }
+       
     }
 }

@@ -441,7 +441,7 @@ namespace Entidades
             {
                 using (StreamWriter sw = new StreamWriter(rutaDeGuardado, true, miCodificacion))
                 {
-                    sw.WriteLine(colono.Nombre + " " + colono.Apellido + " con DNI: " + colono.Dni + " ha abonado $" + colono.Saldo + ".-");
+                    sw.WriteLine(DateTime.Now+" "+colono.Nombre + " " + colono.Apellido + " con DNI: " + colono.Dni + " ha abonado $" + colono.Saldo + ".-");
                     retorno = true;
                 }
             }
