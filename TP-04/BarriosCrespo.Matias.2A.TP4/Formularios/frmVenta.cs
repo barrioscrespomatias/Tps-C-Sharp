@@ -133,7 +133,6 @@ namespace Formularios
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.cmbCantidadProducto.Items.Clear();
-           
             //Cargo el producto
             this.producto = (Producto)cmbBoxSeleccionProducto.SelectedItem;
             //Carga el combo de seleccion de la cantidad disponible del producto que se ha seleccionado.
@@ -142,8 +141,6 @@ namespace Formularios
                 this.cmbCantidadProducto.Items.Add(i);
             }
             this.cmbCantidadProducto.SelectedIndex = 0;
-
-
         }
         /// <summary>
         /// Actualiza los productos disponibles para la venta.

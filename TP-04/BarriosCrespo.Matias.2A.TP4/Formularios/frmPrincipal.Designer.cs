@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.btnBuscarColono = new System.Windows.Forms.Button();
-            this.btnAltaAlumno = new System.Windows.Forms.Button();
+            this.btnAltaColono = new System.Windows.Forms.Button();
             this.bntControlador = new System.Windows.Forms.Button();
             this.btnMostrarGrupos = new System.Windows.Forms.Button();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.btnAbmProductos = new System.Windows.Forms.Button();
+            this.btnAltaProducto = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnBuscarColono
@@ -46,15 +46,15 @@
             this.btnBuscarColono.UseVisualStyleBackColor = true;
             this.btnBuscarColono.Click += new System.EventHandler(this.btnBuscarColono_Click);
             // 
-            // btnAltaAlumno
+            // btnAltaColono
             // 
-            this.btnAltaAlumno.Location = new System.Drawing.Point(12, 101);
-            this.btnAltaAlumno.Name = "btnAltaAlumno";
-            this.btnAltaAlumno.Size = new System.Drawing.Size(189, 92);
-            this.btnAltaAlumno.TabIndex = 0;
-            this.btnAltaAlumno.Text = "ALTA ALUMNO";
-            this.btnAltaAlumno.UseVisualStyleBackColor = true;
-            this.btnAltaAlumno.Click += new System.EventHandler(this.btnAltaAlumno_Click);
+            this.btnAltaColono.Location = new System.Drawing.Point(12, 101);
+            this.btnAltaColono.Name = "btnAltaColono";
+            this.btnAltaColono.Size = new System.Drawing.Size(189, 92);
+            this.btnAltaColono.TabIndex = 0;
+            this.btnAltaColono.Text = "ALTA COLONO";
+            this.btnAltaColono.UseVisualStyleBackColor = true;
+            this.btnAltaColono.Click += new System.EventHandler(this.btnAltaAlumno_Click);
             // 
             // bntControlador
             // 
@@ -86,26 +86,26 @@
             this.lblTitulo.TabIndex = 6;
             this.lblTitulo.Text = "COLONIA CATALINAS 2021";
             // 
-            // btnAbmProductos
+            // btnAltaProducto
             // 
-            this.btnAbmProductos.Location = new System.Drawing.Point(12, 261);
-            this.btnAbmProductos.Name = "btnAbmProductos";
-            this.btnAbmProductos.Size = new System.Drawing.Size(189, 92);
-            this.btnAbmProductos.TabIndex = 3;
-            this.btnAbmProductos.Text = "ABM PRODUCTOS";
-            this.btnAbmProductos.UseVisualStyleBackColor = true;
-            this.btnAbmProductos.Click += new System.EventHandler(this.btnAbmProductos_Click);
+            this.btnAltaProducto.Location = new System.Drawing.Point(12, 261);
+            this.btnAltaProducto.Name = "btnAltaProducto";
+            this.btnAltaProducto.Size = new System.Drawing.Size(189, 92);
+            this.btnAltaProducto.TabIndex = 3;
+            this.btnAltaProducto.Text = "ALTA PRODUCTO";
+            this.btnAltaProducto.UseVisualStyleBackColor = true;
+            this.btnAltaProducto.Click += new System.EventHandler(this.btnAbmProductos_Click);
             // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnAbmProductos);
+            this.Controls.Add(this.btnAltaProducto);
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.bntControlador);
             this.Controls.Add(this.btnMostrarGrupos);
-            this.Controls.Add(this.btnAltaAlumno);
+            this.Controls.Add(this.btnAltaColono);
             this.Controls.Add(this.btnBuscarColono);
             this.Name = "frmPrincipal";
             this.Text = "Form1";
@@ -118,11 +118,11 @@
         #endregion
 
         private System.Windows.Forms.Button btnBuscarColono;
-        private System.Windows.Forms.Button btnAltaAlumno;
+        private System.Windows.Forms.Button btnAltaColono;
         private System.Windows.Forms.Button bntControlador;
         private System.Windows.Forms.Button btnMostrarGrupos;
         private System.Windows.Forms.Label lblTitulo;
-        private System.Windows.Forms.Button btnAbmProductos;
+        private System.Windows.Forms.Button btnAltaProducto;
     }
 }
 

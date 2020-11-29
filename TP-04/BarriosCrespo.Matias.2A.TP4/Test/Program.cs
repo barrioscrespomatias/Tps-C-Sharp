@@ -17,85 +17,54 @@ namespace Test
         static void Main(string[] args)
         {
             Colonia catalinas = new Colonia("Catalinas");
-
-            Colono c1 = new Colono("Rene", "Perez", new DateTime(2008, 10, 06), 1111, EPeriodoInscripcion.Mes);
-
-            Colono c2 = new Colono("Juan", "Carlos", new DateTime(2016, 5, 09), 2222, EPeriodoInscripcion.Quincena);
-
-
-            Colono c3 = new Colono("Mateo", "Uribe", new DateTime(2013, 8, 22), 3333, EPeriodoInscripcion.Semana);
-
-            Colono c4 = new Colono("Nicolas", "Avellaneda", new DateTime(2007, 10, 06), 4444, EPeriodoInscripcion.Mes);
-            Colono c5 = new Colono("Puente", "Pueyrredon", new DateTime(2010, 5, 09), 5555, EPeriodoInscripcion.Quincena);
-            Colono c6 = new Colono("Aristóbulo", "Del Valle", new DateTime(2017, 8, 22), 6666, EPeriodoInscripcion.Semana);
-
-            Colono c7 = new Colono("Roque", "Saenz Peña", new DateTime(2000, 10, 06), 7777, EPeriodoInscripcion.Mes);
-            Colono c8 = new Colono("Manuel", "Belgrano", new DateTime(1990, 5, 09), 8888, EPeriodoInscripcion.Quincena);
-            Colono c9 = new Colono("Don José", "De San Martin", new DateTime(2020, 8, 09), 9999, EPeriodoInscripcion.Semana);
-
-
-
+            Colono colonoUno = new Colono("Rene", "Perez", new DateTime(2008, 10, 06), 1111, EPeriodoInscripcion.Mes);
+            Colono colonoDos = new Colono("Juan", "Carlos", new DateTime(2007, 5, 09), 2222, EPeriodoInscripcion.Quincena);
+            Colono colonoRepetido = new Colono("Mateo", "Uribe", new DateTime(2013, 8, 22), 2222, EPeriodoInscripcion.Semana);
+            
 
             //Productos
 
-            Gorrito g1 = new Gorrito(EColores.Amarillo, 200f, 1);
-            Gorrito g2 = new Gorrito(EColores.Verde, 200f, 1);
-            Gorrito g3 = new Gorrito(EColores.Rojo, 200f, 1);
+            Gorrito g1 = new Gorrito(EColores.Amarillo, 200f, 10);
+            Antiparra a1 = new Antiparra(EMarca.Pirulito, EColores.Rojo, 500f, 10);
 
-            Antiparra a1 = new Antiparra(EMarca.Pirulito, EColores.Rojo, 500f, 1);
-            Antiparra a2 = new Antiparra(EMarca.Adidas, EColores.Verde, 100f, 1);
-            Antiparra a3 = new Antiparra(EMarca.Speedo, EColores.Verde, 150, 1);
-
-
-            //Agregar productos a la lista genérica
             catalinas.ProductosEnVenta += g1;
-            catalinas.ProductosEnVenta += g2;
-            catalinas.ProductosEnVenta += g3;
-
+            catalinas.ProductosEnVenta += a1;
             try
             {
-                catalinas.ProductosEnVenta += a1;
-            }
-            catch (StockMaximoException exe)
-            {
-                Console.WriteLine(exe.Message);
-            }
-
-            //Carga de colonos
-
-            try
-            {
-                catalinas += c1;
-                catalinas += c2;
-                //catalinas -= c1;
+                catalinas += colonoUno;
+                catalinas += colonoDos;
+                catalinas += colonoRepetido;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
 
-            try
-            {
-                catalinas += c4;
-                catalinas += c5;
-                catalinas += c6;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
+            //Elimina colonoDos.
+            catalinas -= colonoDos;
 
-            try
-            {
-                catalinas += c7;
-                catalinas += c8;
-                //catalinas -= c9;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            Console.WriteLine(catalinas.ProductosEnVenta);
+            
+            //Agrega al colonoRepetido
+            //Irá a un grupo distinto ya que sus rangos etarios no coinciden.
+            catalinas += colonoRepetido;
+
+
+            //Colono numero1 compra producto.
+            //La venta achica el stock y suma deuda al saldo del colono.
+            catalinas.RealizaVenta(catalinas, g1, colonoUno, 1);
+
+            //ColonoDos Compra 5 uniades del g1 pero NO paga sus deudas-
+            catalinas.RealizaVenta(catalinas, g1, colonoRepetido, 5);
+
+            //Colono que compró paga sus deudas: Cuota+Gorrito de $200. = total $3700.-            
+            colonoUno.PagarDeudas(colonoUno, catalinas);
+       
+            
+            Console.WriteLine(colonoUno.ToString()+"***************************");
+            Console.WriteLine(colonoRepetido.ToString() + "***************************");
+
+
+            Console.WriteLine("Productos en venta\n\n"+catalinas.ProductosEnVenta);
             Console.WriteLine(catalinas.ToString());
 
             Console.ReadKey();
