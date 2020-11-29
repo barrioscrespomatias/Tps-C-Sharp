@@ -225,7 +225,7 @@ namespace Entidades
                 total += aux.precio;
                 sb.AppendFormat("{0} - ${1}\n", aux.GetType().Name, aux.precio);
             }
-            sb.AppendFormat("Total por ventas: ${0}\n", total);
+            sb.AppendFormat("Total por compras: ${0}\n", total);
             return sb.ToString();
         }
 

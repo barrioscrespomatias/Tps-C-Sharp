@@ -169,7 +169,7 @@ namespace Entidades
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("*************************");
-            sb.AppendFormat("Nombre del grupo: {0}\n", this.colorID.ToString());
+            sb.AppendFormat("Nombre del grupo: {0}\n", this.eDadDelGrupo.ToString());
             //sb.AppendFormat("{0}\n", this.profesorDelGrupo.ToString());
             //sb.AppendFormat("Horario de pileta: {0}\n", this.turnoPileta.ToString());
             sb.AppendFormat("Cantidad de colonos: {0}\n", this.listaDeColonos.Count);

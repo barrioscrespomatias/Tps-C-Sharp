@@ -172,9 +172,9 @@ namespace Formularios
             this.BackColor = Color.Beige;
             for (int i = 0; i < 2; i++)
             {
-                this.btnAltaAlumno.BackColor = Color.BurlyWood;
+                this.btnAltaColono.BackColor = Color.BurlyWood;
                 Thread.Sleep(1000);
-                this.btnAltaAlumno.BackColor = (Color)default;
+                this.btnAltaColono.BackColor = (Color)default;
                 Thread.Sleep(100);
 
                 this.btnBuscarColono.BackColor = Color.BurlyWood;
@@ -187,9 +187,9 @@ namespace Formularios
                 this.btnMostrarGrupos.BackColor = (Color)default;
                 Thread.Sleep(100);
 
-                this.btnAbmProductos.BackColor = Color.BurlyWood;
+                this.btnAltaProducto.BackColor = Color.BurlyWood;
                 Thread.Sleep(1000);
-                this.btnAbmProductos.BackColor = (Color)default;
+                this.btnAltaProducto.BackColor = (Color)default;
                 Thread.Sleep(100);
 
                 this.bntControlador.BackColor = Color.BurlyWood;
