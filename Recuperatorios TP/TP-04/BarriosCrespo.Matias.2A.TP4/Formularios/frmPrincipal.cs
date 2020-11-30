@@ -22,9 +22,7 @@ namespace Formularios
     {
 
         public Colonia catalinas = new Colonia("Catalinas");
-        frmMostrarGrupo mostrarGrupo;
         Thread hiloInicial;
-
         public SqlConnection conexion = new SqlConnection(Properties.Settings.Default.conexionDB);
         public VincularDB nuevoVinculo;
 
@@ -79,7 +77,7 @@ namespace Formularios
                 int dniABuscar = buscar.dni;
                 Colono auxiliar = this.catalinas.ObtenerDatos(this.catalinas, dniABuscar);
                 frmDatosPersonales mostrarDatos = new frmDatosPersonales(auxiliar, this.catalinas);
-                mostrarDatos.Show(this);
+                mostrarDatos.ShowDialog();
             }
         }
         /// <summary>
@@ -89,10 +87,10 @@ namespace Formularios
         /// <param name="e"></param>
         private void btnMostrarGrupos_Click(object sender, EventArgs e)
         {
-            this.mostrarGrupo = new frmMostrarGrupo(this.catalinas);
-            this.mostrarGrupo.Owner = this;
-            this.mostrarGrupo.StartPosition = FormStartPosition.CenterParent;
-            this.mostrarGrupo.Show(this);
+            frmMostrarGrupo mostrarGrupo = new frmMostrarGrupo(this.catalinas);
+            mostrarGrupo.Owner = this;
+            mostrarGrupo.StartPosition = FormStartPosition.CenterParent;
+            mostrarGrupo.ShowDialog();
         }
         /// <summary>
         /// Inicializa una nueva instancia de frmAltaColono, pasándole por parámetro una colonia.
@@ -102,8 +100,10 @@ namespace Formularios
         private void btnAltaAlumno_Click(object sender, EventArgs e)
         {
             frmAltaColono altaColono = new frmAltaColono(this.catalinas);
-            altaColono.StartPosition = FormStartPosition.CenterScreen;
-            altaColono.Show();
+            altaColono.Owner = this;
+            altaColono.StartPosition = FormStartPosition.CenterParent;
+            altaColono.ShowDialog();
+
         }
 
         /// <summary>
@@ -113,8 +113,8 @@ namespace Formularios
         /// <param name="e"></param>
         private void btnAbmProductos_Click(object sender, EventArgs e)
         {
-            if (this.catalinas.ProductosEnVenta.CantidadEnStock <this.catalinas.ProductosEnVenta.Capacidad)
-            {                
+            if (this.catalinas.ProductosEnVenta.CantidadEnStock < this.catalinas.ProductosEnVenta.Capacidad)
+            {
                 frmAltaProducto nuevoProducto = new frmAltaProducto(this.catalinas);
                 nuevoProducto.StartPosition = FormStartPosition.CenterScreen;
                 nuevoProducto.ShowDialog();
@@ -122,7 +122,7 @@ namespace Formularios
             else
                 MessageBox.Show("No hay mas espacio para guardar productos!\nVenda algo!!!");
 
-            
+
         }
 
 

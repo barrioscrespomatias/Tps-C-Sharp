@@ -98,40 +98,42 @@ namespace Formularios
                 c.Saldo = Colono.CalcularDeuda(c.Periodo);
                 c.FechaNacimiento = Validar.ValidarFecha(this.txtBoxFechaNacimiento.Text);
                 c.Edad = (int)DateTime.Now.Year - c.FechaNacimiento.Year;
+                c.EdadGrupo = c.AsignarGrupo(c.Edad);
+
+                if (this.catalinas != c)
+                {
+                    if (Colono.EsValido(c))
+                    {
+                        if (this.nuevaConexion.ProbarConexion())
+                        {
+                            this.catalinas += c;
+                            if (nuevaConexion.AgregarColono(c))
+                            {
+                                MessageBox.Show("Se ha agregado el colono a la base de datos!");
+                                this.DialogResult = DialogResult.OK;
+                                this.Close();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se ha podido conectar a la base de datos");
+                            this.Close();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Uno o mas campos son incorrectos");
+                    }
+                }
+                else
+                    MessageBox.Show("Ya existe un colono con ese DNI.");
 
             }
             catch (ValidacionIncorrectaException ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            if (this.catalinas != c)
-            {
-                if (Colono.EsValido(c))
-                {
-                    if (this.nuevaConexion.ProbarConexion())
-                    {
-                        this.catalinas += c;
-                        if (nuevaConexion.AgregarColono(c))
-                        {
-                            MessageBox.Show("Se ha agregado el colono a la base de datos!");
-                            this.DialogResult = DialogResult.OK;
-                            this.Close();
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se ha podido conectar a la base de datos");
-                        this.Close();
-                    }
-                        
-                }
-                else
-                {
-                    MessageBox.Show("Uno o mas campos son incorrectos");
-                }
-            }
-            else
-                MessageBox.Show("Ya existe un colono con ese DNI.");
+
         }
         /// <summary>
         /// Establece el dialogResult en Cancel.
