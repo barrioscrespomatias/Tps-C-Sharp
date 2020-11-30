@@ -32,6 +32,7 @@ namespace Formularios
         public frmPrincipal()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
         /// <summary>
         /// Inicializa hilo cambia color del formulario principal
@@ -44,6 +45,7 @@ namespace Formularios
         /// <param name="e"></param>
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
+
             hiloInicial = new Thread(new ThreadStart(this.Comenzando));
             hiloInicial.Start();
             this.nuevoVinculo = new VincularDB(this.conexion);
@@ -70,13 +72,13 @@ namespace Formularios
         private void btnBuscarColono_Click(object sender, EventArgs e)
         {
             frmBuscarColono buscar = new frmBuscarColono(this.catalinas);
-            buscar.Owner = this;
-            buscar.StartPosition = FormStartPosition.CenterParent;
+            buscar.StartPosition = FormStartPosition.CenterScreen;
             if (buscar.ShowDialog() == DialogResult.OK)
             {
                 int dniABuscar = buscar.dni;
                 Colono auxiliar = this.catalinas.ObtenerDatos(this.catalinas, dniABuscar);
                 frmDatosPersonales mostrarDatos = new frmDatosPersonales(auxiliar, this.catalinas);
+                mostrarDatos.StartPosition = FormStartPosition.CenterScreen;
                 mostrarDatos.ShowDialog();
             }
         }
@@ -88,8 +90,7 @@ namespace Formularios
         private void btnMostrarGrupos_Click(object sender, EventArgs e)
         {
             frmMostrarGrupo mostrarGrupo = new frmMostrarGrupo(this.catalinas);
-            mostrarGrupo.Owner = this;
-            mostrarGrupo.StartPosition = FormStartPosition.CenterParent;
+            mostrarGrupo.StartPosition = FormStartPosition.CenterScreen;
             mostrarGrupo.ShowDialog();
         }
         /// <summary>
@@ -100,8 +101,7 @@ namespace Formularios
         private void btnAltaAlumno_Click(object sender, EventArgs e)
         {
             frmAltaColono altaColono = new frmAltaColono(this.catalinas);
-            altaColono.Owner = this;
-            altaColono.StartPosition = FormStartPosition.CenterParent;
+            altaColono.StartPosition = FormStartPosition.CenterScreen;
             altaColono.ShowDialog();
 
         }

@@ -63,9 +63,8 @@ namespace Formularios
         /// <param name="e"></param>
         private void btnComprar_Click(object sender, EventArgs e)
         {
-            frmVenta nuevaVenta = new frmVenta(this.colono, this.catalinas);
-            nuevaVenta.Owner = this;
-            nuevaVenta.StartPosition = FormStartPosition.CenterParent;
+            frmVenta nuevaVenta = new frmVenta(this.colono, this.catalinas);            
+            nuevaVenta.StartPosition = FormStartPosition.CenterScreen;
             if (nuevaVenta.ShowDialog() == DialogResult.OK)
             {
                 this.ActualizarTextBox();
@@ -83,9 +82,8 @@ namespace Formularios
         {
             bool modificado = false;
             this.vincular = new VincularDB(this.conexion);
-            frmModificarColono modificar = new frmModificarColono(this.colono);
-            modificar.Owner = this;
-            modificar.StartPosition = FormStartPosition.CenterParent;
+            frmModificarColono modificar = new frmModificarColono(this.colono);           
+            modificar.StartPosition = FormStartPosition.CenterScreen;
             if (modificar.ShowDialog() == DialogResult.OK)
             {
                 try

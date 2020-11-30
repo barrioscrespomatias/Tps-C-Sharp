@@ -21,3 +21,26 @@ C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\TestEdadA
 C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\TestEdadApta\obj\Debug\TestEdadApta.csproj.CopyComplete
 C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\TestEdadApta\obj\Debug\TestEdadApta.dll
 C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\TestEdadApta\obj\Debug\TestEdadApta.pdb
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\TestEdadApta\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\TestEdadApta\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\TestEdadApta\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\TestEdadApta\bin\Debug\es\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\TestEdadApta\bin\Debug\es\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\TestEdadApta\bin\Debug\es\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\TestEdadApta\bin\Debug\TestEdadApta.dll
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\TestEdadApta\bin\Debug\TestEdadApta.pdb
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\TestEdadApta\bin\Debug\Entidades.dll
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\TestEdadApta\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\TestEdadApta\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\TestEdadApta\bin\Debug\Stock.dll
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\TestEdadApta\bin\Debug\Excepciones.dll
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\TestEdadApta\bin\Debug\Entidades.pdb
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\TestEdadApta\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\TestEdadApta\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\TestEdadApta\bin\Debug\Stock.pdb
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\TestEdadApta\bin\Debug\Excepciones.pdb
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\TestEdadApta\obj\Debug\TestEdadApta.csprojAssemblyReference.cache
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\TestEdadApta\obj\Debug\TestEdadApta.csproj.CoreCompileInputs.cache
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\TestEdadApta\obj\Debug\TestEdadApta.csproj.CopyComplete
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\TestEdadApta\obj\Debug\TestEdadApta.dll
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\TestEdadApta\obj\Debug\TestEdadApta.pdb
