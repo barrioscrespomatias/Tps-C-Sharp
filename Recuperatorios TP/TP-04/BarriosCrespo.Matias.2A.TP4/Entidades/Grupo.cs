@@ -37,8 +37,6 @@ namespace Entidades
 
         #region Propiedades
 
-
-
         public int Capacidad
         {
             get { return this.capacidad; }
@@ -59,6 +57,7 @@ namespace Entidades
         public EEdad EdadDelGrupo
         {
             get { return this.eDadDelGrupo; }
+            set { this.eDadDelGrupo = value; }
         }
 
         #endregion

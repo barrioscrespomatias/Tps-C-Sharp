@@ -23,6 +23,9 @@ namespace Formularios
         public SqlConnection conexion = new SqlConnection(Properties.Settings.Default.conexionDB);
         public VincularDB vincular;
 
+        private frmPrincipal padre = new frmPrincipal();
+        public event DelegadoActualizaColonia EventoActualizacion;
+
         /// <summary>
         /// Constructor por defecto.
         /// </summary>
@@ -54,6 +57,7 @@ namespace Formularios
                 MessageBox.Show("El dni ingresado no coincide con ninguno de los colonos");
             }
             this.Text = "Datos del colono";
+            this.EventoActualizacion = new DelegadoActualizaColonia(padre.ActualizarColonia);
 
         }
         /// <summary>
@@ -84,6 +88,9 @@ namespace Formularios
         {
             Colono auxiliar = new Colono();
             this.vincular = new VincularDB(this.conexion);
+            //Actualiza la instancia de colonia con ultimos datos de la base de datos.
+            this.catalinas = this.EventoActualizacion();
+
             frmModificarColono modificar = new frmModificarColono(this.colono);
             modificar.StartPosition = FormStartPosition.CenterScreen;
             if (modificar.ShowDialog() == DialogResult.OK)
@@ -106,10 +113,10 @@ namespace Formularios
                     if (Colono.EsValido(auxiliar))
                     {
                         //Eliminar al colono anterior.
-                        this.catalinas -= this.colono;
+                        //this.catalinas -= this.colono;
 
                         //Agregar al colono modificado                     
-                        this.catalinas += auxiliar;
+                        //this.catalinas += auxiliar;
                         if (this.vincular.ProbarConexion())
                         {
                             if (this.vincular.ModificarColono(auxiliar))

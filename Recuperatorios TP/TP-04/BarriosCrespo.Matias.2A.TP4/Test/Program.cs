@@ -52,6 +52,7 @@ namespace Test
             //Colono numero1 compra producto.
             //La venta achica el stock y suma deuda al saldo del colono.
             catalinas.RealizaVenta(catalinas, g1, colonoUno, 1);
+            catalinas.RealizaVenta(catalinas, a1, colonoUno, 5);
 
             //ColonoDos Compra 5 uniades del g1 pero NO paga sus deudas-
             catalinas.RealizaVenta(catalinas, g1, colonoRepetido, 5);
@@ -59,13 +60,18 @@ namespace Test
             //Colono que compró paga sus deudas: Cuota+Gorrito de $200. = total $3700.-            
             colonoUno.PagarDeudas(colonoUno, catalinas);
 
+            //Serializar colonia y mostrar la misma deserealizándola.            
+            catalinas.Serializar();
+            Colonia auxiliar = new Colonia("Catalinas deserealizada!");
+            catalinas.Deserealizar(out auxiliar);
+            Console.WriteLine("DESERIALIZADA!");
+            Console.WriteLine(auxiliar.ToString());
 
-            Console.WriteLine(colonoUno.ToString() + "***************************");
-            Console.WriteLine(colonoRepetido.ToString() + "***************************");
+
+            Console.WriteLine("PRODUCTOS EN VENTA\n\n" + auxiliar.ProductosEnVenta);
+       
 
 
-            Console.WriteLine("Productos en venta\n\n" + catalinas.ProductosEnVenta);
-            Console.WriteLine(catalinas.ToString());
 
             Console.ReadKey();
         }

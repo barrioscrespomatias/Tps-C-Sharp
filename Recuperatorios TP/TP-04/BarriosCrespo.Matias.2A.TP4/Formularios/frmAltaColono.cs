@@ -103,7 +103,7 @@ namespace Formularios
                     {
                         if (this.nuevaConexion.ProbarConexion())
                         {
-                            this.catalinas += colono;
+                            //this.catalinas += colono;
                             if (nuevaConexion.AgregarColono(colono))
                             {
                                 MessageBox.Show("Se ha agregado el colono a la base de datos!");

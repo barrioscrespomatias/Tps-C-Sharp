@@ -23,6 +23,7 @@ namespace Entidades
                 Colonia.GuardarImporte(catalinas);
                 colono.SaldoProductos = 0;
                 colono.SaldoCuota = 0;
+                Console.WriteLine("Se han saldado las deudas de "+colono.Apellido+" "+colono.Nombre);
 
             }
         }

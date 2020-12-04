@@ -12,7 +12,7 @@ namespace TestAgregarColono
         {
             //Arrange    
             Colonia catalinas = new Colonia("Catalinas");
-            Colono a = new Colono("Pedrito", "Alvarado", new DateTime(2011, 11, 02), 2222, EPeriodoInscripcion.Mes,100f);
+            Colono a = new Colono("Pedrito", "Alvarado", new DateTime(2011, 11, 02), 2222, EPeriodoInscripcion.Mes);
 
             //Act
             catalinas += a;

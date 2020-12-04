@@ -7,6 +7,8 @@ using System.Xml.Serialization;
 
 namespace Stock
 {
+    [XmlInclude(typeof(Gorrito))]
+    [XmlInclude(typeof(Antiparra))]
     public class Producto
     {
         public double precio;

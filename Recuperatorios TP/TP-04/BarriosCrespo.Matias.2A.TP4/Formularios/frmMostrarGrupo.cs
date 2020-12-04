@@ -66,6 +66,7 @@ namespace Formularios
         /// <param name="e"></param>
         private void btnMostrar_Click(object sender, EventArgs e)
         {
+            //Actualiza la colonia con los últimos datos de la base de datos.
             this.catalinas = this.EventoActualizacion();
 
             this.dataGridView1.Columns.Clear();

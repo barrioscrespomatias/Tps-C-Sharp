@@ -64,15 +64,15 @@ namespace Entidades
         /// <param name="periodo"></param>
         /// <param name="deuda"></param>
         public Colono(string nombre, string apellido, DateTime fechaNacimiento, int dni, EPeriodoInscripcion periodo, double saldoCuota, double saldoProductos)
-           : base(nombre, apellido, fechaNacimiento, dni)
+           : this(nombre, apellido, fechaNacimiento, dni,periodo)
         {
-            this.edad = DateTime.Today.Year - this.fechaNacimiento.Year;
-            this.grupo = this.AsignarGrupo(edad);
+            //this.edad = DateTime.Today.Year - this.fechaNacimiento.Year;
+            //this.grupo = this.AsignarGrupo(edad);
             this.saldoCuota = saldoCuota;
             this.saldoProductos = saldoProductos;
-            this.periodo = periodo;
-            this.sinDeudas = false;
-            this.productosComprados = new List<Producto>();
+            //this.periodo = periodo;
+            //this.sinDeudas = false;
+            //this.productosComprados = new List<Producto>();
         }
         /// <summary>
         /// Constructor con 7 parámetros para obtener colono desde base de datos.
@@ -223,19 +223,18 @@ namespace Entidades
         /// </summary>
         /// <returns></returns>
         public override string ToString()
-        {
-            double total = 0;
+        {         
             StringBuilder sb = new StringBuilder();
             sb.AppendFormat(base.ToString());
-            sb.AppendFormat("Edad: {0}\n", this.edad);
-            sb.AppendFormat("Deuda actual:${0:N2}\n", this.saldoCuota + this.saldoProductos);
-            sb.AppendFormat("Lista de productos comprados: \n\n");
+            sb.AppendFormat("Edad: {0}\n", this.edad);           
+            sb.AppendFormat("Saldo a pagar por cuota:${0:N2}\n", this.saldoCuota);
+            sb.AppendFormat("Saldo a pagar por compras:${0:N2}\n", this.saldoProductos);
+            sb.AppendFormat("Lista Productos comprados: \n\n");
             foreach (Producto aux in this.productosComprados)
-            {
-                total += aux.precio;
+            {                
                 sb.AppendFormat("{0} - ${1}\n", aux.GetType().Name, aux.precio);
             }
-            sb.AppendFormat("Total por compras: ${0}\n", total);
+            
             return sb.ToString();
         }
 

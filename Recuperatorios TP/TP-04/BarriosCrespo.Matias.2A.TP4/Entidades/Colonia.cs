@@ -531,5 +531,66 @@ namespace Entidades
 
             return sb.ToString();
         }
+
+        /// <summary>
+        /// Ruta de serializado y deserializado.
+        /// </summary>
+        public string Path
+        {
+            get
+            {
+                string rutaDeGuardado = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\" + "Catalinas.xml";
+                return rutaDeGuardado;
+            }
+
+        }
+
+        /// <summary>
+        /// Serializado XML
+        /// </summary>
+        /// <returns></returns>
+        public bool Serializar()
+        {
+            bool retorno = false;
+            Encoding miCodificacion = Encoding.UTF8;
+            try
+            {
+                using (XmlTextWriter writer = new XmlTextWriter(this.Path, miCodificacion))
+                {
+                    XmlSerializer ser = new XmlSerializer(typeof(Colonia));
+                    ser.Serialize(writer, this);
+                    retorno = true;
+                    writer.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            return retorno;
+        }
+
+        public Colonia Deserealizar(out Colonia catalinas)
+        {
+            Encoding miCodificacion = Encoding.UTF8;
+            catalinas = null;
+            try
+            {
+                using (XmlTextReader lector = new XmlTextReader(this.Path))
+                {
+                    XmlSerializer ser = new XmlSerializer(typeof(Colonia));
+                    catalinas = ((Colonia)ser.Deserialize(lector));
+                    lector.Close();
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            return catalinas;
+        }
+
+
     }
 }

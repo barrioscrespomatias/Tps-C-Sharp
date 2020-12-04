@@ -25,6 +25,7 @@ namespace Formularios
         Thread hiloInicial;
         public SqlConnection conexion = new SqlConnection(Properties.Settings.Default.conexionDB);
         public VincularDB nuevoVinculo;
+        
 
 
         /// <summary>
@@ -47,8 +48,8 @@ namespace Formularios
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
             hiloInicial = new Thread(new ThreadStart(this.Comenzando));
-            hiloInicial.Start();
-            this.catalinas = this.ActualizarColonia();
+            hiloInicial.Start();            
+            this.ActualizarColonia();
             this.catalinas.SaldoActual = Colonia.ObtenerSaldo();
             this.HardcodeoProductos();
             this.Text = "COLONIA CATALINAS SUR";
@@ -63,6 +64,8 @@ namespace Formularios
         private void btnBuscarColono_Click(object sender, EventArgs e)
         {
             frmBuscarColono buscar = new frmBuscarColono(this.catalinas);
+            //Actualiza la colonia con los últimos valores de la base de datos.
+            this.catalinas = this.ActualizarColonia();
             buscar.StartPosition = FormStartPosition.CenterScreen;
             if (buscar.ShowDialog() == DialogResult.OK)
             {
@@ -204,6 +207,7 @@ namespace Formularios
             if (this.nuevoVinculo.ProbarConexion())
             {
                 auxiliar = this.nuevoVinculo.ObtenerColonos(this.catalinas);
+                //this.catalinas = this.nuevoVinculo.ObtenerColonos(this.catalinas);
             }
             else
                 MessageBox.Show("No se ha podido conectar a la base de datos");
