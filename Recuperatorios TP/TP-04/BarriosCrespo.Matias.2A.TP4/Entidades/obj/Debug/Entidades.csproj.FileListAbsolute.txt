@@ -20,3 +20,14 @@ C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\Entidades
 C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\Entidades\obj\Debug\Entidades.csproj.CopyComplete
 C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\Entidades\obj\Debug\Entidades.dll
 C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\Entidades\obj\Debug\Entidades.pdb
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Entidades\bin\Debug\Entidades.dll
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Entidades\bin\Debug\Entidades.pdb
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Entidades\bin\Debug\Excepciones.dll
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Entidades\bin\Debug\Stock.dll
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Entidades\bin\Debug\Excepciones.pdb
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Entidades\bin\Debug\Stock.pdb
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Entidades\obj\Debug\Entidades.csproj.CopyComplete
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Entidades\obj\Debug\Entidades.dll
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\Entidades\obj\Debug\Entidades.pdb

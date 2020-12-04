@@ -160,7 +160,9 @@ namespace Entidades
             return g1;
         }
 
-        #endregion
+        #endregion    
+
+
         /// <summary>
         /// Hace públicos los datos del grupo.
         /// </summary>

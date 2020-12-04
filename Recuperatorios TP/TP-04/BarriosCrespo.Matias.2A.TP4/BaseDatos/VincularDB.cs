@@ -12,7 +12,6 @@ namespace BaseDatos
 {
     public class VincularDB
     {
-
         SqlConnection conexion;
         SqlCommand comando;
         SqlDataReader lector;
@@ -29,7 +28,6 @@ namespace BaseDatos
         public bool ProbarConexion()
         {
             bool retorno = true;
-
             try
             {
                 this.conexion.Open();
@@ -55,7 +53,7 @@ namespace BaseDatos
         {
 
 
-            string sql = "SELECT * FROM colonos_table";
+            string sql = "SELECT * FROM colonos";
 
             this.comando = new SqlCommand();
             this.conexion = new SqlConnection(Properties.Settings.Default.conexionDB);
@@ -77,7 +75,8 @@ namespace BaseDatos
                 int dni;
                 DateTime fechaNacimiento;
                 string periodo;
-                double saldo;
+                double saldoCuota;
+                double saldoProductos;
 
                 while (lector.Read())
                 {
@@ -87,11 +86,10 @@ namespace BaseDatos
                     dni = lector.GetInt32(3);
                     fechaNacimiento = lector.GetDateTime(4);
                     periodo = lector.GetString(5);
-                    saldo = lector.GetDouble(6);
+                    saldoCuota = lector.GetDouble(6);
+                    saldoProductos = lector.GetDouble(7);
 
-
-                    //MODFICIAR PERIODO
-                    c = new Colono(nombre, apellido, fechaNacimiento, dni, EPeriodoInscripcion.Mes, saldo, id);
+                    c = new Colono(nombre, apellido, fechaNacimiento, dni, (EPeriodoInscripcion)Enum.Parse(typeof(EPeriodoInscripcion), periodo), saldoCuota, saldoProductos, id);
                     if (catalinas != c)
                         catalinas += c;
                 }
@@ -117,8 +115,8 @@ namespace BaseDatos
         public bool AgregarColono(Colono colono)
         {
             bool retorno = false;
-            string sql = "INSERT INTO colonos_table(nombre, apellido, dni, fechaNacimiento, periodo, saldo) ";
-            sql += "VALUES (@nombre,@apellido,@dni,@fechaNacimiento,@periodo,@saldo)";
+            string sql = "INSERT INTO colonos(nombre, apellido, dni, fechaNacimiento, periodo, saldoCuota,saldoProductos) ";
+            sql += "VALUES (@nombre,@apellido,@dni,@fechaNacimiento,@periodo,@saldoCuota,@saldoProductos)";
             try
             {
                 this.comando = new SqlCommand();
@@ -130,7 +128,9 @@ namespace BaseDatos
                 this.comando.Parameters.AddWithValue("@dni", colono.Dni);
                 this.comando.Parameters.AddWithValue("@fechaNacimiento", colono.FechaNacimiento);
                 this.comando.Parameters.AddWithValue("@periodo", colono.Periodo);
-                this.comando.Parameters.AddWithValue("@saldo", colono.Saldo);
+                this.comando.Parameters.AddWithValue("@saldoCuota", colono.SaldoCuota);
+                this.comando.Parameters.AddWithValue("@saldoProductos", colono.SaldoProductos);
+
 
                 this.comando.CommandText = sql;
                 conexion.Open();
@@ -162,8 +162,8 @@ namespace BaseDatos
         public bool ModificarColono(Colono colono)
         {
             bool retorno = false;
-            string sql = "UPDATE colonos_table SET nombre=@nombre, apellido=@apellido," +
-                " dni=@dni, fechaNacimiento=@fechaNacimiento, periodo=@periodo, saldo=@saldo WHERE id=@id";
+            string sql = "UPDATE colonos SET nombre=@nombre, apellido=@apellido," +
+                " dni=@dni, fechaNacimiento=@fechaNacimiento, periodo=@periodo, saldoCuota=@saldoCuota, saldoProductos=@saldoProductos WHERE id=@id";
 
 
             try
@@ -178,7 +178,8 @@ namespace BaseDatos
                 this.comando.Parameters.AddWithValue("@dni", colono.Dni);
                 this.comando.Parameters.AddWithValue("@fechaNacimiento", colono.FechaNacimiento);
                 this.comando.Parameters.AddWithValue("@periodo", colono.Periodo);
-                this.comando.Parameters.AddWithValue("@saldo", colono.Saldo);
+                this.comando.Parameters.AddWithValue("@saldoCuota", colono.SaldoCuota);
+                this.comando.Parameters.AddWithValue("@saldoProductos", colono.SaldoProductos);
 
 
                 this.comando.CommandText = sql;
@@ -194,7 +195,6 @@ namespace BaseDatos
             {
                 retorno = false;
                 throw e;
-
             }
             finally
             {
@@ -212,7 +212,7 @@ namespace BaseDatos
         public bool EliminarColono(Colono colono)
         {
             bool retorno = false;
-            string sql = "DELETE FROM colonos_table WHERE dni=@dni";
+            string sql = "DELETE FROM colonos WHERE dni=@dni";
             try
             {
                 this.comando = new SqlCommand();

@@ -12,3 +12,17 @@ C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\BaseDatos
 C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\BaseDatos\obj\Debug\BaseDatos.csproj.CopyComplete
 C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\BaseDatos\obj\Debug\BaseDatos.dll
 C:\Users\pc\Desktop\tp_laboratorio_2\TP-04\BarriosCrespo.Matias.2A.TP4\BaseDatos\obj\Debug\BaseDatos.pdb
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\BaseDatos\bin\Debug\BaseDatos.dll.config
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\BaseDatos\bin\Debug\BaseDatos.dll
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\BaseDatos\bin\Debug\BaseDatos.pdb
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\BaseDatos\bin\Debug\Entidades.dll
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\BaseDatos\bin\Debug\Excepciones.dll
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\BaseDatos\bin\Debug\Stock.dll
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\BaseDatos\bin\Debug\Entidades.pdb
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\BaseDatos\bin\Debug\Excepciones.pdb
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\BaseDatos\bin\Debug\Stock.pdb
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\BaseDatos\obj\Debug\BaseDatos.csprojAssemblyReference.cache
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\BaseDatos\obj\Debug\BaseDatos.csproj.CoreCompileInputs.cache
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\BaseDatos\obj\Debug\BaseDatos.csproj.CopyComplete
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\BaseDatos\obj\Debug\BaseDatos.dll
+C:\Users\pc\Desktop\tp_laboratorio_2\Recuperatorios TP\TP-04\BarriosCrespo.Matias.2A.TP4\BaseDatos\obj\Debug\BaseDatos.pdb

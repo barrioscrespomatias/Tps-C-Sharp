@@ -339,7 +339,8 @@ namespace Entidades
         {
             if (colonia.stockProductos == producto)
             {
-                colono.Saldo += producto.Precio * cantidadComprada;
+                //colono.Saldo += producto.Precio * cantidadComprada;
+                colono.SaldoProductos += producto.Precio * cantidadComprada;
                 for (int i = 0; i < cantidadComprada; i++)
                 {
                     colono.ListaProductosComprados.Add(producto);
@@ -395,7 +396,6 @@ namespace Entidades
             return auxiliar;
         }
 
-
         /// <summary>
         /// Guarda en un archivo de texto el importe que el colono ha saldado.
         /// </summary>
@@ -435,7 +435,10 @@ namespace Entidades
             {
                 using (StreamWriter sw = new StreamWriter(rutaDeGuardado, true, miCodificacion))
                 {
-                    sw.WriteLine(DateTime.Now + " " + colono.Nombre + " " + colono.Apellido + " con DNI: " + colono.Dni + " ha abonado $" + colono.Saldo + ".-");
+                    if (colono.SaldoCuota > 0)
+                        sw.WriteLine(DateTime.Now.ToShortDateString() + " " + colono.Nombre + " " + colono.Apellido + " DNI: " + colono.Dni + " abonó su cuota: $" + colono.SaldoCuota + ".-");
+                    if (colono.SaldoProductos > 0)
+                        sw.WriteLine(DateTime.Now.ToShortDateString() + " " + colono.Nombre + " " + colono.Apellido + " DNI: " + colono.Dni + " abonó productos: $" + colono.SaldoProductos + ".-");
                     retorno = true;
                 }
             }

@@ -50,8 +50,18 @@ namespace Validaciones
         /// <returns></returns>
         public static DateTime ValidarFecha(string cadenaFecha)
         {
+
             DateTime aux = new DateTime();
             bool esFecha = DateTime.TryParse(cadenaFecha, out aux);
+
+
+            if (aux.Year > 2017 || aux.Year < 2007)
+            {
+                throw new NacimientoInvalidoException("La fecha de nacimiento debe estar entre 2007 y 2017");
+
+            }
+
+
             return aux;
         }
 

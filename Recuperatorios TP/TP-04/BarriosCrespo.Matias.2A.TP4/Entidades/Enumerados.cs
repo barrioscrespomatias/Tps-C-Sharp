@@ -4,6 +4,7 @@ public enum EEdad
     Peques,
     Medianos,
     Grandes,
+    DniRepetidos,
     EdadIncorrecta
 }
 

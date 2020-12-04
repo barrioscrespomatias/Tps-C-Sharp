@@ -20,7 +20,7 @@ namespace Test
             Colono colonoUno = new Colono("Rene", "Perez", new DateTime(2008, 10, 06), 1111, EPeriodoInscripcion.Mes);
             Colono colonoDos = new Colono("Juan", "Carlos", new DateTime(2007, 5, 09), 2222, EPeriodoInscripcion.Quincena);
             Colono colonoRepetido = new Colono("Mateo", "Uribe", new DateTime(2013, 8, 22), 2222, EPeriodoInscripcion.Semana);
-            
+            Colono colonoModificado = new Colono("Mathew", "Uribing", new DateTime(2017, 8, 22), 1111, EPeriodoInscripcion.Semana);
 
             //Productos
 
@@ -43,7 +43,7 @@ namespace Test
             //Elimina colonoDos.
             catalinas -= colonoDos;
 
-            
+
             //Agrega al colonoRepetido
             //Irá a un grupo distinto ya que sus rangos etarios no coinciden.
             catalinas += colonoRepetido;
@@ -58,13 +58,13 @@ namespace Test
 
             //Colono que compró paga sus deudas: Cuota+Gorrito de $200. = total $3700.-            
             colonoUno.PagarDeudas(colonoUno, catalinas);
-       
-            
-            Console.WriteLine(colonoUno.ToString()+"***************************");
+
+
+            Console.WriteLine(colonoUno.ToString() + "***************************");
             Console.WriteLine(colonoRepetido.ToString() + "***************************");
 
 
-            Console.WriteLine("Productos en venta\n\n"+catalinas.ProductosEnVenta);
+            Console.WriteLine("Productos en venta\n\n" + catalinas.ProductosEnVenta);
             Console.WriteLine(catalinas.ToString());
 
             Console.ReadKey();

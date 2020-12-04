@@ -16,12 +16,13 @@ namespace Entidades
     {
         public static void PagarDeudas(this Colono claseColono, Colono colono, Colonia catalinas)
         {
-            if (colono.Saldo > 0)
+            if (colono.SaldoCuota+colono.SaldoProductos > 0)
             {
-                catalinas.SaldoActual += colono.Saldo;
+                catalinas.SaldoActual += colono.SaldoProductos+colono.SaldoCuota;
                 Colonia.GuardarPagos(colono);
                 Colonia.GuardarImporte(catalinas);
-                colono.Saldo = 0;
+                colono.SaldoProductos = 0;
+                colono.SaldoCuota = 0;
 
             }
         }

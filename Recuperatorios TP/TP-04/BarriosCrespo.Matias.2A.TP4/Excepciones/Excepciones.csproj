@@ -46,6 +46,7 @@
     <Compile Include="ComboBoxNoSeleccionadoException.cs" />
     <Compile Include="ErrorDeConexionException.cs" />
     <Compile Include="GrupoRepetidoException.cs" />
+    <Compile Include="NacimientoInvalidoException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SinProductoException.cs" />
     <Compile Include="StockMaximoException.cs" />

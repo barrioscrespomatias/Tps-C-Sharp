@@ -26,6 +26,7 @@ namespace Formularios
         public SqlConnection conexion = new SqlConnection(Properties.Settings.Default.conexionDB);
         public VincularDB nuevoVinculo;
 
+
         /// <summary>
         /// Constructor sin parámetros. 
         /// </summary>
@@ -45,19 +46,9 @@ namespace Formularios
         /// <param name="e"></param>
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
-
             hiloInicial = new Thread(new ThreadStart(this.Comenzando));
             hiloInicial.Start();
-            this.nuevoVinculo = new VincularDB(this.conexion);
-
-            if (this.nuevoVinculo.ProbarConexion())
-            {
-                this.catalinas = this.nuevoVinculo.ObtenerColonos(this.catalinas);
-            }
-
-            else
-                MessageBox.Show("No se ha podido conectar a la base de datos");
-
+            this.catalinas = this.ActualizarColonia();
             this.catalinas.SaldoActual = Colonia.ObtenerSaldo();
             this.HardcodeoProductos();
             this.Text = "COLONIA CATALINAS SUR";
@@ -121,7 +112,6 @@ namespace Formularios
             }
             else
                 MessageBox.Show("No hay mas espacio para guardar productos!\nVenda algo!!!");
-
 
         }
 
@@ -201,8 +191,24 @@ namespace Formularios
             hiloInicial.Abort();
 
         }
+        /// <summary>
+        /// Conecta a la base de datos obtiene los valores para agregar en la 
+        /// instancia de colonia actual.
+        /// </summary>
+        /// <returns></returns>
+        public Colonia ActualizarColonia()
+        {
+            this.nuevoVinculo = new VincularDB(this.conexion);
+            Colonia auxiliar = new Colonia();
 
+            if (this.nuevoVinculo.ProbarConexion())
+            {
+                auxiliar = this.nuevoVinculo.ObtenerColonos(this.catalinas);
+            }
+            else
+                MessageBox.Show("No se ha podido conectar a la base de datos");
 
-
+            return auxiliar;
+        }
     }
 }

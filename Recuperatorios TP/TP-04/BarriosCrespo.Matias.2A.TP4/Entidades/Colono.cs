@@ -1,10 +1,10 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Stock;
+using Excepciones;
 
 
 
@@ -13,14 +13,16 @@ namespace Entidades
     public class Colono : Persona
     {
 
-        private const int nacimientoValido = 2007;
+        private const int nacimientoLimiteInferior = 2007;
+        private const int nacimientoLimiteSuperior = 2017;
         protected bool sinDeudas;
         protected int edad;
         protected EEdad grupo;
         protected DateTime fechaInscripcion;
         protected EPeriodoInscripcion periodo;
         protected EMesIncripcion mes;
-        protected double estadoDeuda;
+        protected double saldoCuota;
+        protected double saldoProductos;
         protected List<Producto> productosComprados;
 
 
@@ -30,6 +32,7 @@ namespace Entidades
         public Colono()
         {
             this.ListaProductosComprados = new List<Producto>();
+
         }
         /// <summary>
         /// Constructor 5 parámetros sin deuda para crear nuevo  colono desde consola.
@@ -44,7 +47,7 @@ namespace Entidades
         {
             this.edad = DateTime.Today.Year - this.fechaNacimiento.Year;
             this.grupo = this.AsignarGrupo(edad);
-            this.estadoDeuda = Colono.CalcularDeuda(this.periodo);
+            this.saldoCuota = Colono.CalcularDeuda(this.periodo);
             this.periodo = periodo;
             this.sinDeudas = false;
             this.productosComprados = new List<Producto>();
@@ -60,12 +63,13 @@ namespace Entidades
         /// <param name="dni"></param>
         /// <param name="periodo"></param>
         /// <param name="deuda"></param>
-        public Colono(string nombre, string apellido, DateTime fechaNacimiento, int dni, EPeriodoInscripcion periodo, double deuda)
+        public Colono(string nombre, string apellido, DateTime fechaNacimiento, int dni, EPeriodoInscripcion periodo, double saldoCuota, double saldoProductos)
            : base(nombre, apellido, fechaNacimiento, dni)
         {
             this.edad = DateTime.Today.Year - this.fechaNacimiento.Year;
             this.grupo = this.AsignarGrupo(edad);
-            this.estadoDeuda = deuda;
+            this.saldoCuota = saldoCuota;
+            this.saldoProductos = saldoProductos;
             this.periodo = periodo;
             this.sinDeudas = false;
             this.productosComprados = new List<Producto>();
@@ -80,8 +84,8 @@ namespace Entidades
         /// <param name="periodo"></param>
         /// <param name="deuda"></param>
         /// <param name="id"></param>
-        public Colono(string nombre, string apellido, DateTime fechaNacimiento, int dni, EPeriodoInscripcion periodo, double deuda, int id)
-          : this(nombre, apellido, fechaNacimiento, dni, periodo, deuda)
+        public Colono(string nombre, string apellido, DateTime fechaNacimiento, int dni, EPeriodoInscripcion periodo, double saldoCuota, double saldoProductos, int id)
+          : this(nombre, apellido, fechaNacimiento, dni, periodo, saldoCuota, saldoProductos)
         {
             this.id = id;
         }
@@ -124,11 +128,17 @@ namespace Entidades
 
         }
 
-        public double Saldo
+        public double SaldoCuota
         {
-            get { return this.estadoDeuda; }
-            set { this.estadoDeuda = value; }
+            get { return this.saldoCuota; }
+            set { this.saldoCuota = value; }
 
+        }
+
+        public double SaldoProductos
+        {
+            get { return this.saldoProductos; }
+            set { this.saldoProductos = value; }
         }
 
         public bool SinDeudas
@@ -198,8 +208,8 @@ namespace Entidades
                     colono.Nombre.Length > 0
                     && colono.Apellido.Length > 0
                     && colono.Dni > 0
-                    && colono.FechaNacimiento < DateTime.Now
-                    && colono.fechaNacimiento.Year >= nacimientoValido
+                    && colono.fechaNacimiento.Year >= nacimientoLimiteInferior
+                    && colono.fechaNacimiento.Year <= nacimientoLimiteSuperior
                 )
             {
                 retorno = true;
@@ -218,7 +228,7 @@ namespace Entidades
             StringBuilder sb = new StringBuilder();
             sb.AppendFormat(base.ToString());
             sb.AppendFormat("Edad: {0}\n", this.edad);
-            sb.AppendFormat("Deuda actual:${0:N2}\n", this.estadoDeuda);
+            sb.AppendFormat("Deuda actual:${0:N2}\n", this.saldoCuota + this.saldoProductos);
             sb.AppendFormat("Lista de productos comprados: \n\n");
             foreach (Producto aux in this.productosComprados)
             {

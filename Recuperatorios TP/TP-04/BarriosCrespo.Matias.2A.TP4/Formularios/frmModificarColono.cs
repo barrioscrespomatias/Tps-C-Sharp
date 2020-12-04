@@ -26,9 +26,9 @@ namespace Formularios
         /// Constructor con un parámetro que recibe un colono.
         /// </summary>
         /// <param name="c"></param>
-        public frmModificarColono(Colono c) : this()
+        public frmModificarColono(Colono colono) : this()
         {
-            this.colono = c;
+            this.colono = colono;
         }
         /// <summary>
         /// Carga los comboBox de los peridodos, los meses de inscripcion y establece los indices
@@ -76,7 +76,7 @@ namespace Formularios
             this.txtBoxApellido.Text = this.colono.Apellido;
             this.txtBoxNombre.Text = this.colono.Nombre;
             this.txtBoxDni.Text = this.colono.Dni.ToString();
-            this.txtBoxFechaNacimiento.Text = this.colono.FechaNacimiento.ToString();
+            this.txtBoxFechaNacimiento.Text = this.colono.FechaNacimiento.ToShortDateString();
             this.cmbMes.SelectedIndex = (int)this.colono.CargarMes;
             this.cmbPeriodo.SelectedIndex = (int)this.colono.Periodo;            
         }

@@ -17,6 +17,7 @@ namespace Formularios
     {
         public int dni;
         private Colonia catalinas;
+
         /// <summary>
         /// Constructor por defecto.
         /// </summary>
@@ -56,16 +57,17 @@ namespace Formularios
             try
             {
                 dni = Validaciones.Validar.ValidarSoloNumeros(this.txtBoxBuscarColono.Text);
+                if (dni > 0 && this.catalinas == dni)
+                    this.DialogResult = DialogResult.OK;
+                else
+                    MessageBox.Show("No se encontró el DNI.");
             }
             catch (ValidacionIncorrectaException ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            if (dni > 0 && this.catalinas == dni)
-                this.DialogResult = DialogResult.OK;
-            else
-                MessageBox.Show("No se encontró el DNI.");
+
         }
-       
+
     }
 }

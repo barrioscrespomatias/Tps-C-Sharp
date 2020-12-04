@@ -22,6 +22,7 @@ namespace Formularios
         public Colonia catalinas;
         public SqlConnection conexion = new SqlConnection(Properties.Settings.Default.conexionDB);
         public VincularDB vincular;
+
         /// <summary>
         /// Constructor por defecto.
         /// </summary>
@@ -48,11 +49,12 @@ namespace Formularios
         private void frmDatosPersonales_Load(object sender, EventArgs e)
         {
             this.BloquearTextBox();
-            if (!this.ActualizarTextBox())
+            if (!this.ActualizarTextBox(this.colono))
             {
                 MessageBox.Show("El dni ingresado no coincide con ninguno de los colonos");
             }
             this.Text = "Datos del colono";
+
         }
         /// <summary>
         /// Genera una nueva instancia de frmVenta en la que se cargarán los datos de una nueva venta
@@ -63,11 +65,11 @@ namespace Formularios
         /// <param name="e"></param>
         private void btnComprar_Click(object sender, EventArgs e)
         {
-            frmVenta nuevaVenta = new frmVenta(this.colono, this.catalinas);            
+            frmVenta nuevaVenta = new frmVenta(this.colono, this.catalinas);
             nuevaVenta.StartPosition = FormStartPosition.CenterScreen;
             if (nuevaVenta.ShowDialog() == DialogResult.OK)
             {
-                this.ActualizarTextBox();
+                this.ActualizarTextBox(this.colono);
             }
         }
         /// <summary>
@@ -80,45 +82,53 @@ namespace Formularios
         /// <param name="e"></param>
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            bool modificado = false;
+            Colono auxiliar = new Colono();
             this.vincular = new VincularDB(this.conexion);
-            frmModificarColono modificar = new frmModificarColono(this.colono);           
+            frmModificarColono modificar = new frmModificarColono(this.colono);
             modificar.StartPosition = FormStartPosition.CenterScreen;
             if (modificar.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-                    this.colono.Nombre = Validaciones.Validar.ValidarSoloLetras(modificar.txtBoxNombre.Text);
-                    this.colono.Apellido = Validaciones.Validar.ValidarSoloLetras(modificar.txtBoxApellido.Text);
-                    this.colono.Dni = Validaciones.Validar.ValidarSoloNumeros(modificar.txtBoxDni.Text);
-                    this.colono.CargarMes = (EMesIncripcion)modificar.cmbMes.SelectedIndex;
-                    this.colono.Periodo = (EPeriodoInscripcion)modificar.cmbPeriodo.SelectedIndex;
-                    this.colono.FechaNacimiento = Validaciones.Validar.ValidarFecha(modificar.txtBoxFechaNacimiento.Text);
+                    auxiliar.Id = this.colono.Id;
+                    auxiliar.Nombre = Validaciones.Validar.ValidarSoloLetras(modificar.txtBoxNombre.Text);
+                    auxiliar.Apellido = Validaciones.Validar.ValidarSoloLetras(modificar.txtBoxApellido.Text);
+                    auxiliar.Dni = Validaciones.Validar.ValidarSoloNumeros(modificar.txtBoxDni.Text);
+                    auxiliar.CargarMes = (EMesIncripcion)modificar.cmbMes.SelectedIndex;
+                    auxiliar.Periodo = (EPeriodoInscripcion)modificar.cmbPeriodo.SelectedIndex;
+                    auxiliar.FechaNacimiento = Validaciones.Validar.ValidarFecha(modificar.txtBoxFechaNacimiento.Text);
+                    auxiliar.Edad = (int)DateTime.Today.Year - auxiliar.FechaNacimiento.Year;
+                    auxiliar.EdadGrupo = auxiliar.AsignarGrupo(auxiliar.Edad);
+                    auxiliar.SaldoProductos = this.colono.SaldoProductos;
+                    if (this.colono.SaldoCuota != 0)
+                        auxiliar.SaldoCuota = Colono.CalcularDeuda(auxiliar.Periodo);
 
-                    this.colono.Edad = (int)DateTime.Today.Year - colono.FechaNacimiento.Year;
-                    this.colono.EdadGrupo = this.colono.AsignarGrupo(this.colono.Edad);
-                    if (this.colono.SinDeudas == false)
-                        this.colono.Saldo = Colono.CalcularDeuda(this.colono.Periodo);
-                    else
-                        this.colono.Saldo = 0;
-                    modificado = true;
+                    if (Colono.EsValido(auxiliar))
+                    {
+                        //Eliminar al colono anterior.
+                        this.catalinas -= this.colono;
+
+                        //Agregar al colono modificado                     
+                        this.catalinas += auxiliar;
+                        if (this.vincular.ProbarConexion())
+                        {
+                            if (this.vincular.ModificarColono(auxiliar))
+                            {
+                                this.ActualizarTextBox(auxiliar);
+                                MessageBox.Show("Se ha modificado el colono!");
+                            }
+                        }
+                        else
+                            MessageBox.Show("No se ha podido conectar con la base de datos!");
+                    }
                 }
                 catch (ValidacionIncorrectaException ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
-                if (Colono.EsValido(this.colono) && modificado == true)
+                catch (NacimientoInvalidoException exe)
                 {
-                    if (this.vincular.ProbarConexion())
-                    {
-                        if (this.vincular.ModificarColono(this.colono))
-                        {
-                            this.ActualizarTextBox();
-                            MessageBox.Show("Se ha modificado el colono!");
-                        }
-                    }
-                    else
-                        MessageBox.Show("No se ha podido conectar con la base de datos!");
+                    MessageBox.Show(exe.Message);
                 }
             }
 
@@ -160,9 +170,9 @@ namespace Formularios
         private void btnPagarSaldo_Click(object sender, EventArgs e)
         {
             this.vincular = new VincularDB(this.conexion);
-            double saldo = this.colono.Saldo;
+            double saldo = this.colono.SaldoCuota + this.colono.SaldoProductos;
             this.colono.SinDeudas = true;
-            if (this.colono.Saldo > 0)
+            if (saldo > 0)
             {
                 DialogResult resultado = MessageBox.Show("¿Desea pagar $" + saldo + "?", "Saldar deuda", MessageBoxButtons.YesNo);
                 if (resultado == DialogResult.Yes)
@@ -172,7 +182,7 @@ namespace Formularios
                         this.colono.PagarDeudas(this.colono, this.catalinas);
                         if (this.vincular.ModificarColono(this.colono))
                         {
-                            this.ActualizarTextBox();
+                            this.ActualizarTextBox(this.colono);
                             MessageBox.Show("El colono ya no tiene deudas!!");
                         }
                         else
@@ -180,7 +190,6 @@ namespace Formularios
                     }
                     else
                         MessageBox.Show("No se ha podido conectar a la base de datos");
-
                 }
             }
             else
@@ -200,17 +209,17 @@ namespace Formularios
         /// Actualiza los textBox validando que el dni ingresado sea mayor que cero.
         /// </summary>
         /// <returns></returns>
-        private bool ActualizarTextBox()
+        private bool ActualizarTextBox(Colono colono)
         {
             bool retorno = false;
-            if (this.colono.Dni > 0)
+            if (colono.Dni > 0)
             {
                 this.txtBoxNombre.Text = colono.Nombre;
                 this.txtBoxApellido.Text = colono.Apellido;
                 this.txtBoxDni.Text = colono.Dni.ToString();
                 this.txtBoxEdad.Text = colono.Edad.ToString();
-                this.txtBoxDeuda.Text = colono.Saldo.ToString();
-                this.txtBoxFechaNacimiento.Text = colono.FechaNacimiento.ToString();
+                this.txtBoxDeuda.Text = (colono.SaldoCuota + colono.SaldoProductos).ToString();
+                this.txtBoxFechaNacimiento.Text = colono.FechaNacimiento.ToShortDateString();
                 this.txtBoxGrupo.Text = colono.EdadGrupo.ToString();
                 this.txtBoxMes.Text = colono.CargarMes.ToString();
                 retorno = true;
@@ -230,6 +239,21 @@ namespace Formularios
             this.txtBoxGrupo.Enabled = false;
             this.txtBoxDeuda.Enabled = false;
             this.txtBoxMes.Enabled = false;
+        }
+
+        public Colonia ActualizarColonia()
+        {
+            this.vincular = new VincularDB(this.conexion);
+            Colonia auxiliar = new Colonia();
+
+            if (this.vincular.ProbarConexion())
+            {
+                auxiliar = this.vincular.ObtenerColonos(this.catalinas);
+            }
+            else
+                MessageBox.Show("No se ha podido conectar a la base de datos");
+
+            return auxiliar;
         }
     }
 }

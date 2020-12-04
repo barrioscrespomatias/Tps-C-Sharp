@@ -19,7 +19,6 @@ namespace Formularios
     public partial class frmAltaColono : Form
     {
         public Colonia catalinas;
-
         private SqlConnection conexion;
         private VincularDB nuevaConexion;
 
@@ -29,30 +28,28 @@ namespace Formularios
         public frmAltaColono()
         {
             InitializeComponent();
-
         }
 
         /// <summary>
         /// Constructor un parámetro que recibe una colonia.
         /// </summary>
-        /// <param name="c1"></param>
-        public frmAltaColono(Colonia c1) : this()
+        /// <param name="colono"></param>
+        public frmAltaColono(Colonia colono) : this()
         {
-            this.catalinas = c1;
-
+            this.catalinas = colono;
         }
         /// <summary>
         /// Constructor que recibe un colono. Se utiliza para modificar los datos y borrar.
         /// </summary>
-        /// <param name="c"></param>
-        public frmAltaColono(Colono c)
+        /// <param name="colono"></param>
+        public frmAltaColono(Colono colono)
         {
-            this.txtBoxApellido.Text = c.Apellido;
-            this.txtBoxNombre.Text = c.Nombre;
-            this.txtBoxDni.Text = c.Dni.ToString();
-            this.txtBoxFechaNacimiento.Text = c.FechaNacimiento.ToString();
-            this.cmbMes.SelectedItem = c.CargarMes;
-            this.cmbPeriodo.SelectedItem = c.Periodo;
+            this.txtBoxApellido.Text = colono.Apellido;
+            this.txtBoxNombre.Text = colono.Nombre;
+            this.txtBoxDni.Text = colono.Dni.ToString();
+            this.txtBoxFechaNacimiento.Text = colono.FechaNacimiento.ToString();
+            this.cmbMes.SelectedItem = colono.CargarMes;
+            this.cmbPeriodo.SelectedItem = colono.Periodo;
 
         }
         /// <summary>
@@ -87,27 +84,27 @@ namespace Formularios
         {
             this.conexion = new SqlConnection(Properties.Settings.Default.conexionDB);
             this.nuevaConexion = new VincularDB(conexion);
-            Colono c = new Colono();
+            Colono colono = new Colono();
             try
             {
-                c.Nombre = Validar.ValidarSoloLetras(this.txtBoxNombre.Text);
-                c.Apellido = Validar.ValidarSoloLetras(this.txtBoxApellido.Text);
-                c.Dni = Validar.ValidarSoloNumeros(this.txtBoxDni.Text);
-                c.CargarMes = (EMesIncripcion)this.cmbMes.SelectedIndex;
-                c.Periodo = (EPeriodoInscripcion)this.cmbPeriodo.SelectedIndex;
-                c.Saldo = Colono.CalcularDeuda(c.Periodo);
-                c.FechaNacimiento = Validar.ValidarFecha(this.txtBoxFechaNacimiento.Text);
-                c.Edad = (int)DateTime.Now.Year - c.FechaNacimiento.Year;
-                c.EdadGrupo = c.AsignarGrupo(c.Edad);
+                colono.Nombre = Validar.ValidarSoloLetras(this.txtBoxNombre.Text);
+                colono.Apellido = Validar.ValidarSoloLetras(this.txtBoxApellido.Text);
+                colono.Dni = Validar.ValidarSoloNumeros(this.txtBoxDni.Text);
+                colono.CargarMes = (EMesIncripcion)this.cmbMes.SelectedIndex;
+                colono.Periodo = (EPeriodoInscripcion)this.cmbPeriodo.SelectedIndex;
+                colono.SaldoCuota = Colono.CalcularDeuda(colono.Periodo);
+                colono.FechaNacimiento = Validar.ValidarFecha(this.txtBoxFechaNacimiento.Text);
+                colono.Edad = (int)DateTime.Now.Year - colono.FechaNacimiento.Year;
+                colono.EdadGrupo = colono.AsignarGrupo(colono.Edad);
 
-                if (this.catalinas != c)
+                if (this.catalinas != colono)
                 {
-                    if (Colono.EsValido(c))
+                    if (Colono.EsValido(colono))
                     {
                         if (this.nuevaConexion.ProbarConexion())
                         {
-                            this.catalinas += c;
-                            if (nuevaConexion.AgregarColono(c))
+                            this.catalinas += colono;
+                            if (nuevaConexion.AgregarColono(colono))
                             {
                                 MessageBox.Show("Se ha agregado el colono a la base de datos!");
                                 this.DialogResult = DialogResult.OK;
@@ -127,9 +124,12 @@ namespace Formularios
                 }
                 else
                     MessageBox.Show("Ya existe un colono con ese DNI.");
-
             }
             catch (ValidacionIncorrectaException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (NacimientoInvalidoException ex)
             {
                 MessageBox.Show(ex.Message);
             }
